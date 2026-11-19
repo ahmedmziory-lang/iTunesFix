@@ -5067,6 +5067,16 @@ html:root:root body .system-preview-toolbar button:focus-visible {
 }
 }
     </style>
+    <style id="mobile-toolbar-fix">
+        @media screen and (max-width:760px) {
+            .system-preview-toolbar {
+                height: auto !important;
+                min-height: 50px !important;
+                box-sizing: border-box;
+                align-items: center;
+            }
+        }
+    </style>
     <style id="daily-print-fix">
 /* إصلاح طباعة الامتحان اليومي: نفس قواعد الطباعة تُطبَّق أثناء القياس حتى يُحسب التصغير صحيحاً */
         #dailyExamPrintCopies .daily-exam-print-copy .paper-page {
