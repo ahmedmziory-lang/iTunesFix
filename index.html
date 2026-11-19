@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#286b70">
-    <link rel="manifest" href="/manifest.webmanifest">
-    <link rel="icon" href="/exam-icon.svg" type="image/svg+xml">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="icon" href="./exam-icon.svg" type="image/svg+xml">
     <script>if (location.protocol === 'file:') document.querySelectorAll('link[rel="manifest"],link[rel="icon"]').forEach(function (l) { l.remove(); });</script>
     <script id="math-engine">
 /* ==========================================================================
@@ -9029,7 +9029,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
   }
   let installPrompt = null;
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-    window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(error => console.error('تعذر تسجيل التطبيق للعمل دون اتصال:', error)));
+    window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(error => console.error('تعذر تسجيل التطبيق للعمل دون اتصال:', error)));
   }
   window.addEventListener('beforeinstallprompt', event => {
     event.preventDefault();

@@ -1,0 +1,19 @@
+{
+  "name": "منشئ الامتحانات",
+  "short_name": "الامتحانات",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f7f7",
+  "theme_color": "#286b70",
+  "icons": [
+    {
+      "src": "./exam-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
