@@ -6098,6 +6098,62 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
   #questionImageResizeOverlay { display: none !important; }
 }
     </style>
+    <style>
+        @media screen and (min-width:1200px) {
+            body.dialog-open .app-container {
+                display: block !important;
+                width: 100% !important;
+                min-width: 0 !important;
+                height: calc(100vh - 50px) !important;
+                min-height: 0 !important;
+                overflow: visible !important;
+            }
+            body.dialog-open .editor-sidebar {
+                position: static !important;
+                width: 0 !important;
+                height: 0 !important;
+                max-height: 0 !important;
+                min-width: 0 !important;
+                padding: 0 !important;
+                overflow: visible !important;
+                border: 0 !important;
+            }
+            body.dialog-open .editor-sidebar>:not(#questionModalOverlay) {
+                display: none !important;
+            }
+            body.dialog-open .preview-area {
+                position: fixed !important;
+                top: 50px !important;
+                right: 0 !important;
+                left: 400px !important;
+                width: auto !important;
+                height: calc(100vh - 50px) !important;
+                min-height: 0 !important;
+                padding: 12px 10px !important;
+                overflow: auto !important;
+            }
+            body.dialog-open .question-modal-overlay {
+                position: fixed !important;
+                inset: 50px auto 0 0 !important;
+                z-index: 10000 !important;
+                width: 400px !important;
+                height: calc(100vh - 50px) !important;
+                padding: 0 !important;
+                align-items: stretch !important;
+                justify-content: flex-start !important;
+                background: transparent !important;
+                backdrop-filter: none !important;
+                pointer-events: none !important;
+            }
+            body.dialog-open .question-modal {
+                width: 100% !important;
+                max-height: none !important;
+                height: 100% !important;
+                border-radius: 0 12px 12px 0 !important;
+                pointer-events: auto !important;
+            }
+        }
+    </style>
     <script>
         try { if (localStorage.getItem('uiTheme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (_) { /* التخزين غير متاح */ }
     </script>
@@ -8752,6 +8808,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
     }
 
     function addQuestion() {
+        const wasEditing = Boolean(editingDiv);
         let title = document.getElementById('qTitle').value.trim();
         const questionType = document.getElementById('qTypeSelect').value || editingDiv?.dataset.questionType || '';
         if (['fill', 'essay', 'define'].includes(questionType)) syncGenericSubQuestionsToBody();
@@ -8884,10 +8941,15 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         renderGenericSubQuestionBuilder();
         matchingDraftItems = [{ left: '', right: '' }];
         renderMatchingBuilder();
+        applyQuestionPreset();
 
         recalculate();
         saveData();
-        closeQuestionDialog();
+        if (!wasEditing && window.matchMedia('(min-width: 1200px)').matches) {
+            requestAnimationFrame(() => document.getElementById('qTitle').focus());
+        } else {
+            closeQuestionDialog();
+        }
     }
 
     function dailyZoomIsStandard() {
