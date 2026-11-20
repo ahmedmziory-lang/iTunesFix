@@ -742,9 +742,16 @@
             margin: 10px auto;
         }
         .mcq-options {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 6px 18px;
             padding-right: 10px;
+        }
+        .mcq-options > .mcq-option {
+            flex: 0 1 auto;
+            min-width: 0;
+            padding: 3px 6px;
         }
         .answer-box {
             margin-top: 8px;
@@ -1289,9 +1296,12 @@
             page-break-inside: avoid;
         }
         .mcq-options {
-            grid-template-columns: repeat(4,minmax(0,1fr));
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
             margin-top: 4px;
             padding: 0;
+            gap: 4px 18px;
             border: 0;
             background: transparent;
         }
@@ -1300,7 +1310,7 @@
             line-height: 1.8;
             min-height: 0;
             display: block;
-            padding: 0;
+            padding: 3px 6px;
             border: 0;
             border-radius: 0;
             background: transparent;
@@ -1319,7 +1329,7 @@
             padding: 12px;
         }
         .answer-lines {
-            background: repeating-linear-gradient(transparent,transparent 27px,#cbd8de 28px);
+            background: repeating-linear-gradient(transparent,transparent 26px,#64748b 28px);
         }
         .answer-line-control {
             display: flex;
@@ -1528,7 +1538,7 @@
             margin-bottom: 16px;
         }
         .student-table td {
-            border: 1px solid #cbd9df;
+            border: 1px solid #64748b;
             padding: 7px 9px;
             background: #f8fafb;
         }
@@ -1544,7 +1554,7 @@
         }
         .grade-table th,
         .grade-table td {
-            border: 1px solid #cbd9df;
+            border: 1px solid #64748b;
             padding: 5px;
         }
         .question-item {
@@ -1570,7 +1580,7 @@
             font-weight: 600;
         }
         .mcq-options {
-            gap: 4px 10px;
+            gap: 6px 18px;
         }
         .ai-pdf-panel {
             border-color: #d2e4e4;
@@ -2177,6 +2187,20 @@
                 print-color-adjust: exact;
                 -webkit-print-color-adjust: exact;
             }
+            .paper-page table th,
+            .paper-page table td {
+                border-color: #374151 !important;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            .paper-page .answer-lines {
+                background-image: repeating-linear-gradient(transparent, transparent 26px, #374151 26px, #374151 28px) !important;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            .paper-page .question-item {
+                border-bottom-color: #6b7280 !important;
+            }
         }
         @media print {
             .paper-page {
@@ -2229,7 +2253,7 @@
             .mcq-options {
                 margin: 0 !important;
                 padding: 0 !important;
-                gap: 0 5px !important;
+                gap: 4px 18px !important;
                 line-height: 1.35 !important;
             }
             .mcq-option {
@@ -2241,7 +2265,7 @@
                 line-height: 1.35 !important;
             }
             .teacher-signature-row {
-                margin: 8mm 2mm 4mm !important;
+                margin: 4mm 2mm 2mm !important;
                 padding-top: 3mm !important;
                 page-break-inside: avoid !important;
                 break-inside: avoid !important;
@@ -2266,17 +2290,18 @@
             max-width: 100%;
             box-sizing: border-box;
             table-layout: fixed;
-            margin: 12px 0 10px;
-            font-size: 10px;
+            margin: 8px 0 6px;
+            font-size: 9pt !important;
         }
         .paper-page table.grade-table.end-grade-table th,
         .paper-page table.grade-table.end-grade-table td {
             box-sizing: border-box;
             text-align: center;
-            padding: 6px 3px;
+            padding: 3px;
             white-space: normal;
             overflow-wrap: anywhere;
-            line-height: 1.35;
+            line-height: 1.2;
+            font-size: 9pt !important;
         }
         .paper-page table.grade-table.end-grade-table th:nth-child(1) {
             width: 13%;
@@ -2292,6 +2317,11 @@
         }
         .paper-page table.grade-table.end-grade-table th:nth-child(5) {
             width: 23.5%;
+        }
+        .paper-page table.grade-table.end-grade-table tbody tr.grading-score-row td,
+        .paper-page table.grade-table.end-grade-table tbody tr.grading-total-row td,
+        .paper-page table.grade-table.end-grade-table tbody tr.grading-total-row th {
+            height: 22px;
         }
         .paper-page .question-body,
         .paper-page .sub-question-line,
@@ -2471,9 +2501,8 @@
                 overflow-wrap: anywhere;
             }
             .mcq-options {
-                grid-template-columns: repeat(2,minmax(0,1fr));
                 padding-right: 4px;
-                gap: 5px;
+                gap: 8px 14px;
             }
             .mcq-option {
                 min-width: 0;
@@ -2519,7 +2548,7 @@
                 font-size: 10px !important;
             }
             .mcq-options {
-                grid-template-columns: 1fr;
+                gap: 8px 12px;
             }
             .grade-table {
                 min-width: 145px;
@@ -2764,17 +2793,22 @@
         .editor-sidebar h2 {
             box-sizing: border-box;
         }
-        #headerFields>.form-group {
+        #headerFields>.form-group,
+        #paperFormattingFields>.form-group {
             margin: 0 0 12px;
         }
-        #headerFields .form-group>label {
+        #headerFields .form-group>label,
+        #paperFormattingFields .form-group>label {
             display: block;
             min-height: 18px;
             margin: 0 0 5px;
         }
         #headerFields .form-group input:not([type=checkbox]),
+        #paperFormattingFields .form-group input:not([type=checkbox]),
         #headerFields .form-group textarea,
-        #headerFields .form-group select {
+        #paperFormattingFields .form-group textarea,
+        #headerFields .form-group select,
+        #paperFormattingFields .form-group select {
             display: block;
             width: 100%;
             box-sizing: border-box;
@@ -2809,12 +2843,14 @@
             margin: 0;
             accent-color: #5145e5;
         }
-        #headerFields .line-spacing-control {
+        #headerFields .line-spacing-control,
+        #paperFormattingFields .line-spacing-control {
             min-height: 38px;
             padding: 0 8px;
             border: 1px solid #e3e7f0;
         }
-        #headerFields .line-spacing-control output {
+        #headerFields .line-spacing-control output,
+        #paperFormattingFields .line-spacing-control output {
             min-width: 38px;
         }
         .total-score-badge {
@@ -2970,15 +3006,20 @@
             border-color: #d6dfe3;
             box-shadow: none;
         }
-        #headerFields>.form-group {
+        #headerFields>.form-group,
+        #paperFormattingFields>.form-group {
             margin-bottom: 10px;
         }
-        #headerFields .form-group>label {
+        #headerFields .form-group>label,
+        #paperFormattingFields .form-group>label {
             color: #465b66;
         }
         #headerFields .form-group input:not([type=checkbox]),
+        #paperFormattingFields .form-group input:not([type=checkbox]),
         #headerFields .form-group textarea,
-        #headerFields .form-group select {
+        #paperFormattingFields .form-group textarea,
+        #headerFields .form-group select,
+        #paperFormattingFields .form-group select {
             border-radius: 8px;
             background: #fff;
         }
@@ -2997,7 +3038,8 @@
             border-radius: 8px;
             background: #fafbfc;
         }
-        #headerFields .line-spacing-control {
+        #headerFields .line-spacing-control,
+        #paperFormattingFields .line-spacing-control {
             border-color: #e2e7ea;
             border-radius: 8px;
             background: #fafbfc;
@@ -3892,6 +3934,15 @@
         #headerFields .form-group input:not([type=checkbox]),
         #headerFields .form-group textarea,
         #headerFields .form-group select {
+            font-size: 14px !important;
+            min-height: 42px;
+        }
+        #paperFormattingFields .form-group>label {
+            font-size: 13px !important;
+            line-height: 1.5;
+        }
+        #paperFormattingFields .form-group input:not([type=checkbox]),
+        #paperFormattingFields .form-group select {
             font-size: 14px !important;
             min-height: 42px;
         }
@@ -5543,9 +5594,508 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
 /* معاينة الورقة في الواجهة تطابق الطباعة: العناصر متتابعة من الأعلى بلا فراغات موزّعة */
 @media screen {
   html:root:root body .preview-area .paper-page {
+    height: auto !important;
+    min-height: 297mm !important;
+    flex: 0 0 auto !important;
+    background-color: #fff !important;
+    background-image: repeating-linear-gradient(to bottom, #fff 0, #fff calc(297mm - 1px), #d8e0e4 calc(297mm - 1px), #d8e0e4 297mm) !important;
     justify-content: flex-start !important;
     gap: 0 !important;
   }
+}
+    </style>
+    <style id="interface-refresh">
+@media screen {
+  :root {
+    --m-pen: #176f73;
+    --m-pen-t: rgba(23, 111, 115, .12);
+    --m-ok: #25836b;
+  }
+  html[data-theme="dark"] {
+    --m-pen: #65c5bd;
+    --m-pen-t: rgba(101, 197, 189, .16);
+    --m-on-pen: #102121;
+  }
+  body {
+    font-family: var(--m-font, "Segoe UI", Tahoma, sans-serif);
+    background: var(--m-desk) !important;
+  }
+  .system-preview-toolbar {
+    gap: 14px;
+    padding-inline: clamp(14px, 2.4vw, 32px);
+    box-shadow: 0 4px 18px rgba(20, 33, 61, .06) !important;
+    backdrop-filter: blur(12px);
+  }
+  .system-preview-toolbar>div {
+    gap: 4px !important;
+  }
+  .system-preview-toolbar strong {
+    letter-spacing: -.01em;
+  }
+  .system-preview-toolbar .theme-toggle-button,
+  .system-preview-toolbar #installAppButton {
+    min-height: 40px;
+    border-radius: 11px !important;
+    transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease;
+  }
+  .system-preview-toolbar .theme-toggle-button {
+    width: 40px;
+    box-shadow: 0 1px 3px rgba(20, 33, 61, .06);
+  }
+  .system-preview-toolbar #installAppButton {
+    padding-inline: 16px;
+    box-shadow: 0 4px 12px rgba(37, 71, 208, .16);
+  }
+  .system-preview-toolbar :is(.theme-toggle-button, #installAppButton):hover {
+    transform: translateY(-1px);
+  }
+  .system-preview-toolbar .preview-format-badge {
+    min-height: 32px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background: var(--m-wash);
+    color: var(--m-ink2);
+    font-weight: 700;
+  }
+  .editor-sidebar {
+    padding: 22px clamp(16px, 2vw, 26px) 32px !important;
+    background: var(--m-panel) !important;
+    box-shadow: 8px 0 28px rgba(20, 33, 61, .035) !important;
+  }
+  .app-brand {
+    min-height: 64px;
+    border-color: var(--m-line) !important;
+    border-radius: 15px !important;
+    background: linear-gradient(135deg, var(--m-panel), var(--m-wash)) !important;
+    box-shadow: 0 4px 14px rgba(20, 33, 61, .045) !important;
+  }
+  .app-brand-mark {
+    border-radius: 12px;
+    background: linear-gradient(145deg, #23878a, #17676b) !important;
+    box-shadow: 0 5px 12px rgba(23, 111, 115, .2);
+  }
+  .app-brand-copy strong {
+    color: var(--m-ink) !important;
+    font-size: 15px;
+    font-weight: 800;
+  }
+  .app-brand-copy small,
+  .system-creator-credit {
+    color: var(--m-ink2) !important;
+  }
+  .system-creator-credit strong {
+    color: var(--m-ink) !important;
+  }
+  .lang-switch-container,
+  .editor-sidebar>.form-group[style*="background"] {
+    border-color: var(--m-line) !important;
+    border-radius: 13px !important;
+    background: var(--m-wash) !important;
+  }
+  .lang-switch-container>label,
+  .editor-sidebar>.form-group[style*="background"]>label {
+    color: var(--m-ink2) !important;
+    font-weight: 700;
+  }
+  .lang-toggle-button {
+    min-height: 44px;
+    border-color: var(--m-line) !important;
+    border-radius: 11px;
+    background: var(--m-panel) !important;
+    color: var(--m-ink) !important;
+  }
+  .editor-sidebar h2 {
+    border-color: var(--m-line) !important;
+    border-inline-start-color: var(--m-pen) !important;
+    border-radius: 10px !important;
+    background: var(--m-wash) !important;
+    color: var(--m-ink) !important;
+  }
+  #headerFields>.form-group,
+  #paperFormattingFields>.form-group {
+    padding: 8px 10px;
+    border: 1px solid transparent;
+    border-radius: 11px;
+    transition: border-color .16s ease, background-color .16s ease;
+  }
+  #headerFields>.form-group:focus-within,
+  #paperFormattingFields>.form-group:focus-within {
+    border-color: var(--m-line);
+    background: var(--m-wash);
+  }
+  #headerFields .form-group>label,
+  #paperFormattingFields .form-group>label {
+    color: var(--m-ink2) !important;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  #headerFields .form-group :is(input:not([type=checkbox]), textarea, select),
+  #paperFormattingFields .form-group :is(input:not([type=checkbox]), textarea, select),
+  .editor-sidebar #dbExamSelect {
+    min-height: 42px;
+    border: 1px solid var(--m-line) !important;
+    border-radius: 10px !important;
+    background: var(--m-panel) !important;
+    color: var(--m-ink) !important;
+    font-size: 13px;
+  }
+  #headerFields .form-group textarea {
+    min-height: 76px;
+  }
+  #headerFields .form-group :is(input, textarea, select):focus,
+  .editor-sidebar #dbExamSelect:focus {
+    border-color: var(--m-pen) !important;
+    box-shadow: 0 0 0 3px var(--m-pen-t) !important;
+  }
+  .sidebar-primary-group,
+  .sidebar-tool-group {
+    border-color: var(--m-line) !important;
+    border-radius: 15px !important;
+    background: var(--m-panel) !important;
+    box-shadow: 0 5px 18px rgba(20, 33, 61, .045) !important;
+  }
+  .sidebar-primary-group {
+    background: linear-gradient(145deg, var(--m-panel), var(--m-wash)) !important;
+  }
+  .sidebar-primary-group .sidebar-action-heading,
+  .sidebar-tool-group .sidebar-action-heading {
+    border-color: var(--m-line) !important;
+    color: var(--m-ink) !important;
+  }
+  .sidebar-primary-group .total-score-badge {
+    border-color: rgba(37, 131, 107, .2) !important;
+    border-radius: 10px !important;
+    background: rgba(37, 131, 107, .08) !important;
+    color: var(--m-ink) !important;
+  }
+  .sidebar-primary-group .btn-new-question {
+    border-radius: 11px !important;
+    background: var(--m-pen) !important;
+    box-shadow: 0 6px 16px var(--m-pen-t) !important;
+    font-size: 14px !important;
+    font-weight: 800;
+  }
+  .sidebar-tool-group>.btn,
+  .sidebar-tool-group>label.btn {
+    min-height: 44px;
+    border-radius: 10px !important;
+    font-size: 13px;
+  }
+  .sidebar-tool-group>.btn:hover,
+  .sidebar-tool-group>label.btn:hover,
+  .sidebar-primary-group .btn-new-question:hover {
+    box-shadow: 0 5px 14px rgba(20, 33, 61, .1) !important;
+    transform: translateY(-1px);
+  }
+  .preview-area {
+    padding: clamp(18px, 3vw, 36px) !important;
+  }
+  .preview-format-badge .preview-live-dot {
+    box-shadow: 0 0 0 3px rgba(37, 131, 107, .12);
+  }
+  :is(button, input, select, textarea, a):focus-visible {
+    outline: 3px solid var(--m-pen) !important;
+    outline-offset: 2px;
+  }
+  html[data-theme="dark"] .editor-sidebar {
+    box-shadow: 8px 0 28px rgba(0, 0, 0, .16) !important;
+  }
+  html[data-theme="dark"] .app-brand {
+    background: linear-gradient(135deg, var(--m-panel), var(--m-wash)) !important;
+  }
+  html[data-theme="dark"] .app-brand-mark {
+    background: linear-gradient(145deg, #278d88, #176d70) !important;
+  }
+  html[data-theme="dark"] #headerFields>.form-group:focus-within {
+    background: var(--m-wash);
+  }
+  html[data-theme="dark"] .sidebar-danger-group {
+    border-color: #58363a !important;
+    background: #211a24 !important;
+  }
+}
+@media screen and (max-width: 760px) {
+  .system-preview-toolbar {
+    gap: 8px 10px;
+    padding: 10px 12px;
+  }
+  .system-preview-toolbar>div {
+    padding-bottom: 2px;
+  }
+  .system-preview-toolbar small {
+    line-height: 1.45;
+  }
+  .system-preview-toolbar #installAppButton {
+    min-height: 38px;
+    padding-inline: 12px;
+  }
+  .system-preview-toolbar .preview-format-badge {
+    min-height: 30px;
+    padding: 5px 8px;
+  }
+  .editor-sidebar {
+    padding: 16px 14px 28px !important;
+    box-shadow: 0 -6px 24px rgba(20, 33, 61, .045) !important;
+  }
+  .app-brand {
+    margin-bottom: 12px !important;
+  }
+  .preview-area {
+    padding: 12px !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .system-preview-toolbar *,
+  .editor-sidebar * {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+    </style>
+    <style id="question-actions-refresh">
+@media screen {
+  html:root:root body .question-modal .question-type-tabs {
+    gap: 9px;
+    padding: 8px;
+    border-color: var(--m-line);
+    border-radius: 15px;
+    background: var(--m-wash);
+  }
+  html:root:root body .question-modal .question-type-tabs button {
+    min-height: 48px;
+    border: 1px solid var(--m-line) !important;
+    border-radius: 12px !important;
+    background: var(--m-panel) !important;
+    color: var(--m-ink2) !important;
+    box-shadow: 0 2px 6px rgba(20, 33, 61, .045) !important;
+    font-weight: 700;
+    transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease, color .16s ease;
+  }
+  html:root:root body .question-modal .question-type-tabs button:hover {
+    transform: translateY(-2px);
+    border-color: var(--m-pen) !important;
+    color: var(--m-pen) !important;
+    box-shadow: 0 6px 14px var(--m-pen-t) !important;
+  }
+  html:root:root body .question-modal .question-type-tabs button.active {
+    background: linear-gradient(135deg, var(--m-pen), #30938b) !important;
+    border-color: var(--m-pen) !important;
+    color: var(--m-on-pen) !important;
+    box-shadow: 0 6px 16px var(--m-pen-t) !important;
+  }
+  html:root:root body .question-modal .question-modal-tools .math-btn,
+  html:root:root body .question-modal .math-toolbar .math-btn {
+    min-height: 40px;
+    border-radius: 10px !important;
+    font-size: 12px;
+    font-weight: 700;
+    transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease, color .15s ease;
+  }
+  html:root:root body .question-modal .question-modal-tools .math-btn:hover,
+  html:root:root body .question-modal .math-toolbar .math-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 11px var(--m-pen-t) !important;
+  }
+  html:root:root body .question-modal-footer {
+    gap: 10px;
+    padding: 14px 18px !important;
+  }
+  html:root:root body .question-modal-footer #addBtn:not(#_m) {
+    flex: 1 1 auto;
+    min-height: 48px !important;
+    border-radius: 12px !important;
+    background: linear-gradient(135deg, var(--m-pen), #30938b) !important;
+    border-color: var(--m-pen) !important;
+    color: var(--m-on-pen) !important;
+    box-shadow: 0 6px 16px var(--m-pen-t) !important;
+    font-size: 14px;
+    font-weight: 800;
+  }
+  html:root:root body .question-modal-footer #addBtn:not(#_m):hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+  }
+  html:root:root body .question-modal-footer .question-cancel-button {
+    min-height: 46px;
+    padding-inline: 20px;
+    border-radius: 11px !important;
+    background: var(--m-panel) !important;
+    color: var(--m-ink2) !important;
+    font-weight: 700;
+    transition: border-color .15s ease, background-color .15s ease, color .15s ease;
+  }
+  html:root:root body .question-modal-footer .question-cancel-button:hover {
+    border-color: var(--m-pen) !important;
+    background: var(--m-pen-t) !important;
+    color: var(--m-pen) !important;
+  }
+  html:root:root body .question-modal .question-modal-close {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    padding: 0;
+    border: 1px solid var(--m-line);
+    border-radius: 11px;
+    background: var(--m-panel);
+    color: var(--m-ink2);
+    transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+  }
+  html:root:root body .question-modal .question-modal-close:hover {
+    border-color: var(--m-red);
+    background: color-mix(in srgb, var(--m-red) 10%, var(--m-panel));
+    color: var(--m-red);
+  }
+}
+@media screen and (max-width: 760px) {
+  html:root:root body .question-modal-header {
+    align-items: flex-start;
+  }
+  html:root:root body .question-modal-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 10px;
+  }
+  html:root:root body .question-modal-heading-copy {
+    width: 100%;
+  }
+  html:root:root body .question-modal-tools {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 7px;
+  }
+  html:root:root body .question-modal-tools .math-btn {
+    min-width: 0;
+    min-height: 40px;
+    padding: 7px 8px !important;
+    white-space: normal;
+    line-height: 1.35;
+  }
+  html:root:root body .question-type-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  html:root:root body .question-modal-footer {
+    padding: 10px 12px !important;
+  }
+  html:root:root body .question-modal-footer #addBtn:not(#_m) {
+    min-width: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .question-modal button {
+    transition-duration: .01ms !important;
+  }
+}
+    </style>
+    <style id="paper-direct-manipulation">
+@media screen {
+  .question-item .action-btns {
+    z-index: 4;
+  }
+  .question-item .question-drag-handle {
+    border: 0;
+    background: transparent;
+    color: var(--m-ink2);
+    cursor: grab;
+    font: inherit;
+    font-size: 17px;
+    line-height: 1;
+    padding: 2px 6px;
+  }
+  .question-item .question-drag-handle:hover {
+    color: var(--m-pen);
+  }
+  .question-item .question-drag-handle:active {
+    cursor: grabbing;
+  }
+  .question-item.is-dragging {
+    opacity: .42;
+  }
+  .question-item.drop-before::before,
+  .question-item.drop-after::after {
+    position: absolute;
+    inset-inline: 0;
+    z-index: 3;
+    height: 3px;
+    border-radius: 3px;
+    background: var(--m-pen);
+    box-shadow: 0 0 0 3px var(--m-pen-t);
+    content: "";
+    pointer-events: none;
+  }
+  .question-item.drop-before::before { top: -5px; }
+  .question-item.drop-after::after { bottom: -5px; }
+  .question-body.image-drop-target {
+    outline: 2px dashed var(--m-pen);
+    outline-offset: 3px;
+    border-radius: 6px;
+    background: var(--m-pen-t);
+  }
+  .question-body img.question-img {
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+  }
+  .question-body img.question-img:active {
+    cursor: grabbing;
+  }
+  .question-body img.image-pointer-dragging {
+    opacity: .3;
+  }
+  #questionImageDragPreview {
+    position: fixed;
+    z-index: 10030;
+    opacity: .84;
+    pointer-events: none;
+    box-shadow: 0 8px 24px rgba(20, 33, 61, .28);
+  }
+}
+@media screen and (hover: none) {
+  .question-item .action-btns {
+    display: flex !important;
+  }
+}
+#questionImageResizeOverlay {
+  position: fixed;
+  z-index: 10020;
+  box-sizing: border-box;
+  border: 2px dashed var(--m-pen);
+  border-radius: 4px;
+  pointer-events: none;
+}
+#questionImageResizeOverlay[hidden] {
+  display: none !important;
+}
+#questionImageResizeHandle {
+  position: absolute;
+  right: -15px;
+  bottom: -15px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 2px solid var(--m-panel);
+  border-radius: 50%;
+  background: var(--m-pen);
+  box-shadow: 0 2px 9px rgba(20, 33, 61, .28);
+  color: var(--m-on-pen);
+  font: 800 17px/1 var(--m-font, sans-serif);
+  cursor: nwse-resize;
+  touch-action: none;
+  pointer-events: auto;
+}
+#questionImageResizeHandle:hover,
+#questionImageResizeHandle:focus-visible {
+  transform: scale(1.12);
+  outline: 2px solid var(--m-pen);
+  outline-offset: 2px;
+}
+@media print {
+  #questionImageResizeOverlay { display: none !important; }
 }
     </style>
     <script>
@@ -5668,6 +6218,11 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             </select>
         </div>
         <div class="form-group"><label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="showModelInput" checked onchange="updateHeader(); saveData();"><span id="lblShowModel">إظهار نموذج الامتحان في الورقة</span></label></div>
+        <div class="form-group"><label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="showExamNumberInput" checked onchange="updateHeader(); saveData();"><span id="lblShowExamNumber">إظهار الرقم الامتحاني في الورقة</span></label></div>
+        </div>
+
+        <h2 class="header-section-heading"><span id="lblPaperFormatSection">تنسيق ورقة الامتحان</span></h2>
+        <div id="paperFormattingFields">
         <div class="form-group">
             <label id="lblExamFont" for="examFontInput">نوع الخط في ورقة الامتحان:</label>
             <select id="examFontInput" onchange="updateExamFont(this.value)">
@@ -5688,7 +6243,6 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             <label id="lblExamFontColor" for="examFontColorInput">لون الخط:</label>
             <input id="examFontColorInput" type="color" value="#000000" onchange="updateExamAppearance()">
         </div>
-        <div class="form-group"><label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="showExamNumberInput" checked onchange="updateHeader(); saveData();"><span id="lblShowExamNumber">إظهار الرقم الامتحاني في الورقة</span></label></div>
         <div class="form-group">
             <label id="lblExamLineSpacing" for="examLineSpacing">تباعد الأسطر</label>
             <div class="line-spacing-control"><input id="examLineSpacing" type="range" min="1.2" max="2.4" step="0.1" value="1.6" oninput="updateExamLineSpacing(this.value)"><output id="examLineSpacingValue" for="examLineSpacing">1.6</output></div>
@@ -6064,6 +6618,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             btnLoadDb: "ئینان",
             btnDeleteDb: "ژێبرن",
             headerSection: "زانیاریێن سه‌رپه‌ڕی",
+            paperFormatSection: "ڕێکخستنا پەڕا ئەزموونێ",
             headerHide: "ڤەشارتن", headerShow: "نیشاندان",
             school: "ناڤێ قوتابخانێ:",
             subject: "بابه‌ت:",
@@ -6185,6 +6740,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             btnLoadDb: "تحميل",
             btnDeleteDb: "حذف",
             headerSection: "بيانات الترويسة",
+            paperFormatSection: "تنسيق الورقة",
             headerHide: "إخفاء", headerShow: "إظهار",
             school: "اسم المدرسة:",
             subject: "المادة:",
@@ -6294,7 +6850,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         en: {
             langSelect:"🌐 System language:", documentTitle:"Exam Studio - A4", creatorLabel:"System design:", installApp:"Install app", teacherPlaceholder:"Enter teacher name", questionUnitPlaceholder:"Example: Plant cell", closeQuestion:"Close add question window", questionTypeAria:"Question type",
             dbHeader:"☁️ Database connection (FastAPI):", btnSaveDb:"💾 Save exam to database", selectDefault:"-- Select a saved exam --", btnLoadDb:"Load", btnDeleteDb:"Delete",
-            headerSection:"Header information", headerHide:"Hide", headerShow:"Show", school:"School name:", subject:"Subject:", teacherName:"Subject teacher:", teacherSignature:"Signature:", committeeName:"Subject committee member (optional):", committeeSignature:"Signature:", committeePlaceholder:"Enter each member on a new line", grade:"Grade and section:", academicYear:"Academic year:", time:"Time allowed:", model:"Exam model:", showModel:"Show exam model on paper", examFont:"Exam paper font:", examFontSize:"Font size:", examFontColor:"Font color:", fontTahoma:"Tahoma", fontArial:"Arial", fontTraditional:"Traditional Arabic", fontSimplified:"Simplified Arabic", fontNoto:"Noto Naskh Arabic", digitStyle:"Number style:", digitsWestern:"Western (123)", digitsArabicIndic:"Arabic-Indic (١٢٣)", modelA:"Model (A)", modelB:"Model (B)", modelC:"Model (C)",
+            headerSection:"Header information", paperFormatSection:"Paper formatting", headerHide:"Hide", headerShow:"Show", school:"School name:", subject:"Subject:", teacherName:"Subject teacher:", teacherSignature:"Signature:", committeeName:"Subject committee member (optional):", committeeSignature:"Signature:", committeePlaceholder:"Enter each member on a new line", grade:"Grade and section:", academicYear:"Academic year:", time:"Time allowed:", model:"Exam model:", showModel:"Show exam model on paper", examFont:"Exam paper font:", examFontSize:"Font size:", examFontColor:"Font color:", fontTahoma:"Tahoma", fontArial:"Arial", fontTraditional:"Traditional Arabic", fontSimplified:"Simplified Arabic", fontNoto:"Noto Naskh Arabic", digitStyle:"Number style:", digitsWestern:"Western (123)", digitsArabicIndic:"Arabic-Indic (١٢٣)", modelA:"Model (A)", modelB:"Model (B)", modelC:"Model (C)",
             displayHeading:"Display", totalScoreText:"Total question score:", scoreUnit:"points", addQuestionSection:"Add a new question", questionModalSubtitle:"Choose a question type, then enter the question and correct answer.", questionCancel:"Cancel", openQuestion:"＋ Add new question", difficulty:"Difficulty", unit:"Unit or lesson (optional)", easyLevel:"Easy", mediumLevel:"Medium (application and understanding)", hardLevel:"Hard", presetMatching:"Match the two lists", presetType:"Choose question type (title template):", presetDefault:"-- Choose a type to insert a title --", presetMcq:"Multiple choice (choose the correct answer)", presetTf:"True or false", presetFill:"Fill in the blanks", presetEssay:"Answer the following questions", presetDefine:"Definitions / explanations", presetImage:"Image question", imageQuestionTitle:"Question image", imageQuestionHelp:"Upload an image for this question. You can annotate it and set its position and size.", imageQuestionUpload:"📷 Choose an image for the question", imageQuestionFormat:"✏️ Annotate or format image",
             qTitle:"Final question heading:", qTitlePlaceholder:"Example: Q1/ Choose the correct answer:", qScore:"Points assigned:", mathToolbar:"Math symbols and tools:", mathFormulaButton:"ƒx Write a math formula", scienceChemistryButton:"⚗️ Chemistry", sciencePhysicsButton:"⚛️ Physics", scienceBiologyButton:"🧬 Biology", scienceSymbolsTitle:"Scientific symbols and formulas", scienceSymbolsHelp:"Select a symbol to insert it into the formula, then continue typing. Symbols work locally and can be inserted offline.", scienceChemistry:"Chemistry", sciencePhysics:"Physics", scienceBiology:"Biology", scienceElements:"Chemical element symbols", scienceGreek:"Greek letters", mathFormulaTitle:"Enter a mathematical formula", mathFormulaHelp:"Choose a structure such as a fraction, root, or power, then type in the blank area.", mathFormulaTemplates:"Math structures and symbols", mathFormulaSyntaxHint:"You can also use ^ for powers and _ for subscripts.", mathFormulaInsert:"Insert into question", mathFormulaCancel:"Cancel", btnFraction:"➗ Fraction", btnSqrt:"√ Square root",
             subQuestionsToolbar:"Question structure and subquestions:", btnSubQ:"➕ Add subquestion", btnMcqGrid:"+ Options (Ⓐ, Ⓑ, Ⓒ, Ⓓ)", shapesToolbar:"Shapes and images:", btnUploadImg:"📷 Upload image", btnAnnotateImage:"✏️ Annotate image", annotationTitle:"Annotate an image", annotationHelp:"Choose an attached image, then draw or add notes over it.", annotationImageLabel:"Image to annotate:", annotationAlign:"Image position:", annotationSize:"Image size:", annotationRight:"Right", annotationCenter:"Center", annotationLeft:"Left", annotationSmall:"Small", annotationMedium:"Medium", annotationLarge:"Large", annotationChooseImage:"📷 Choose an image from this device", annotationApply:"✓ Save changes", annotationLoading:"Loading image...", annotationReady:"Image ready. Draw on it, then save your changes.", btnDraw:"✍️ Draw by hand", btnTriangle:"📐 Triangle", btnCircle:"⭕ Circle", btnGrid:"📈 Coordinate plane", ansBoxToolbar:"Answer boxes (blank):", btnBoxSm:"Small box (80px)", btnBoxMd:"Medium box (150px)", btnBoxLg:"Large box (250px)", ansLinesToolbar:"Answer lines:", btnLines3:"3 lines", btnLines5:"5 lines", btnLines8:"8 lines", bodyTitle:"Question text and subquestions:", bodyHelp:"Write the question here. Press Enter for a new paragraph. Use Add subquestion for parts such as (a), (b), (c).", bodyPlaceholder:"Write question or paragraph here...", qAns:"Model answer (shown below each question in the teacher copy):", ansPlaceholder:"Enter the model answer and point breakdown...", addBtn:"+ Add question to paper",
@@ -6393,6 +6949,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         document.getElementById('btnDeleteDb').innerText = t.btnDeleteDb;
 
         document.getElementById('lblHeaderSection').innerText = t.headerSection;
+        document.getElementById('lblPaperFormatSection').innerText = t.paperFormatSection;
         document.getElementById('btnToggleHeaderFields').innerText = document.getElementById('headerFields').hidden ? t.headerShow : t.headerHide;
         document.getElementById('lblSchool').innerText = t.school;
         document.getElementById('lblSubject').innerText = t.subject;
@@ -6540,9 +7097,13 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         document.getElementById('lblImportText').innerText = t.import;
         document.getElementById('btnClear').innerText = t.btnClear;
         document.querySelectorAll('.question-item .action-btns').forEach(actions => {
-            const labels = lang === 'ku' ? ['بەرزتر', 'نزمتر', 'دەستکاری', 'ژێبرن'] : lang === 'en' ? ['Move up', 'Move down', 'Edit', 'Delete'] : ['للأعلى', 'للأسفل', 'تعديل', 'حذف'];
-            actions.querySelectorAll('.action-btn').forEach((action, index) => { if (labels[index]) action.title = labels[index]; });
+            const labels = lang === 'ku' ? ['بەرزتر', 'نزمتر', 'دەستکاری', 'ژێبرن', 'بەرزکرنا پرسیارێ ب ڤەکێشانێ'] : lang === 'en' ? ['Move up', 'Move down', 'Edit', 'Delete', 'Drag to reorder'] : ['للأعلى', 'للأسفل', 'تعديل', 'حذف', 'اسحب لإعادة ترتيب السؤال'];
+            actions.querySelectorAll('.action-btn').forEach((action, index) => {
+                if (labels[index]) action.title = labels[index];
+                if (action.classList.contains('question-drag-handle') && labels[index]) action.setAttribute('aria-label', labels[index]);
+            });
         });
+        document.querySelectorAll('.question-item').forEach(prepareQuestionImages);
 
         document.getElementById('dispCountry').innerText = t.country;
         document.getElementById('dispRegion').innerText = t.region;
@@ -6602,6 +7163,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         updateExamAppearance(readAppSetting('examFontSize', '12'), readAppSetting('examFontColor', '#000000'), false);
 
         loadData();
+        setupQuestionDragAndDrop();
         lastSelectedExamModel = document.getElementById('modelInput').value || 'A';
         fetchExamsList();
 
@@ -6780,6 +7342,19 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         };
     }
 
+    function prepareQuestionImages(question) {
+        const dragHandle = question.querySelector('.question-drag-handle');
+        const dragLabel = currentLang === 'ku' ? 'بەرزکرنا پرسیارێ ب ڤەکێشانێ' : currentLang === 'en' ? 'Drag to reorder' : 'اسحب لإعادة ترتيب السؤال';
+        if (dragHandle) {
+            dragHandle.title = dragLabel;
+            dragHandle.setAttribute('aria-label', dragLabel);
+        }
+        question.querySelectorAll('.question-body img.question-img').forEach(image => {
+            image.draggable = false;
+            image.title = currentLang === 'ku' ? 'ڤەکێشانا گۆشەیێ بۆ گەورە و بچووککرنێ؛ وێنەکێ بۆ لاکێ پرسیارێ ڤەکێشە' : currentLang === 'en' ? 'Drag the corner to resize, or drag the image beside the question text' : 'اسحب مقبض الزاوية لتكبير الصورة أو تصغيرها، أو اسحبها بجانب نص السؤال';
+        });
+    }
+
     function createQuestionElement(q) {
         const ansPrefix = currentLang === 'ku' ? 'بەرسڤا منموونەیی:\n' : 'الإجابة النموذجية:\n';
         const scoreUnit = i18n[currentLang].scoreUnit;
@@ -6796,6 +7371,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
                 <span class="action-btn" onclick="moveDown(this.closest('.question-item'))" title="للأسفل">▼</span>
                 <span class="action-btn" style="color: var(--accent)" onclick="editQuestion(this.closest('.question-item'))" title="تعديل">✎</span>
                 <span class="action-btn" style="color: var(--danger)" onclick="this.closest('.question-item').remove(); saveData(); recalculate();" title="حذف">✕</span>
+                <button type="button" class="action-btn question-drag-handle" draggable="true" aria-label="اسحب لإعادة ترتيب السؤال" title="اسحب لإعادة ترتيب السؤال">⠿</button>
             </div>
             <div class="question-title">
                 <span data-auto-num="${safeAutoNum(q.isAuto)}">${escapeHtmlText(q.title)}</span>
@@ -6804,6 +7380,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             <div class="question-body">${sanitizeHtml(q.body)}</div>
             <div class="answer-body">${q.ans ? escapeHtmlText(ansPrefix + q.ans) : ''}</div>
         `;
+        prepareQuestionImages(qDiv);
         return qDiv;
     }
 
@@ -8234,6 +8811,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             titleSpan.setAttribute('data-auto-num', isAutoNum);
             editingDiv.querySelector('.question-title span:last-child').innerText = `(${score ? score : '0'} ${scoreUnit})`;
             editingDiv.querySelector('.question-body').innerHTML = body;
+            prepareQuestionImages(editingDiv);
 
             let ansDiv = editingDiv.querySelector('.answer-body');
             if (ansDiv) {
@@ -8261,6 +8839,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
                     <span class="action-btn" onclick="moveDown(this.closest('.question-item'))" title="للأسفل">▼</span>
                     <span class="action-btn" style="color: var(--accent)" onclick="editQuestion(this.closest('.question-item'))" title="تعديل">✎</span>
                     <span class="action-btn" style="color: var(--danger)" onclick="this.closest('.question-item').remove(); saveData(); recalculate();" title="حذف">✕</span>
+                    <button type="button" class="action-btn question-drag-handle" draggable="true" aria-label="اسحب لإعادة ترتيب السؤال" title="اسحب لإعادة ترتيب السؤال">⠿</button>
                 </div>
                 <div class="question-title">
                     <span data-auto-num="${isAutoNum}">${title}</span>
@@ -8270,6 +8849,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
                 <div class="answer-body">${ans ? ansPrefix + ans : ''}</div>
             `;
 
+            prepareQuestionImages(qDiv);
             container.appendChild(qDiv);
 
             if (window.MathJax && typeof MathJax.typesetPromise === 'function') {
@@ -8480,7 +9060,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             #pdf-export-paper>.student-fold-flap{display:flex!important}
             #pdf-export-paper .header-table,#pdf-export-paper .meta-section,#pdf-export-paper .student-table,#pdf-export-paper .questions-container,#pdf-export-paper .question-item,#pdf-export-paper .end-grade-table{width:100%!important;max-width:100%!important;box-sizing:border-box!important}
             #pdf-export-paper .header-table{table-layout:fixed!important}
-            #pdf-export-paper .grade-table.end-grade-table{width:100%!important;table-layout:fixed!important;margin:12px 0 10px!important}
+            #pdf-export-paper .grade-table.end-grade-table{width:100%!important;table-layout:fixed!important;margin:8px 0 6px!important}
             #pdf-export-paper .questions-container{flex-grow:0!important}
             #pdf-export-paper .meta-section{margin-bottom:5px!important}
             #pdf-export-paper .header-table{margin-bottom:5px!important;padding-bottom:3px!important}
@@ -8490,8 +9070,8 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             #pdf-export-paper .sub-question-line{margin:1px 0!important;line-height:var(--exam-line-spacing,1.6)!important}
             #pdf-export-paper .mcq-question{margin:1px 0 3px!important;padding:0 5px 1px!important;break-inside:auto!important;page-break-inside:auto!important}
             #pdf-export-paper .mcq-stem{margin-bottom:0!important;line-height:var(--exam-line-spacing,1.6)!important}
-            #pdf-export-paper .mcq-options{margin:0!important;padding:0!important;gap:0 5px!important;line-height:1.35!important}
-            #pdf-export-paper .mcq-option{line-height:var(--exam-line-spacing,1.6)!important}
+            #pdf-export-paper .mcq-options{display:flex!important;flex-wrap:wrap!important;align-items:baseline!important;margin:0!important;padding:0!important;gap:4px 18px!important;line-height:1.35!important}
+            #pdf-export-paper .mcq-option{flex:0 1 auto!important;width:auto!important;padding:3px 6px!important;line-height:var(--exam-line-spacing,1.6)!important}
             #pdf-export-paper .matching-paper{gap:12px!important;margin:5px 0!important}
             #pdf-export-paper .matching-paper-column{border-radius:0!important}
             #pdf-export-paper .matching-paper-heading{padding:4px!important}
@@ -8619,6 +9199,273 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             recalculate();
             saveData();
         }
+    }
+
+    function setupQuestionDragAndDrop() {
+        const container = document.getElementById('questionsContainer');
+        let draggedQuestion = null;
+        let imageDragState = null;
+        let selectedImage = null;
+        let resizeState = null;
+        let suppressNextImageDragClick = false;
+
+        const clearDropState = () => {
+            container.querySelectorAll('.is-dragging, .drop-before, .drop-after, .image-drop-target').forEach(element => {
+                element.classList.remove('is-dragging', 'drop-before', 'drop-after', 'image-drop-target');
+            });
+            draggedQuestion = null;
+        };
+
+        const resizeOverlay = document.createElement('div');
+        resizeOverlay.id = 'questionImageResizeOverlay';
+        resizeOverlay.hidden = true;
+        const resizeHandle = document.createElement('button');
+        resizeHandle.id = 'questionImageResizeHandle';
+        resizeHandle.type = 'button';
+        resizeHandle.textContent = '↘';
+        resizeOverlay.appendChild(resizeHandle);
+        document.body.appendChild(resizeOverlay);
+
+        const clearSelectedImage = () => {
+            selectedImage?.classList.remove('image-resize-selected');
+            selectedImage = null;
+            resizeState = null;
+            resizeOverlay.hidden = true;
+        };
+        const updateResizeOverlay = () => {
+            if (!selectedImage?.isConnected) {
+                clearSelectedImage();
+                return;
+            }
+            const questionModal = document.getElementById('questionModalOverlay');
+            const drawModal = document.getElementById('drawModal');
+            if ((questionModal && getComputedStyle(questionModal).display !== 'none') ||
+                (drawModal && getComputedStyle(drawModal).display !== 'none')) {
+                resizeOverlay.hidden = true;
+                return;
+            }
+            const rect = selectedImage.getBoundingClientRect();
+            if (!rect.width || !rect.height || rect.bottom < 0 || rect.top > innerHeight || rect.right < 0 || rect.left > innerWidth) {
+                resizeOverlay.hidden = true;
+                return;
+            }
+            resizeOverlay.hidden = false;
+            resizeOverlay.style.left = `${rect.left}px`;
+            resizeOverlay.style.top = `${rect.top}px`;
+            resizeOverlay.style.width = `${rect.width}px`;
+            resizeOverlay.style.height = `${rect.height}px`;
+            resizeHandle.title = currentLang === 'ku' ? 'بۆ گەورە و بچووککرنا وێنەیێ ڤەکێشە یان کلیک بکە' : currentLang === 'en' ? 'Drag or use arrow keys to resize the image' : 'اسحب المقبض أو استخدم الأسهم لتغيير حجم الصورة';
+            resizeHandle.setAttribute('aria-label', resizeHandle.title);
+            resizeHandle.setAttribute('aria-valuenow', String(Math.round(parseFloat(getComputedStyle(selectedImage).width) || selectedImage.offsetWidth)));
+            resizeHandle.setAttribute('aria-valuemin', '48');
+            resizeHandle.setAttribute('aria-valuemax', String(Math.round((selectedImage.closest('.paper-page')?.clientWidth || selectedImage.parentElement.clientWidth || 800) * .9)));
+        };
+        const setImageWidth = (image, width) => {
+            const paper = image.closest('.paper-page');
+            const availableWidth = paper?.clientWidth || image.parentElement?.clientWidth || 800;
+            image.style.width = `${Math.round(Math.max(48, Math.min(availableWidth * .9, width)))}px`;
+            image.style.maxWidth = '100%';
+            image.style.height = 'auto';
+            updateResizeOverlay();
+        };
+        const selectImage = image => {
+            selectedImage?.classList.remove('image-resize-selected');
+            selectedImage = image;
+            selectedImage.classList.add('image-resize-selected');
+            updateResizeOverlay();
+        };
+        const imageDropTargetAt = (x, y) => {
+            const target = document.elementFromPoint(x, y);
+            const body = target instanceof Element ? target.closest('.question-body') : null;
+            if (!body || !container.contains(body) || body.closest('.question-item')?.dataset.questionType === 'image') return null;
+            return body;
+        };
+        const clearImageDrag = () => {
+            imageDragState?.image.classList.remove('image-pointer-dragging');
+            imageDragState?.preview?.remove();
+            container.querySelectorAll('.image-drop-target').forEach(body => body.classList.remove('image-drop-target'));
+            imageDragState = null;
+        };
+
+        container.querySelectorAll('.question-item').forEach(prepareQuestionImages);
+        container.addEventListener('pointerdown', event => {
+            const target = event.target instanceof Element ? event.target : null;
+            const image = target?.closest('img.question-img');
+            if (!image || event.button !== 0 || image.closest('.iq-side') ||
+                image.closest('.question-item')?.dataset.questionType === 'image') return;
+            event.preventDefault();
+            selectImage(image);
+            imageDragState = {
+                image,
+                pointerId: event.pointerId,
+                startX: event.clientX,
+                startY: event.clientY,
+                startWidth: parseFloat(getComputedStyle(image).width) || image.offsetWidth,
+                dragging: false,
+                preview: null
+            };
+        });
+        window.addEventListener('pointermove', event => {
+            const state = imageDragState;
+            if (!state || event.pointerId !== state.pointerId) return;
+            const deltaX = event.clientX - state.startX;
+            const deltaY = event.clientY - state.startY;
+            if (!state.dragging && Math.hypot(deltaX, deltaY) < 6) return;
+            event.preventDefault();
+            if (!state.dragging) {
+                state.dragging = true;
+                state.image.classList.add('image-pointer-dragging');
+                state.preview = state.image.cloneNode(false);
+                state.preview.id = 'questionImageDragPreview';
+                state.preview.style.cssFloat = 'none';
+                state.preview.style.position = 'fixed';
+                state.preview.style.width = `${state.image.getBoundingClientRect().width}px`;
+                state.preview.style.height = 'auto';
+                state.preview.style.maxWidth = 'none';
+                state.preview.style.maxHeight = 'none';
+                state.preview.style.margin = '0';
+                state.preview.style.transform = 'translate(-50%, -50%)';
+                document.body.appendChild(state.preview);
+            }
+            state.preview.style.left = `${event.clientX}px`;
+            state.preview.style.top = `${event.clientY}px`;
+            container.querySelectorAll('.image-drop-target').forEach(body => body.classList.remove('image-drop-target'));
+            imageDropTargetAt(event.clientX, event.clientY)?.classList.add('image-drop-target');
+        });
+        const finishImageDrag = event => {
+            const state = imageDragState;
+            if (!state || event.pointerId !== state.pointerId) return;
+            if (state.dragging) {
+                suppressNextImageDragClick = true;
+                window.setTimeout(() => { suppressNextImageDragClick = false; }, 0);
+                const targetBody = imageDropTargetAt(event.clientX, event.clientY);
+                if (targetBody) {
+                    const rect = targetBody.getBoundingClientRect();
+                    const side = event.clientX < rect.left + rect.width / 2 ? 'left' : 'right';
+                    targetBody.insertBefore(state.image, targetBody.firstChild);
+                    state.image.style.width = `${Math.round(state.startWidth)}px`;
+                    state.image.style.cssFloat = side;
+                    state.image.style.maxWidth = '100%';
+                    state.image.style.maxHeight = 'none';
+                    state.image.style.height = 'auto';
+                    state.image.style.margin = side === 'left' ? '6px 12px 8px 0' : '6px 0 8px 12px';
+                    recalculate();
+                    saveData();
+                }
+            }
+            clearImageDrag();
+            updateResizeOverlay();
+        };
+        window.addEventListener('pointerup', finishImageDrag);
+        window.addEventListener('pointercancel', clearImageDrag);
+        container.addEventListener('click', event => {
+            if (suppressNextImageDragClick) {
+                suppressNextImageDragClick = false;
+                event.stopPropagation();
+                return;
+            }
+            const target = event.target instanceof Element ? event.target : null;
+            const image = target?.closest('img.question-img');
+            if (image) {
+                selectImage(image);
+            } else if (!target?.closest('#questionImageResizeOverlay')) {
+                clearSelectedImage();
+            }
+        });
+        document.addEventListener('click', event => {
+            const target = event.target instanceof Element ? event.target : null;
+            if (target?.closest('img.question-img, #questionImageResizeOverlay')) return;
+            clearSelectedImage();
+        });
+        resizeHandle.addEventListener('pointerdown', event => {
+            if (!selectedImage) return;
+            event.preventDefault();
+            event.stopPropagation();
+            const rect = selectedImage.getBoundingClientRect();
+            resizeState = {
+                image: selectedImage,
+                pointerId: event.pointerId,
+                startX: event.clientX,
+                startY: event.clientY,
+                startWidth: parseFloat(getComputedStyle(selectedImage).width) || selectedImage.offsetWidth,
+                scale: rect.width / (selectedImage.offsetWidth || rect.width),
+                changed: false
+            };
+            if (event.isTrusted && resizeHandle.setPointerCapture) resizeHandle.setPointerCapture(event.pointerId);
+        });
+        window.addEventListener('pointermove', event => {
+            if (!resizeState || event.pointerId !== resizeState.pointerId) return;
+            event.preventDefault();
+            const deltaX = event.clientX - resizeState.startX;
+            const deltaY = event.clientY - resizeState.startY;
+            const delta = Math.abs(deltaX) > Math.abs(deltaY) ? deltaX : deltaY;
+            const width = resizeState.startWidth + delta / (resizeState.scale || 1);
+            setImageWidth(resizeState.image, width);
+            resizeState.changed = true;
+        });
+        const finishResize = event => {
+            if (!resizeState || event.pointerId !== resizeState.pointerId) return;
+            const changed = resizeState.changed;
+            resizeState = null;
+            if (changed) saveData();
+            updateResizeOverlay();
+        };
+        window.addEventListener('pointerup', finishResize);
+        window.addEventListener('pointercancel', finishResize);
+        resizeHandle.addEventListener('keydown', event => {
+            if (!selectedImage) return;
+            const increment = event.shiftKey ? 24 : 10;
+            const direction = ['ArrowRight', 'ArrowUp'].includes(event.key) ? 1 : ['ArrowLeft', 'ArrowDown'].includes(event.key) ? -1 : 0;
+            if (!direction) return;
+            event.preventDefault();
+            setImageWidth(selectedImage, (parseFloat(getComputedStyle(selectedImage).width) || selectedImage.offsetWidth) + direction * increment);
+            saveData();
+        });
+        window.addEventListener('resize', updateResizeOverlay);
+        document.addEventListener('scroll', updateResizeOverlay, true);
+
+        container.addEventListener('dragstart', event => {
+            const target = event.target instanceof Element ? event.target : null;
+            draggedQuestion = null;
+            const handle = target?.closest('.question-drag-handle');
+            if (handle) {
+                draggedQuestion = handle.closest('.question-item');
+                if (!draggedQuestion) return;
+                event.dataTransfer.effectAllowed = 'move';
+                event.dataTransfer.setData('text/plain', 'question');
+                draggedQuestion.classList.add('is-dragging');
+                return;
+            }
+        });
+        container.addEventListener('dragover', event => {
+            const target = event.target instanceof Element ? event.target : null;
+            if (draggedQuestion) {
+                const targetQuestion = target?.closest('.question-item');
+                if (!targetQuestion || targetQuestion === draggedQuestion) return;
+                event.preventDefault();
+                container.querySelectorAll('.drop-before, .drop-after').forEach(item => item.classList.remove('drop-before', 'drop-after'));
+                const rect = targetQuestion.getBoundingClientRect();
+                targetQuestion.classList.add(event.clientY < rect.top + rect.height / 2 ? 'drop-before' : 'drop-after');
+            }
+        });
+        container.addEventListener('drop', event => {
+            const target = event.target instanceof Element ? event.target : null;
+            if (draggedQuestion) {
+                const targetQuestion = target?.closest('.question-item');
+                if (!targetQuestion || targetQuestion === draggedQuestion) return;
+                event.preventDefault();
+                const questions = [...container.children];
+                const fromIndex = questions.indexOf(draggedQuestion);
+                const targetIndex = questions.indexOf(targetQuestion);
+                let insertIndex = targetIndex + (targetQuestion.classList.contains('drop-after') ? 1 : 0);
+                if (fromIndex < insertIndex) insertIndex--;
+                container.insertBefore(draggedQuestion, questions[insertIndex] || null);
+                recalculate();
+                saveData();
+            }
+        });
+        container.addEventListener('dragend', clearDropState);
+        container.addEventListener('drop', clearDropState);
     }
 
     function editQuestion(qItem) {
@@ -8787,9 +9634,10 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             .paper-page{width:auto;min-height:0;margin:0;padding:0;border:0;box-shadow:none}.header-table{width:100%;border-collapse:collapse;border-bottom:2px solid #333;margin-bottom:3px;padding-bottom:1px}
             .header-table td{padding:2px;text-align:center;vertical-align:middle}.meta-section{width:100%;margin:5px 0}.student-table,.grade-table{border-collapse:collapse}
             ${currentLang === 'en' ? '.header-table{border-collapse:separate;border-spacing:0;border-bottom:2px solid #294f6b}.header-table td{padding:5px 7px;color:#243b53!important;font-family:Arial,sans-serif;line-height:1.4;font-size:9pt!important}.header-table td:first-child{text-align:left}.header-table td:last-child{text-align:right}.header-table td:nth-child(2){background:#f1f6f9;border-left:1px solid #d9e5ec;border-right:1px solid #d9e5ec;font-size:10pt!important}#dispSchool{display:inline-block;margin-bottom:2px;color:#173e59!important;font-size:12pt!important;line-height:1.2}#examTitleType{display:inline-block;margin:3px 0;padding:2px 8px;border-radius:12px;background:#e0edf4;color:#174c69!important;font-size:9.5pt!important;font-weight:700;letter-spacing:.2px}#dispGeneralEduDir,#dispEduDir{font-size:8pt!important}' : ''}
-            .student-fold-flap{display:flex;justify-content:space-between;align-items:center;min-height:10mm;margin:0 0 2mm;padding:1.5mm 3mm;border:1px solid #555;border-bottom:2px dashed #333;font-size:9pt}.student-fold-hint{font-size:7pt;color:#555}.student-table td,.grade-table th,.grade-table td{border:1px solid #555;padding:6px}.end-grade-table{width:100%;max-width:100%;box-sizing:border-box;table-layout:fixed;margin:12px 0;font-size:10pt}.end-grade-table th,.end-grade-table td{text-align:center;vertical-align:middle;padding:7px 4px;white-space:normal;overflow-wrap:anywhere;line-height:1.3}.end-grade-table th:nth-child(1){width:13%}.end-grade-table th:nth-child(2){width:15%}.end-grade-table th:nth-child(3){width:25%}.end-grade-table th:nth-child(4){width:23.5%}.end-grade-table th:nth-child(5){width:23.5%}.end-grade-table tbody tr.grading-score-row td,.end-grade-table tbody tr.grading-total-row td,.end-grade-table tbody tr.grading-total-row th{height:30px}.question-item{margin:12px 0;padding:0 0 8px;page-break-inside:avoid}
+            .student-fold-flap{display:flex;justify-content:space-between;align-items:center;min-height:10mm;margin:0 0 2mm;padding:1.5mm 3mm;border:1px solid #555;border-bottom:2px dashed #333;font-size:9pt}.student-fold-hint{font-size:7pt;color:#555}.student-table td,.grade-table th,.grade-table td{border:1px solid #555;padding:6px}.end-grade-table{width:100%;max-width:100%;box-sizing:border-box;table-layout:fixed;margin:8px 0 6px;font-size:9pt}.end-grade-table th,.end-grade-table td{text-align:center;vertical-align:middle;padding:3px;white-space:normal;overflow-wrap:anywhere;line-height:1.2;font-size:9pt}.end-grade-table th:nth-child(1){width:13%}.end-grade-table th:nth-child(2){width:15%}.end-grade-table th:nth-child(3){width:25%}.end-grade-table th:nth-child(4){width:23.5%}.end-grade-table th:nth-child(5){width:23.5%}.end-grade-table tbody tr.grading-score-row td,.end-grade-table tbody tr.grading-total-row td,.end-grade-table tbody tr.grading-total-row th{height:22px}.question-item{margin:12px 0;padding:0 0 8px;page-break-inside:avoid}
+            .paper-page .grade-table.end-grade-table th,.paper-page .grade-table.end-grade-table td{font-size:9pt!important}
             .question-title{font-weight:bold;border:1px solid #888;padding:7px;margin-bottom:5px}.question-body{line-height:var(--exam-line-spacing,1.6);padding:5px 9px}.sub-question-line{margin:5px 0;page-break-inside:avoid}.matching-paper{display:flex;gap:12px;margin:8px 0;direction:rtl}.matching-paper-column{width:50%;border:1px solid #8796a0}.matching-paper-heading{background:#edf3f8;padding:5px;text-align:center;font-weight:bold;border-bottom:1px solid #8796a0}.matching-paper-list{list-style:none;margin:0;padding:3px 8px}.matching-paper-item{display:flex;gap:7px;min-height:25px;padding:4px 2px;border-bottom:1px dotted #aaa;line-height:1.5}.matching-item-label{min-width:25px;font-weight:bold}.answer-lines{background:repeating-linear-gradient(transparent,transparent 27px,#777 28px)}
-            .mcq-question{margin:7px 0 11px;page-break-inside:avoid}.mcq-options{display:block;margin:3px 0;white-space:normal}.mcq-option{display:inline-block;width:23%;min-height:0;border:0;padding:0;margin:2px 1%;vertical-align:top}
+            .mcq-question{margin:7px 0 11px;page-break-inside:avoid}.mcq-options{display:block;margin:3px 0;white-space:normal}.mcq-option{display:inline-block;width:22%;min-height:0;border:0;padding:3px 6px;margin:2px 1.5%;box-sizing:border-box;vertical-align:top}
             .answer-body{display:${showAnswers ? 'block' : 'none'};border:1px solid #888;padding:7px;margin-top:6px;white-space:pre-line}.teacher-signature-row{display:flex;justify-content:space-between;flex-wrap:wrap;margin:16px 4px 8px;padding-top:7px;border-top:1px solid #999}.committee-signature-block{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;flex-basis:100%}.committee-signature-entry{display:flex;justify-content:space-between;gap:6px}.footer-text{border-top:1px solid #555;padding-top:8px;text-align:center}
             img{max-width:100%;height:auto}.svg-shape{max-width:140px}.questions-container{width:100%}
         </style></head><body class="${showAnswers ? 'show-answers' : ''}">${paper.outerHTML}</body></html>`;
@@ -8844,7 +9692,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         const examTitleRow = simpleStudentHeader ? '' : `<tr><th class="exam-title" colspan="6">${cellText(title)}</th></tr>`;
         const excelHtml = `<!doctype html><html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel"><head><meta charset="utf-8"><style>
             @page{size:A4 portrait;margin:5mm}body{direction:rtl;font-family:${getSelectedExamFontStack()};font-size:${examFontSize}pt;color:${examFontColor}}table{width:100%;border-collapse:collapse;table-layout:fixed}
-            td,th{border:1px solid #555;padding:7px;vertical-align:top;white-space:normal}.exam-title{font-size:18pt;font-weight:bold;text-align:center;background:#e8eff4}.grading-header-row th:nth-child(1){width:12%}.grading-header-row th:nth-child(2){width:12%}.grading-header-row th:nth-child(3){width:32%}.grading-header-row th:nth-child(4){width:22%}.grading-header-row th:nth-child(5){width:22%}.grading-header-row th,.grading-score-row td,.grading-total-row td,.grading-total-row th{white-space:nowrap}.grading-score-row td,.grading-total-row td,.grading-total-row th{height:30px}
+            td,th{border:1px solid #555;padding:7px;vertical-align:top;white-space:normal}.exam-title{font-size:18pt;font-weight:bold;text-align:center;background:#e8eff4}.grading-header-row th:nth-child(1){width:12%}.grading-header-row th:nth-child(2){width:12%}.grading-header-row th:nth-child(3){width:32%}.grading-header-row th:nth-child(4){width:22%}.grading-header-row th:nth-child(5){width:22%}.grading-header-row th,.grading-score-row td,.grading-total-row td,.grading-total-row th{white-space:nowrap}.grading-score-row td,.grading-total-row td,.grading-total-row th{height:22px;padding:3px}
             .meta-label{font-weight:bold;background:#edf2f4;width:13%}.meta-value{width:20%}.student-row td{height:30px}.student-fold-row td{height:25px;border-bottom:2px dashed #555}.student-fold-row small{font-weight:normal;font-size:7pt;margin-right:8px}
             .question-title-row th{background:#e9f0f0;text-align:right;font-weight:bold}.question-title-row th:last-child{text-align:center;width:12%}
             .question-content{line-height:${document.getElementById('examLineSpacing').value || '1.6'};height:auto}.answer-lines{background:repeating-linear-gradient(transparent,transparent 27px,#777 28px)}.answer-content{background:#f2f8fa;line-height:1.6}.page-footer{text-align:center;border:0;padding-top:10px}
