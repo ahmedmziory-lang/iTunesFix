@@ -6152,6 +6152,219 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
                 border-radius: 0 12px 12px 0 !important;
                 pointer-events: auto !important;
             }
+            body.dialog-open .question-metadata-row {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            body.dialog-open .question-metadata-row>label:last-child {
+                grid-column: 1 / -1;
+            }
+        }
+        @media screen {
+            html:root:root body .question-modal {
+                background: var(--m-panel) !important;
+                color: var(--m-ink) !important;
+                border: 1px solid var(--m-line) !important;
+                border-radius: 16px !important;
+                box-shadow: 0 24px 60px -22px rgba(13, 19, 34, .55) !important;
+            }
+            html:root:root body .question-modal-header {
+                display: grid !important;
+                grid-template-columns: minmax(0, 1fr) 36px;
+                align-items: start;
+                gap: 12px;
+                padding: 18px 18px 16px;
+                background: linear-gradient(120deg, color-mix(in srgb, var(--m-pen) 72%, var(--m-ink)), var(--m-pen)) !important;
+                border: 0 !important;
+            }
+            html:root:root body .question-modal-heading {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                min-width: 0;
+            }
+            html:root:root body .question-modal-header h2 {
+                color: #fff !important;
+                font-size: 19px;
+                font-weight: 800;
+                letter-spacing: -.2px;
+            }
+            html:root:root body .question-modal-header p {
+                color: rgba(255, 255, 255, .82) !important;
+                line-height: 1.7;
+            }
+            html:root:root body .question-modal-header .question-modal-tools {
+                gap: 6px;
+                width: 100%;
+            }
+            html:root:root body .question-modal-header .math-btn {
+                min-height: 32px;
+                padding: 6px 9px;
+                border-color: rgba(255, 255, 255, .32) !important;
+                border-radius: 8px !important;
+                background: rgba(255, 255, 255, .12) !important;
+                color: #fff !important;
+                font-size: 11px;
+            }
+            html:root:root body .question-modal-header .math-btn:hover {
+                border-color: rgba(255, 255, 255, .72) !important;
+                background: rgba(255, 255, 255, .2) !important;
+                color: #fff !important;
+            }
+            html:root:root body .question-modal-close {
+                display: grid;
+                place-items: center;
+                width: 36px;
+                height: 36px;
+                padding: 0;
+                border: 1px solid rgba(255, 255, 255, .35) !important;
+                border-radius: 10px;
+                background: rgba(255, 255, 255, .12) !important;
+                color: #fff !important;
+                font-size: 23px;
+                transition: background-color .15s, transform .15s;
+            }
+            html:root:root body .question-modal-close:hover {
+                background: rgba(255, 255, 255, .22) !important;
+                transform: rotate(90deg);
+            }
+            html:root:root body .question-modal-body {
+                padding: 16px 18px 20px;
+                background: var(--m-wash);
+                scrollbar-color: var(--m-line) transparent;
+            }
+            html:root:root body .question-modal-body .form-group {
+                margin: 12px 0;
+            }
+            html:root:root body .question-modal-body .form-group>label,
+            html:root:root body .question-metadata-row>label {
+                color: var(--m-ink2) !important;
+                font-size: 12px;
+                font-weight: 700;
+            }
+            html:root:root body .question-type-group {
+                padding: 13px !important;
+                border: 1px solid var(--m-line) !important;
+                border-radius: 13px !important;
+                background: var(--m-panel) !important;
+                box-shadow: 0 5px 16px rgba(20, 33, 61, .05) !important;
+            }
+            html:root:root body .question-modal-body .question-type-group>label {
+                color: var(--m-ink) !important;
+                font-size: 13px;
+                margin-bottom: 11px !important;
+            }
+            html:root:root body .question-modal-body .question-type-group>label::before {
+                width: 4px;
+                height: 17px;
+                border-radius: 4px;
+                background: var(--m-pen);
+            }
+            html:root:root body .question-modal .question-type-tabs {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 7px;
+                padding: 0;
+                border: 0;
+                background: transparent;
+            }
+            html:root:root body .question-modal .question-type-tabs button {
+                min-height: 44px;
+                padding: 8px 10px;
+                border: 1px solid var(--m-line) !important;
+                border-radius: 10px !important;
+                background: var(--m-wash) !important;
+                color: var(--m-ink2) !important;
+                font-size: 12px;
+                font-weight: 700;
+                line-height: 1.45;
+                box-shadow: none !important;
+                transition: border-color .16s, background-color .16s, color .16s, transform .16s;
+            }
+            html:root:root body .question-modal .question-type-tabs button:hover {
+                transform: translateY(-1px);
+                border-color: var(--m-pen) !important;
+                background: var(--m-panel) !important;
+                color: var(--m-pen) !important;
+            }
+            html:root:root body .question-modal .question-type-tabs button.active {
+                border-color: var(--m-pen) !important;
+                background: var(--m-pen) !important;
+                color: var(--m-on-pen) !important;
+                box-shadow: 0 5px 12px var(--m-pen-t) !important;
+            }
+            html:root:root body .question-modal-body .form-group input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]):not([type=file]),
+            html:root:root body .question-modal-body .form-group select,
+            html:root:root body .question-modal-body .form-group textarea,
+            html:root:root body .question-metadata-row input,
+            html:root:root body .question-metadata-row select {
+                min-height: 42px;
+                padding: 9px 11px;
+                border-radius: 9px !important;
+                background: var(--m-panel) !important;
+                color: var(--m-ink) !important;
+            }
+            html:root:root body .question-modal-body #qBody,
+            html:root:root body .question-modal-body #qAns {
+                min-height: 100px;
+                line-height: 1.7;
+            }
+            html:root:root body .question-modal-body .math-toolbar {
+                gap: 7px;
+            }
+            html:root:root body .question-modal-body .math-btn,
+            html:root:root body .question-modal-body .mcq-add-button,
+            html:root:root body .question-modal-body .matching-add {
+                border: 1px solid var(--m-line) !important;
+                border-radius: 9px !important;
+                background: var(--m-panel) !important;
+                color: var(--m-ink) !important;
+                transition: border-color .15s, color .15s, background-color .15s;
+            }
+            html:root:root body .question-modal-body .math-btn:hover,
+            html:root:root body .question-modal-body .mcq-add-button:hover,
+            html:root:root body .question-modal-body .matching-add:hover {
+                border-color: var(--m-pen) !important;
+                background: var(--m-pen-t) !important;
+                color: var(--m-pen) !important;
+            }
+            html:root:root body .question-modal-footer {
+                display: flex;
+                gap: 9px;
+                padding: 12px 16px;
+                background: var(--m-panel) !important;
+                border-top: 1px solid var(--m-line) !important;
+            }
+            html:root:root body .question-modal-footer #addBtn {
+                flex: 1;
+                min-height: 46px;
+                border: 0 !important;
+                border-radius: 11px !important;
+                background: linear-gradient(120deg, var(--m-pen), color-mix(in srgb, var(--m-pen) 72%, var(--m-ink))) !important;
+                color: var(--m-on-pen) !important;
+                box-shadow: 0 6px 16px var(--m-pen-t) !important;
+                font-size: 13px;
+                font-weight: 800;
+            }
+            html:root:root body .question-modal-footer #addBtn:hover {
+                filter: brightness(1.08);
+                transform: translateY(-1px);
+            }
+            html:root:root body .question-modal-footer .question-cancel-button {
+                min-width: 82px;
+                min-height: 44px;
+                border: 1px solid var(--m-line) !important;
+                border-radius: 10px !important;
+                background: var(--m-wash) !important;
+                color: var(--m-ink2) !important;
+            }
+        }
+        @media screen and (max-width:480px) {
+            .question-metadata-row {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .question-metadata-row>label:last-child {
+                grid-column: 1 / -1;
+            }
         }
     </style>
     <script>
