@@ -1014,7 +1014,7 @@
             }
             @page {
                 size: A4 portrait;
-                margin: 5mm;
+                margin: 10mm;
             }
         }
         /* واجهة حديثة مع الإبقاء على صفحة الامتحان بحجم A4 */
@@ -3367,7 +3367,7 @@
         }
         @page {
             size: A4 portrait;
-            margin: 5mm;
+            margin: 10mm;
         }
         @media print {
             html,
@@ -3411,10 +3411,10 @@
             }
         }
         @media print {
-            @page { size: A4 portrait; margin: 5mm; }
+            @page { size: A4 portrait; margin: 10mm; }
             .preview-area { padding: 0 !important; }
-            .paper-page { margin: 0 !important; padding: 2mm !important; }
-            .daily-exam-print-copy .paper-page { margin: 0 !important; padding: 1mm 2mm !important; }
+            .paper-page { width: 190mm !important; max-width: 190mm !important; margin: 0 auto !important; padding: 8mm !important; box-sizing: border-box !important; }
+            .daily-exam-print-copy .paper-page { width: 190mm !important; max-width: 190mm !important; margin: 0 auto !important; padding: 6mm 8mm !important; }
         }
         /* التصميم الموحد النهائي لواجهة النظام */
         :root {
@@ -4663,7 +4663,7 @@
             }
         }
         @media print {
-            @page { size: A4 portrait; margin: 5mm; }
+            @page { size: A4 portrait; margin: 10mm; }
             .preview-area { padding: 0 !important; }
             .paper-page { margin: 0 !important; padding: 2mm !important; }
             .daily-exam-print-copy .paper-page { margin: 0 !important; padding: 1mm 2mm !important; }
@@ -5992,6 +5992,68 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
     </style>
     <style id="paper-direct-manipulation">
 @media screen {
+  .direct-add-question-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: min(260px, 70%);
+    min-height: 42px;
+    margin: 10px auto 12px;
+    border: 1px dashed var(--m-pen);
+    border-radius: 11px;
+    background: var(--m-pen-t);
+    color: var(--m-pen);
+    font-family: var(--m-font);
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background-color .15s, border-color .15s, transform .15s;
+  }
+  .direct-add-question-button:hover {
+    background: var(--m-ink);
+    border-style: solid;
+    border-color: var(--m-ink);
+    color: var(--m-panel);
+    transform: translateY(-1px);
+  }
+  .question-item .direct-add-part-button {
+    color: var(--m-pen);
+    font-weight: 900;
+  }
+  .question-item .direct-add-part-button:hover {
+    background: var(--m-pen-t);
+  }
+  .paper-page [contenteditable="true"] {
+    outline: 0;
+  }
+  .paper-page [contenteditable="true"]:hover {
+    border-radius: 5px;
+    background: var(--m-pen-t);
+    box-shadow: 0 0 0 3px var(--m-pen-t);
+  }
+  .paper-page [contenteditable="true"]:focus {
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 0 0 2px var(--m-pen), 0 5px 16px rgba(20,33,61,.10);
+  }
+  .paper-page .mcq-direct-label {
+    user-select: none;
+    cursor: default;
+  }
+  .paper-page .mcq-direct-text {
+    display: inline;
+    min-width: 36px;
+  }
+  .paper-page .question-title [contenteditable="true"] {
+    min-width: 80px;
+  }
+  html[data-theme="dark"] .paper-page [contenteditable="true"]:focus {
+    background: var(--m-wash);
+  }
+  @media print {
+    .direct-add-question-button { display: none !important; }
+  }
   .question-item .action-btns {
     z-index: 4;
   }
@@ -6096,6 +6158,80 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
 }
 @media print {
   #questionImageResizeOverlay { display: none !important; }
+}
+@media print {
+  @page { size: A4 portrait; margin: 10mm; }
+  html, body {
+    width: 190mm !important;
+    min-width: 190mm !important;
+    max-width: 190mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+  body.dialog-open,
+  body.dialog-open .app-container,
+  body.dialog-open .preview-area,
+  body.dialog-open .paper-page {
+    display: block !important;
+    position: static !important;
+    inset: auto !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    width: 190mm !important;
+    min-width: 190mm !important;
+    max-width: 190mm !important;
+    height: auto !important;
+    min-height: 287mm !important;
+    margin: 0 auto !important;
+    padding: 8mm !important;
+    overflow: visible !important;
+  }
+  .editor-sidebar,
+  .preview-toolbar,
+  .system-preview-toolbar,
+  .question-modal-overlay,
+  .question-modal,
+  .draw-modal,
+  .action-btns,
+  .direct-add-question-button,
+  .direct-add-part-button {
+    display: none !important;
+  }
+  .app-container,
+  .preview-area,
+  .paper-page {
+    box-sizing: border-box !important;
+    background: #fff !important;
+  }
+  .preview-area {
+    min-height: 0 !important;
+  }
+  .paper-page {
+    zoom: 1 !important;
+    transform: none !important;
+  }
+  .paper-page [contenteditable="true"] {
+    background: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+  .paper-page img.question-img,
+  .paper-page .image-question-preview img,
+  .paper-page [data-question-image] img {
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  .questions-container {
+    flex-grow: 0 !important;
+  }
 }
     </style>
     <style>
@@ -6488,9 +6624,10 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         </div>
         <div class="form-group"><label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="showModelInput" checked onchange="updateHeader(); saveData();"><span id="lblShowModel">إظهار نموذج الامتحان في الورقة</span></label></div>
         <div class="form-group"><label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="showExamNumberInput" checked onchange="updateHeader(); saveData();"><span id="lblShowExamNumber">إظهار الرقم الامتحاني في الورقة</span></label></div>
+        <div class="form-group"><label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="showGradingTableInput" checked onchange="updateGradingTableVisibility(); saveData();"><span id="lblShowGradingTable">إظهار جدول الدرجات أسفل الورقة</span></label></div>
         </div>
 
-        <h2 class="header-section-heading"><span id="lblPaperFormatSection">تنسيق ورقة الامتحان</span></h2>
+        <h2 class="header-section-heading"><span id="lblPaperFormatSection">تنسيق ورقة الامتحان</span><button type="button" id="btnTogglePaperFormatFields" class="section-toggle" aria-expanded="true" aria-controls="paperFormattingFields" onclick="togglePaperFormatFields()">إخفاء</button></h2>
         <div id="paperFormattingFields">
         <div class="form-group">
             <label id="lblExamFont" for="examFontInput">نوع الخط في ورقة الامتحان:</label>
@@ -6515,6 +6652,31 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         <div class="form-group">
             <label id="lblExamLineSpacing" for="examLineSpacing">تباعد الأسطر</label>
             <div class="line-spacing-control"><input id="examLineSpacing" type="range" min="1.2" max="2.4" step="0.1" value="1.6" oninput="updateExamLineSpacing(this.value)"><output id="examLineSpacingValue" for="examLineSpacing">1.6</output></div>
+        </div>
+        <div class="form-group">
+            <label id="lblExamQuestionSpacing" for="examQuestionSpacing">تباعد الأسئلة:</label>
+            <div class="line-spacing-control"><input id="examQuestionSpacing" type="range" min="0" max="20" step="1" value="6" oninput="updatePaperLayout()"><output id="examQuestionSpacingValue" for="examQuestionSpacing">6</output></div>
+        </div>
+        <div class="form-group">
+            <label id="lblExamTitlePadding" for="examTitlePadding">حشوة عنوان السؤال:</label>
+            <div class="line-spacing-control"><input id="examTitlePadding" type="range" min="3" max="12" step="1" value="7" oninput="updatePaperLayout()"><output id="examTitlePaddingValue" for="examTitlePadding">7</output></div>
+        </div>
+        <div class="form-group">
+            <label id="lblExamBorderWidth" for="examBorderWidth">سمك حدود الورقة:</label>
+            <div class="line-spacing-control"><input id="examBorderWidth" type="range" min="0.5" max="2.5" step="0.5" value="1" oninput="updatePaperLayout()"><output id="examBorderWidthValue" for="examBorderWidth">1</output></div>
+        </div>
+        <div class="form-group">
+            <label id="lblExamAnswerLineWidth" for="examAnswerLineWidth">سمك أسطر الإجابة:</label>
+            <div class="line-spacing-control"><input id="examAnswerLineWidth" type="range" min="0.5" max="2.5" step="0.5" value="1" oninput="updatePaperLayout()"><output id="examAnswerLineWidthValue" for="examAnswerLineWidth">1</output></div>
+        </div>
+        <div class="form-group">
+            <label id="lblExamPagePadding" for="examPagePadding">حشوة داخلية للورقة:</label>
+            <select id="examPagePadding" onchange="updatePaperLayout()">
+                <option value="6">6 مم</option>
+                <option value="8" selected>8 مم</option>
+                <option value="10">10 مم</option>
+                <option value="12">12 مم</option>
+            </select>
         </div>
         <div class="form-group">
             <label id="lblDigitStyle">نمط الأرقام:</label>
@@ -6723,8 +6885,8 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
                 <table class="header-table">
                     <tr>
                         <td style="width: 32%; text-align: right;">
-                            <span id="dispCountry">جمهورية العراق</span><br>
-                            <span id="dispRegion">إقليم كردستان</span><br>
+                            <span id="dispCountry">حكومة إقليم كردستان</span><br>
+                            <span id="dispRegion">وزارة التربية</span><br>
                             <span id="dispGeneralEduDir">المديرية العامة للتربية في دهوك</span><br>
                             <span id="dispEduDir">مديرية تربية سميل</span>
                         </td>
@@ -6754,7 +6916,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
                 </div>
 
                 <div class="questions-container" id="questionsContainer"></div>
-                <table class="grade-table end-grade-table">
+                <table class="grade-table end-grade-table" id="gradingTablePreview">
                     <thead><tr>
                         <th id="thQuestion">السؤال</th>
                         <th id="thGradeNum">الدرجة رقماً</th>
@@ -6968,8 +7130,8 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             export: "هەناردەکرن بۆ فلاش ميمۆری",
             import: "ئینانا پرسیاران ژ Word یان پەڕگە",
             btnClear: "پاککرن و دەستپێکرنا ئەزموونەکا نوی",
-            country: "کۆماری عێراق",
-            region: "هەرێما کوردستانێ",
+            country: "حکوومەتا هەرێما کوردستانێ",
+            region: "وەزارەتا پەروەردەیێ",
             eduDir: "ڕێڤەبەرييا پەرۆەردا سێمێلێ",
             examTitleDefault: "ئەزموونێن دەورا ئێکێ",
             course: "کورس:", courseFirst: "کورسێ ئێکێ", courseSecond: "کورسێ دووێ", examRound: "دەور:", roundFirst: "دەورا ئێکێ", roundSecond: "دەورا دووێ", examKind: "جۆرێ ئەزموونێ:", examKindDefault: "ئەزموونا وەرزی", examKindDaily: "ئەزموونا ڕۆژانە", examKindFinal: "ئەزموونا کۆتایی",
@@ -7090,8 +7252,8 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             export: "تصدير الأسئلة إلى الفلاش ميموري",
             import: "استيراد أسئلة من Word أو ملف",
             btnClear: "مسح وبدء امتحان جديد",
-            country: "جمهورية العراق",
-            region: "إقليم كردستان",
+            country: "حكومة إقليم كردستان",
+            region: "وزارة التربية",
             eduDir: "مديرية تربية سميل",
             examTitleDefault: "امتحانات الدور الأول",
             course: "الكورس:", courseFirst: "الكورس الأول", courseSecond: "الكورس الثاني", examRound: "الدور:", roundFirst: "الدور الأول", roundSecond: "الدور الثاني", examKind: "نوع الامتحان:", examKindDefault: "امتحان فصلي", examKindDaily: "امتحان يومي", examKindFinal: "امتحان نهائي",
@@ -7123,7 +7285,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             displayHeading:"Display", totalScoreText:"Total question score:", scoreUnit:"points", addQuestionSection:"Add a new question", questionModalSubtitle:"Choose a question type, then enter the question and correct answer.", questionCancel:"Cancel", openQuestion:"＋ Add new question", difficulty:"Difficulty", unit:"Unit or lesson (optional)", easyLevel:"Easy", mediumLevel:"Medium (application and understanding)", hardLevel:"Hard", presetMatching:"Match the two lists", presetType:"Choose question type (title template):", presetDefault:"-- Choose a type to insert a title --", presetMcq:"Multiple choice (choose the correct answer)", presetTf:"True or false", presetFill:"Fill in the blanks", presetEssay:"Answer the following questions", presetDefine:"Definitions / explanations", presetImage:"Image question", imageQuestionTitle:"Question image", imageQuestionHelp:"Upload an image for this question. You can annotate it and set its position and size.", imageQuestionUpload:"📷 Choose an image for the question", imageQuestionFormat:"✏️ Annotate or format image",
             qTitle:"Final question heading:", qTitlePlaceholder:"Example: Q1/ Choose the correct answer:", qScore:"Points assigned:", mathToolbar:"Math symbols and tools:", mathFormulaButton:"ƒx Write a math formula", scienceChemistryButton:"⚗️ Chemistry", sciencePhysicsButton:"⚛️ Physics", scienceBiologyButton:"🧬 Biology", scienceSymbolsTitle:"Scientific symbols and formulas", scienceSymbolsHelp:"Select a symbol to insert it into the formula, then continue typing. Symbols work locally and can be inserted offline.", scienceChemistry:"Chemistry", sciencePhysics:"Physics", scienceBiology:"Biology", scienceElements:"Chemical element symbols", scienceGreek:"Greek letters", mathFormulaTitle:"Enter a mathematical formula", mathFormulaHelp:"Choose a structure such as a fraction, root, or power, then type in the blank area.", mathFormulaTemplates:"Math structures and symbols", mathFormulaSyntaxHint:"You can also use ^ for powers and _ for subscripts.", mathFormulaInsert:"Insert into question", mathFormulaCancel:"Cancel", btnFraction:"➗ Fraction", btnSqrt:"√ Square root",
             subQuestionsToolbar:"Question structure and subquestions:", btnSubQ:"➕ Add subquestion", btnMcqGrid:"+ Options (Ⓐ, Ⓑ, Ⓒ, Ⓓ)", shapesToolbar:"Shapes and images:", btnUploadImg:"📷 Upload image", btnAnnotateImage:"✏️ Annotate image", annotationTitle:"Annotate an image", annotationHelp:"Choose an attached image, then draw or add notes over it.", annotationImageLabel:"Image to annotate:", annotationAlign:"Image position:", annotationSize:"Image size:", annotationRight:"Right", annotationCenter:"Center", annotationLeft:"Left", annotationSmall:"Small", annotationMedium:"Medium", annotationLarge:"Large", annotationChooseImage:"📷 Choose an image from this device", annotationApply:"✓ Save changes", annotationLoading:"Loading image...", annotationReady:"Image ready. Draw on it, then save your changes.", btnDraw:"✍️ Draw by hand", btnTriangle:"📐 Triangle", btnCircle:"⭕ Circle", btnGrid:"📈 Coordinate plane", ansBoxToolbar:"Answer boxes (blank):", btnBoxSm:"Small box (80px)", btnBoxMd:"Medium box (150px)", btnBoxLg:"Large box (250px)", ansLinesToolbar:"Answer lines:", btnLines3:"3 lines", btnLines5:"5 lines", btnLines8:"8 lines", bodyTitle:"Question text and subquestions:", bodyHelp:"Write the question here. Press Enter for a new paragraph. Use Add subquestion for parts such as (a), (b), (c).", bodyPlaceholder:"Write question or paragraph here...", qAns:"Model answer (shown below each question in the teacher copy):", ansPlaceholder:"Enter the model answer and point breakdown...", addBtn:"+ Add question to paper",
-            printActionsHeading:"Print", fileActionsHeading:"Export and import files", examManagementHeading:"Exam management", printStudent:"Print questions (student copy)", printTeacher:"Print model answers below each question (teacher copy)", printAnswerSheet:"Print answer sheet (A4)", exportWord:"Export exam to Word", exportExcel:"Export exam to Excel", exportPdf:"Export exam to PDF", export:"Export questions to USB drive", import:"Import questions from Word or JSON file", btnClear:"Clear and start a new exam", country:"Republic of Iraq", region:"Kurdistan Region", eduDir:"Semel Directorate of Education", examTitleDefault:"First-round examinations", course:"Course:", courseFirst:"Course One", courseSecond:"Course Two", examRound:"Round:", roundFirst:"First round", roundSecond:"Second round", examKind:"Exam type:", examKindDefault:"Semester exam", examKindDaily:"Daily exam", examKindFinal:"Final exam", examTitleAns:"Model answers and marking scheme", lblSubj:"Subject:", lblGradeDisp:"Grade:", lblTimeDisp:"Time:", examDate:"Exam date:", studentName:"Student name:", studentFoldHint:"Fold this section behind the page to hide the name from the marker.", studentClass:"Section:", examNum:"Exam number:", examHall:"Hall:", thGradeNum:"Score", thGradeTxt:"Score in words", thQuestion:"Question number", thSign:"Marker signature", footer:"Wishing you success", modalTitle:"Draw a geometric shape by hand", canvasClear:"Clear", canvasSave:"Insert into question", canvasClose:"Cancel", ansBoxAttr:"Answer space:"
+            printActionsHeading:"Print", fileActionsHeading:"Export and import files", examManagementHeading:"Exam management", printStudent:"Print questions (student copy)", printTeacher:"Print model answers below each question (teacher copy)", printAnswerSheet:"Print answer sheet (A4)", exportWord:"Export exam to Word", exportExcel:"Export exam to Excel", exportPdf:"Export exam to PDF", export:"Export questions to USB drive", import:"Import questions from Word or JSON file", btnClear:"Clear and start a new exam", country:"Kurdistan Regional Government", region:"Ministry of Education", eduDir:"Semel Directorate of Education", examTitleDefault:"First-round examinations", course:"Course:", courseFirst:"Course One", courseSecond:"Course Two", examRound:"Round:", roundFirst:"First round", roundSecond:"Second round", examKind:"Exam type:", examKindDefault:"Semester exam", examKindDaily:"Daily exam", examKindFinal:"Final exam", examTitleAns:"Model answers and marking scheme", lblSubj:"Subject:", lblGradeDisp:"Grade:", lblTimeDisp:"Time:", examDate:"Exam date:", studentName:"Student name:", studentFoldHint:"Fold this section behind the page to hide the name from the marker.", studentClass:"Section:", examNum:"Exam number:", examHall:"Hall:", thGradeNum:"Score", thGradeTxt:"Score in words", thQuestion:"Question number", thSign:"Marker signature", footer:"Wishing you success", modalTitle:"Draw a geometric shape by hand", canvasClear:"Clear", canvasSave:"Insert into question", canvasClose:"Cancel", ansBoxAttr:"Answer space:"
         }
     };
 
@@ -7220,6 +7382,9 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         document.getElementById('lblHeaderSection').innerText = t.headerSection;
         document.getElementById('lblPaperFormatSection').innerText = t.paperFormatSection;
         document.getElementById('btnToggleHeaderFields').innerText = document.getElementById('headerFields').hidden ? t.headerShow : t.headerHide;
+        document.getElementById('btnTogglePaperFormatFields').innerText = document.getElementById('paperFormattingFields').hidden
+            ? (lang === 'ku' ? 'نیشاندان' : lang === 'en' ? 'Show' : 'إظهار')
+            : (lang === 'ku' ? 'ڤەشارتن' : lang === 'en' ? 'Hide' : 'إخفاء');
         document.getElementById('lblSchool').innerText = t.school;
         document.getElementById('lblSubject').innerText = t.subject;
         document.getElementById('lblTeacherName').innerText = t.teacherName;
@@ -7243,6 +7408,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         document.getElementById('lblTime').innerText = t.time;
         document.getElementById('lblModel').innerText = t.model;
         document.getElementById('lblShowModel').innerText = t.showModel;
+        document.getElementById('lblShowGradingTable').innerText = lang === 'ku' ? 'پشاندانێن خشتەیێ نمران ل ژێر پەڕەیێ' : lang === 'en' ? 'Show grading table below the paper' : 'إظهار جدول الدرجات أسفل الورقة';
         document.getElementById('lblExamFont').innerText = t.examFont;
         document.getElementById('lblExamFontSize').innerText = t.examFontSize;
         document.getElementById('lblExamFontColor').innerText = t.examFontColor;
@@ -7253,6 +7419,11 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         document.getElementById('fontNotoOption').innerText = t.fontNoto;
         document.getElementById('lblDigitStyle').innerText = t.digitStyle;
         document.getElementById('lblExamLineSpacing').innerText = lang === 'ku' ? 'دووری دناڤبەرا هێلان' : lang === 'en' ? 'Line spacing' : 'تباعد الأسطر';
+        document.getElementById('lblExamQuestionSpacing').innerText = lang === 'ku' ? 'دووری دناڤبەرا پرسیاران:' : lang === 'en' ? 'Question spacing:' : 'تباعد الأسئلة:';
+        document.getElementById('lblExamTitlePadding').innerText = lang === 'ku' ? 'حشەیا سەرنامەیێ پرسیارێ:' : lang === 'en' ? 'Question title padding:' : 'حشوة عنوان السؤال:';
+        document.getElementById('lblExamBorderWidth').innerText = lang === 'ku' ? 'ستوریێ سنووری ورقەیێ:' : lang === 'en' ? 'Page border width:' : 'سمك حدود الورقة:';
+        document.getElementById('lblExamAnswerLineWidth').innerText = lang === 'ku' ? 'ستوریێ هێلێن بەرسڤێ:' : lang === 'en' ? 'Answer line width:' : 'سمك أسطر الإجابة:';
+        document.getElementById('lblExamPagePadding').innerText = lang === 'ku' ? 'حشەیا دەڤەری ورقەیێ:' : lang === 'en' ? 'Inner page padding:' : 'حشوة داخلية للورقة:';
         document.querySelector('#digitStyleInput option[value="western"]').innerText = t.digitsWestern;
         document.querySelector('#digitStyleInput option[value="arabicIndic"]').innerText = t.digitsArabicIndic;
         document.getElementById('optModelA').innerText = t.modelA;
@@ -7274,6 +7445,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         document.getElementById('optPresetImage').innerText = t.presetImage;
         document.getElementById('questionModalSubtitle').innerText = t.questionModalSubtitle;
         document.getElementById('btnOpenQuestionDialog').innerText = t.openQuestion;
+        updateDirectPaperEditingLanguage();
         document.getElementById('btnCancelQuestion').innerText = t.questionCancel;
         document.getElementById('lblQuestionDifficulty').innerText = t.difficulty;
         document.getElementById('lblQuestionUnit').innerText = t.unit;
@@ -7421,18 +7593,117 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         setHeaderFieldsVisibility(!document.getElementById('headerFields').hidden);
     }
 
+    function setPaperFormatFieldsVisibility(hidden, persist = true) {
+        const fields = document.getElementById('paperFormattingFields');
+        const button = document.getElementById('btnTogglePaperFormatFields');
+        if (!fields || !button) return;
+        fields.hidden = hidden;
+        button.setAttribute('aria-expanded', String(!hidden));
+        button.innerText = hidden
+            ? (currentLang === 'ku' ? 'نیشاندان' : currentLang === 'en' ? 'Show' : 'إظهار')
+            : (currentLang === 'ku' ? 'ڤەشارتن' : currentLang === 'en' ? 'Hide' : 'إخفاء');
+        if (persist) saveAppSetting('hidePaperFormatFields', String(hidden));
+    }
+
+    function togglePaperFormatFields() {
+        setPaperFormatFieldsVisibility(!document.getElementById('paperFormattingFields').hidden);
+    }
+
+    function updatePaperLayout(persist = true) {
+        const questionSpacing = Math.max(0, Math.min(20, Number(document.getElementById('examQuestionSpacing')?.value) || 6));
+        const titlePadding = Math.max(3, Math.min(12, Number(document.getElementById('examTitlePadding')?.value) || 7));
+        const borderWidth = Math.max(0.5, Math.min(2.5, Number(document.getElementById('examBorderWidth')?.value) || 1));
+        const answerLineWidth = Math.max(0.5, Math.min(2.5, Number(document.getElementById('examAnswerLineWidth')?.value) || 1));
+        const pagePadding = Math.max(6, Math.min(12, Number(document.getElementById('examPagePadding')?.value) || 8));
+
+        document.getElementById('examQuestionSpacingValue').value = String(questionSpacing);
+        document.getElementById('examTitlePaddingValue').value = String(titlePadding);
+        document.getElementById('examBorderWidthValue').value = String(borderWidth);
+        document.getElementById('examAnswerLineWidthValue').value = String(answerLineWidth);
+
+        let style = document.getElementById('paperLayoutStyle');
+        if (!style) {
+            style = document.createElement('style');
+            style.id = 'paperLayoutStyle';
+            document.head.appendChild(style);
+        }
+        style.textContent = `
+            .paper-page {
+                --exam-question-spacing:${questionSpacing}px;
+                --exam-title-padding:${titlePadding}px;
+                --exam-border-width:${borderWidth}px;
+                --exam-answer-line-width:${answerLineWidth}px;
+                padding:${pagePadding}mm !important;
+            }
+            .paper-page .question-item {
+                margin:${questionSpacing}px 0 !important;
+            }
+            .paper-page .question-title {
+                padding:${titlePadding}px 7px !important;
+                border-width:${borderWidth}px !important;
+            }
+            .paper-page table th,
+            .paper-page table td,
+            .paper-page .header-table,
+            .paper-page .matching-paper,
+            .paper-page .matching-paper-column,
+            .paper-page .matching-paper-heading {
+                border-width:${borderWidth}px !important;
+            }
+            .paper-page .answer-lines {
+                background-size:100% ${27 + answerLineWidth}px !important;
+                background-image:repeating-linear-gradient(transparent,transparent 26px,#374151 ${26 + answerLineWidth}px,#374151 ${28 + answerLineWidth}px) !important;
+            }
+        `;
+
+        document.querySelectorAll('.paper-page').forEach(paper => {
+            paper.style.setProperty('padding', `${pagePadding}mm`, 'important');
+            paper.querySelectorAll('.question-item').forEach(item => {
+                item.style.setProperty('margin', `${questionSpacing}px 0`, 'important');
+                item.querySelectorAll('.question-title').forEach(title => {
+                    title.style.setProperty('padding', `${titlePadding}px 7px`, 'important');
+                    title.style.setProperty('border-width', `${borderWidth}px`, 'important');
+                });
+            });
+            paper.querySelectorAll('table th, table td, .header-table, .matching-paper, .matching-paper-column, .matching-paper-heading').forEach(element => {
+                element.style.setProperty('border-width', `${borderWidth}px`, 'important');
+            });
+            paper.querySelectorAll('.answer-lines').forEach(line => {
+                line.style.setProperty('background-size', `100% ${27 + answerLineWidth}px`, 'important');
+                line.style.setProperty('background-image', `repeating-linear-gradient(transparent,transparent 26px,#374151 ${26 + answerLineWidth}px,#374151 ${28 + answerLineWidth}px)`, 'important');
+            });
+        });
+
+        if (persist) {
+            saveAppSetting('examQuestionSpacing', String(questionSpacing));
+            saveAppSetting('examTitlePadding', String(titlePadding));
+            saveAppSetting('examBorderWidth', String(borderWidth));
+            saveAppSetting('examAnswerLineWidth', String(answerLineWidth));
+            saveAppSetting('examPagePadding', String(pagePadding));
+        }
+    }
+
     window.onload = function() {
         applyTheme(readAppSetting('uiTheme', 'light'));
         const savedLang = readAppSetting('preferredLang', 'ku');
         document.getElementById('langSelect').value = savedLang;
         switchLanguage(savedLang);
         setHeaderFieldsVisibility(readAppSetting('hideHeaderFields') === 'true', false);
+        setPaperFormatFieldsVisibility(readAppSetting('hidePaperFormatFields') === 'true', false);
+        document.getElementById('showGradingTableInput').checked = readAppSetting('showGradingTable', 'true') !== 'false';
+        document.getElementById('examQuestionSpacing').value = readAppSetting('examQuestionSpacing', '6');
+        document.getElementById('examTitlePadding').value = readAppSetting('examTitlePadding', '7');
+        document.getElementById('examBorderWidth').value = readAppSetting('examBorderWidth', '1');
+        document.getElementById('examAnswerLineWidth').value = readAppSetting('examAnswerLineWidth', '1');
+        document.getElementById('examPagePadding').value = readAppSetting('examPagePadding', '8');
+        updatePaperLayout(false);
         updateExamLineSpacing(readAppSetting('examLineSpacing', '1.6'), false);
         updateExamFont(readAppSetting('examFont', 'tahoma'), false);
         updateExamAppearance(readAppSetting('examFontSize', '12'), readAppSetting('examFontColor', '#000000'), false);
 
         loadData();
         setupQuestionDragAndDrop();
+        setupDirectPaperEditing();
         lastSelectedExamModel = document.getElementById('modelInput').value || 'A';
         fetchExamsList();
 
@@ -7580,8 +7851,16 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         document.getElementById('showModelInput').checked = data.showModel !== false;
         setValue('digitStyleInput', data.digitStyle || 'western');
         if (data.fontSize || data.fontColor) updateExamAppearance(data.fontSize || getExamFontSize(), data.fontColor || getExamFontColor(), false);
+        if (data.questionSpacing !== undefined) document.getElementById('examQuestionSpacing').value = String(data.questionSpacing);
+        if (data.titlePadding !== undefined) document.getElementById('examTitlePadding').value = String(data.titlePadding);
+        if (data.borderWidth !== undefined) document.getElementById('examBorderWidth').value = String(data.borderWidth);
+        if (data.answerLineWidth !== undefined) document.getElementById('examAnswerLineWidth').value = String(data.answerLineWidth);
+        if (data.pagePadding !== undefined) document.getElementById('examPagePadding').value = String(data.pagePadding);
+        updatePaperLayout(false);
         if (!partial || data.examDate !== undefined) setValue('examDateInput', data.examDate || '');
         if (!partial || data.showExamNumber !== undefined) document.getElementById('showExamNumberInput').checked = data.showExamNumber !== false;
+        document.getElementById('showGradingTableInput').checked = data.showGradingTable !== false;
+        updateGradingTableVisibility();
         updateHeader();
     }
 
@@ -7602,11 +7881,17 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             examKind: value('examKindInput'),
             fontSize: getExamFontSize(),
             fontColor: getExamFontColor(),
+            questionSpacing: Number(document.getElementById('examQuestionSpacing')?.value) || 6,
+            titlePadding: Number(document.getElementById('examTitlePadding')?.value) || 7,
+            borderWidth: Number(document.getElementById('examBorderWidth')?.value) || 1,
+            answerLineWidth: Number(document.getElementById('examAnswerLineWidth')?.value) || 1,
+            pagePadding: Number(document.getElementById('examPagePadding')?.value) || 8,
             time: value('timeInput'),
             model: value('modelInput'),
             showModel: document.getElementById('showModelInput').checked,
             examDate: value('examDateInput'),
             showExamNumber: document.getElementById('showExamNumberInput').checked,
+            showGradingTable: document.getElementById('showGradingTableInput').checked,
             digitStyle: value('digitStyleInput')
         };
     }
@@ -7621,6 +7906,16 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         question.querySelectorAll('.question-body img.question-img').forEach(image => {
             image.draggable = false;
             image.title = currentLang === 'ku' ? 'ڤەکێشانا گۆشەیێ بۆ گەورە و بچووککرنێ؛ وێنەکێ بۆ لاکێ پرسیارێ ڤەکێشە' : currentLang === 'en' ? 'Drag the corner to resize, or drag the image beside the question text' : 'اسحب مقبض الزاوية لتكبير الصورة أو تصغيرها، أو اسحبها بجانب نص السؤال';
+            if (!image.style.width) {
+                image.style.width = '100%';
+                image.style.maxWidth = '100%';
+            }
+            image.style.height = 'auto';
+            const widthValue = parseFloat(image.style.width);
+            if (Number.isFinite(widthValue) && widthValue > 0) {
+                image.dataset.previewWidth = String(Math.round(widthValue));
+                image.dataset.printWidth = String(Math.round(widthValue));
+            }
         });
     }
 
@@ -8779,6 +9074,16 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             saveAppSetting('examFontColor', color);
         }
     }
+    function updateGradingTableVisibility() {
+        const table = document.querySelector('.end-grade-table');
+        const checkbox = document.getElementById('showGradingTableInput');
+        if (table) {
+            if (checkbox?.checked) table.style.removeProperty('display');
+            else table.style.setProperty('display', 'none', 'important');
+        }
+        if (checkbox) saveAppSetting('showGradingTable', String(checkbox.checked));
+    }
+
     function updateHeader() {
         const examKind = document.getElementById('examKindInput').value;
         document.getElementById('lblCourse').innerText = i18n[currentLang].course;
@@ -8792,7 +9097,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         const simpleStudentHeader = examKind === 'daily' || examKind === 'semester';
         document.querySelector('.header-table').style.display = simpleStudentHeader ? 'none' : '';
         document.querySelector('.meta-section').style.display = simpleStudentHeader ? 'none' : '';
-        document.querySelector('.end-grade-table').style.display = simpleStudentHeader ? 'none' : '';
+        updateGradingTableVisibility(simpleStudentHeader);
         document.getElementById('studentOnlyHeader').hidden = !simpleStudentHeader;
         document.getElementById('studentFoldHint').hidden = false;
         document.getElementById('studentOnlySectionLabel').innerText = currentLang === 'ku' ? 'هۆبە:' : currentLang === 'en' ? 'Section:' : 'الشعبة:';
@@ -9283,6 +9588,32 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         const bodyClass = document.body.classList;
         const examTitleType = document.getElementById('examTitleType');
         const t = i18n[currentLang];
+        const printModal = document.getElementById('questionModalOverlay');
+        const modalWasOpen = printModal?.style.display === 'flex';
+        const contentEditableState = [...document.querySelectorAll('.paper-page [contenteditable="true"]')].map(element => ({
+            element,
+            value: element.getAttribute('contenteditable')
+        }));
+        if (printModal) printModal.style.display = 'none';
+        bodyClass.remove('dialog-open');
+        contentEditableState.forEach(({ element, value }) => element.setAttribute('contenteditable', 'false'));
+        const paper = document.querySelector('.paper-page');
+        if (paper) paper.style.setProperty('zoom', '1', 'important');
+
+        let printRestored = false;
+        const restorePrintState = () => {
+            if (printRestored) return;
+            printRestored = true;
+            contentEditableState.forEach(({ element, value }) => element.setAttribute('contenteditable', value));
+            if (modalWasOpen) {
+                bodyClass.add('dialog-open');
+                if (printModal) printModal.style.display = 'flex';
+            }
+            if (paper) paper.style.removeProperty('zoom');
+            window.removeEventListener('afterprint', restorePrintState);
+        };
+        window.addEventListener('afterprint', restorePrintState);
+        setTimeout(restorePrintState, 3000);
 
         if (isAnswerKey) {
             bodyClass.add('show-answers');
@@ -9451,10 +9782,10 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         }
         printWindow.document.open();
         printWindow.document.write(`<!doctype html><html lang="${currentLang}" dir="${currentLang === 'en' ? 'ltr' : 'rtl'}"><head><meta charset="utf-8"><title>${esc(t.title)}</title><style>
-            @page{size:A4 portrait;margin:5mm}*{box-sizing:border-box}body{margin:0;direction:${currentLang === 'en' ? 'ltr' : 'rtl'};font-family:${fontStack};color:#152532;background:#fff}.answer-sheet-page{position:relative;width:200mm;min-height:287mm;margin:0 auto 5mm;padding:3mm;border:1.5px solid #334b5a;page-break-after:always;break-after:page}.answer-sheet-page:last-child{page-break-after:auto;break-after:auto}.student-fold-flap{display:flex;justify-content:space-between;align-items:center;gap:3mm;min-height:10mm;margin:0 0 2mm;padding:1.5mm 3mm;border:1px solid #738994;border-bottom:2px dashed #334b5a;background:#fbfcfd;font-size:9pt}.student-fold-hint{font-size:7pt;color:#596d77;font-weight:normal;text-align:left}.sheet-header{text-align:center;border-bottom:1px solid #9aabb5;padding-bottom:5mm;margin-bottom:4mm}.sheet-header h1{font-size:18pt;margin:0 0 2mm;color:#153b55}.school-name{font-weight:bold;font-size:13pt;margin-bottom:3mm}.exam-meta{display:flex;justify-content:space-between;gap:3mm;font-size:10pt;flex-wrap:wrap}.student-meta{display:flex;justify-content:space-between;gap:5mm;text-align:${currentLang === 'en' ? 'left' : 'right'};margin-top:4mm;font-size:11pt}.answer-item{padding:2.2mm 1mm;border-bottom:1px dotted #b4c0c7;break-inside:avoid;min-height:20mm}.item-prompt{font-size:11.5pt;line-height:1.6}.item-prompt b{color:#176b78}.answer-choices{display:flex;gap:8mm;flex-wrap:wrap;margin:2mm 0 0 5mm}.choice-bubble{display:inline-flex;align-items:center;gap:2mm;font-size:11pt;min-width:14mm}.choice-bubble i{width:5mm;height:5mm;border:1px solid #304c5b;border-radius:50%;display:inline-block}.writing-lines{margin-top:2mm}.writing-lines i{display:block;height:8mm;border-bottom:1px solid #c5cdd2}.answer-item.written{min-height:33mm}.empty-note{text-align:center;padding:25mm}.answer-sheet-page footer{position:absolute;bottom:5mm;left:8mm;right:8mm;text-align:center;border-top:1px solid #c6d0d6;padding-top:2mm;color:#61727c;font-size:9pt}@media print{.answer-sheet-page{margin:0 auto}.answer-sheet-page:last-child{page-break-after:auto}}
+            @page{size:A4 portrait;margin:10mm}*{box-sizing:border-box}body{margin:0;direction:${currentLang === 'en' ? 'ltr' : 'rtl'};font-family:${fontStack};color:#152532;background:#fff}.answer-sheet-page{position:relative;width:190mm;min-height:277mm;margin:0 auto 5mm;padding:8mm;border:1.5px solid #334b5a;page-break-after:always;break-after:page}.answer-sheet-page:last-child{page-break-after:auto;break-after:auto}.student-fold-flap{display:flex;justify-content:space-between;align-items:center;gap:3mm;min-height:10mm;margin:0 0 2mm;padding:1.5mm 3mm;border:1px solid #738994;border-bottom:2px dashed #334b5a;background:#fbfcfd;font-size:9pt}.student-fold-hint{font-size:7pt;color:#596d77;font-weight:normal;text-align:left}.sheet-header{text-align:center;border-bottom:1px solid #9aabb5;padding-bottom:5mm;margin-bottom:4mm}.sheet-header h1{font-size:18pt;margin:0 0 2mm;color:#153b55}.school-name{font-weight:bold;font-size:13pt;margin-bottom:3mm}.exam-meta{display:flex;justify-content:space-between;gap:3mm;font-size:10pt;flex-wrap:wrap}.student-meta{display:flex;justify-content:space-between;gap:5mm;text-align:${currentLang === 'en' ? 'left' : 'right'};margin-top:4mm;font-size:11pt}.answer-item{padding:2.2mm 1mm;border-bottom:1px dotted #b4c0c7;break-inside:avoid;min-height:20mm}.item-prompt{font-size:11.5pt;line-height:1.6}.item-prompt b{color:#176b78}.answer-choices{display:flex;gap:8mm;flex-wrap:wrap;margin:2mm 0 0 5mm}.choice-bubble{display:inline-flex;align-items:center;gap:2mm;font-size:11pt;min-width:14mm}.choice-bubble i{width:5mm;height:5mm;border:1px solid #304c5b;border-radius:50%;display:inline-block}.writing-lines{margin-top:2mm}.writing-lines i{display:block;height:8mm;border-bottom:1px solid #c5cdd2}.answer-item.written{min-height:33mm}.empty-note{text-align:center;padding:25mm}.answer-sheet-page footer{position:absolute;bottom:5mm;left:8mm;right:8mm;text-align:center;border-top:1px solid #c6d0d6;padding-top:2mm;color:#61727c;font-size:9pt}@media print{.answer-sheet-page{margin:0 auto}.answer-sheet-page:last-child{page-break-after:auto}}
             </style></head><body>${pageHtml}
 </body></html>`);
-        printWindow.document.write('<style>@page{size:A4 portrait;margin:5mm}html,body{margin:0!important;padding:0!important;min-height:0!important}.answer-sheet-page:first-child{break-before:auto!important;page-break-before:auto!important}</style>');
+        printWindow.document.write('<style>@page{size:A4 portrait;margin:10mm}html,body{margin:0!important;padding:0!important;min-height:0!important}.answer-sheet-page:first-child{break-before:auto!important;page-break-before:auto!important}</style>');
         printWindow.document.close();
         printWindow.focus();
         setTimeout(() => printWindow.print(), 400);
@@ -9538,9 +9869,12 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         const setImageWidth = (image, width) => {
             const paper = image.closest('.paper-page');
             const availableWidth = paper?.clientWidth || image.parentElement?.clientWidth || 800;
-            image.style.width = `${Math.round(Math.max(48, Math.min(availableWidth * .9, width)))}px`;
+            const nextWidth = Math.round(Math.max(48, Math.min(availableWidth * .9, width)));
+            image.style.setProperty('width', `${nextWidth}px`, 'important');
             image.style.maxWidth = '100%';
             image.style.height = 'auto';
+            image.dataset.previewWidth = String(nextWidth);
+            image.dataset.printWidth = String(nextWidth);
             updateResizeOverlay();
         };
         const selectImage = image => {
@@ -9566,8 +9900,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         container.addEventListener('pointerdown', event => {
             const target = event.target instanceof Element ? event.target : null;
             const image = target?.closest('img.question-img');
-            if (!image || event.button !== 0 || image.closest('.iq-side') ||
-                image.closest('.question-item')?.dataset.questionType === 'image') return;
+            if (!image || event.button !== 0 || image.closest('.iq-side')) return;
             event.preventDefault();
             selectImage(image);
             imageDragState = {
@@ -9743,6 +10076,219 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         container.addEventListener('drop', clearDropState);
     }
 
+    function getDirectAddQuestionLabel() {
+        return currentLang === 'ku'
+            ? '＋ پرسیارەکا نوی ل سەر پەڕەیێ زێدە بکە'
+            : currentLang === 'en'
+                ? '＋ Add a new question on the paper'
+                : '＋ إضافة سؤال جديد مباشرة على الورقة';
+    }
+
+    function bindDirectPaperQuestion(item) {
+        if (!item || item.dataset.directPaperBound === 'true') return;
+        item.dataset.directPaperBound = 'true';
+
+        const actions = item.querySelector('.action-btns');
+        if (actions && !actions.querySelector('.direct-add-part-button')) {
+            const addPart = document.createElement('span');
+            addPart.className = 'action-btn direct-add-part-button';
+            addPart.textContent = '+';
+            addPart.title = currentLang === 'ku'
+                ? 'پرسیارا لقی یان تکمیلە بۆ ئەڤی پرسیارێ زێدە بکە'
+                : currentLang === 'en'
+                    ? 'Add a subquestion or continuation'
+                    : 'إضافة سؤال فرعي أو تكملة لهذا السؤال';
+            addPart.setAttribute('role', 'button');
+            addPart.setAttribute('tabindex', '0');
+            addPart.setAttribute('aria-label', addPart.title);
+            addPart.onclick = () => addPartToQuestion(item);
+            addPart.onkeydown = event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.prevent(event);
+                    addPartToQuestion(item);
+                }
+            };
+            actions.appendChild(addPart);
+        }
+
+        const title = item.querySelector('.question-title span:first-child');
+        if (title) {
+            title.contentEditable = 'true';
+            title.spellcheck = false;
+            title.setAttribute('role', 'textbox');
+            title.setAttribute('aria-label', currentLang === 'ku' ? 'سەرنامەیێ پرسیارێ دەستکاری بکە' : currentLang === 'en' ? 'Edit question title' : 'تعديل عنوان السؤال');
+            title.addEventListener('input', () => {
+                title.setAttribute('data-auto-num', 'false');
+                recalculate();
+                saveData();
+            });
+            title.addEventListener('keydown', event => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    title.blur();
+                }
+            });
+        }
+
+        const score = item.querySelector('.question-title span:last-child');
+        if (score) {
+            score.contentEditable = 'true';
+            score.spellcheck = false;
+            score.setAttribute('role', 'textbox');
+            score.setAttribute('aria-label', currentLang === 'ku' ? 'نمرەیێ پرسیارێ دەستکاری بکە' : currentLang === 'en' ? 'Edit question score' : 'تعديل درجة السؤال');
+            score.addEventListener('input', () => {
+                const unit = i18n[currentLang].scoreUnit;
+                const value = parseScoreValue(score.textContent);
+                if (!score.textContent.includes(String(value))) {
+                    score.textContent = `(${String(value)} ${unit})`;
+                }
+                recalculate();
+                saveData();
+            });
+        }
+
+        const body = item.querySelector('.question-body');
+        const questionType = item.dataset.questionType || '';
+        const structuredBody = questionType === 'mcq'
+            || questionType === 'matching'
+            || questionType === 'image';
+        if (body && !structuredBody) {
+            body.contentEditable = 'true';
+            body.spellcheck = false;
+            body.setAttribute('role', 'textbox');
+            body.setAttribute('aria-label', currentLang === 'ku' ? 'دەقێ پرسیارێ دەستکاری بکە' : currentLang === 'en' ? 'Edit question text' : 'تعديل نص السؤال');
+            body.addEventListener('input', () => {
+                saveData();
+            });
+        } else if (body) {
+            const directTextNodes = [
+                ...body.querySelectorAll('.mcq-stem'),
+                ...body.querySelectorAll('.matching-paper-heading, .matching-item-label, .matching-paper-item > span:last-child')
+            ];
+            directTextNodes.forEach((node, index) => {
+                if (node.dataset.directTextEditable === 'true') return;
+                node.dataset.directTextEditable = 'true';
+                node.contentEditable = 'true';
+                node.spellcheck = false;
+                node.setAttribute('role', 'textbox');
+                node.setAttribute('aria-label', currentLang === 'ku' ? 'دەقێ ڤەختی دەستکاری بکە' : currentLang === 'en' ? 'Edit question text' : 'تعديل نص السؤال');
+                node.addEventListener('input', () => saveData());
+            });
+
+            body.querySelectorAll('.mcq-option').forEach(option => {
+                if (option.dataset.directOptionBound === 'true') return;
+                option.dataset.directOptionBound = 'true';
+                const raw = option.innerText.trim();
+                const marker = raw.match(new RegExp(`^\\s*${mcqOptionPattern()}\\s*[)）.]?\\s*`, 'i'));
+                const label = marker?.[1] || '';
+                const text = label ? raw.replace(marker[0], '').trim() : raw;
+                const labelSpan = document.createElement('span');
+                labelSpan.className = 'mcq-direct-label';
+                labelSpan.contentEditable = 'false';
+                labelSpan.textContent = label ? `${label} ` : '';
+                const textSpan = document.createElement('span');
+                textSpan.className = 'mcq-direct-text';
+                textSpan.contentEditable = 'true';
+                textSpan.spellcheck = false;
+                textSpan.setAttribute('role', 'textbox');
+                textSpan.setAttribute('aria-label', currentLang === 'ku' ? 'دەقێ هەڵبژاردنێ دەستکاری بکە' : currentLang === 'en' ? 'Edit answer option' : 'تعديل نص الاختيار');
+                textSpan.textContent = text;
+                option.replaceChildren(labelSpan, textSpan);
+                textSpan.addEventListener('input', () => {
+                    const question = option.closest('.mcq-question');
+                    const groupIndex = [...item.querySelectorAll('.mcq-question')].indexOf(question);
+                    const optionIndex = question ? [...question.querySelectorAll('.mcq-option')].indexOf(option) : -1;
+                    const answer = item.querySelector('.answer-body');
+                    if (answer && groupIndex >= 0 && optionIndex >= 0) {
+                        const rawAnswer = answer.innerText.replace(/\r/g, '');
+                        const prefixMatch = rawAnswer.match(/^(الإجابة النموذجية:|بەرسڤا منموونەیی:|Model answer:)/i);
+                        const prefix = prefixMatch?.[1] || '';
+                        const bodyText = prefix ? rawAnswer.slice(prefix.length).replace(/^\s*\n?/, '') : rawAnswer;
+                        const lines = bodyText.split(/\r?\n/).filter(line => line.trim());
+                        const labels = getQuestionOptionLabels();
+                        const targetLabel = labels[optionIndex];
+                        lines.forEach((line, lineIndex) => {
+                            if (!new RegExp(`^\\s*${groupIndex + 1}\\s*[)）.]\\s*${targetLabel}\\s*`).test(line)) return;
+                            lines[lineIndex] = `${groupIndex + 1}) ${targetLabel} ${textSpan.textContent.trim()}`;
+                        });
+                        answer.innerText = prefix ? `${prefix}\n${lines.join('\n')}` : lines.join('\n');
+                    }
+                    saveData();
+                });
+            });
+        }
+
+        const answer = item.querySelector('.answer-body');
+        if (answer) {
+            answer.contentEditable = 'true';
+            answer.spellcheck = false;
+            answer.setAttribute('role', 'textbox');
+            answer.setAttribute('aria-label', currentLang === 'ku' ? 'بەرسڤا نمونەیی دەستکاری بکە' : currentLang === 'en' ? 'Edit model answer' : 'تعديل الإجابة النموذجية');
+            answer.addEventListener('input', () => saveData());
+        }
+
+        item.querySelectorAll('.answer-lines, .answer-box').forEach(control => {
+            control.addEventListener('dblclick', event => {
+                event.preventDefault();
+                editQuestion(item);
+            });
+        });
+    }
+
+    function setupDirectPaperEditing() {
+        const container = document.getElementById('questionsContainer');
+        if (!container) return;
+
+        let addButton = document.getElementById('directAddQuestionButton');
+        if (!addButton) {
+            addButton = document.createElement('button');
+            addButton.type = 'button';
+            addButton.id = 'directAddQuestionButton';
+            addButton.className = 'direct-add-question-button';
+            container.after(addButton);
+        }
+        addButton.textContent = getDirectAddQuestionLabel();
+        addButton.onclick = () => openQuestionDialog();
+
+        container.querySelectorAll('.question-item').forEach(bindDirectPaperQuestion);
+
+        if (!container.dataset.directPaperObserverBound) {
+            container.dataset.directPaperObserverBound = 'true';
+            const observer = new MutationObserver(() => {
+                container.querySelectorAll('.question-item').forEach(bindDirectPaperQuestion);
+                const directButton = document.getElementById('directAddQuestionButton');
+                if (directButton) directButton.textContent = getDirectAddQuestionLabel();
+            });
+            observer.observe(container, { childList: true, subtree: false });
+        }
+    }
+
+    function updateDirectPaperEditingLanguage() {
+        const addButton = document.getElementById('directAddQuestionButton');
+        if (addButton) addButton.textContent = getDirectAddQuestionLabel();
+        document.querySelectorAll('.question-item').forEach(bindDirectPaperQuestion);
+    }
+
+    function addPartToQuestion(item) {
+        if (!item) return;
+        editQuestion(item);
+
+        const questionType = item.dataset.questionType || '';
+        requestAnimationFrame(() => {
+            if (['mcq', 'tf'].includes(questionType)) {
+                addMCQItem();
+            } else if (questionType === 'matching') {
+                addMatchingPair();
+            } else if (['fill', 'essay', 'define'].includes(questionType)) {
+                addGenericSubQuestion();
+            } else if (questionType === 'image') {
+                document.getElementById('lblImageQuestionUpload')?.scrollIntoView({ block: 'center' });
+            } else {
+                document.getElementById('qBody')?.focus();
+            }
+        });
+    }
+
     function editQuestion(qItem) {
         editingDiv = qItem;
 
@@ -9905,7 +10451,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         const examFontSize = getExamFontSize();
         const examFontColor = getExamFontColor();
         const wordHtml = `<!doctype html><html><head><meta charset="utf-8"><style>
-            @page{size:A4;margin:5mm}body{direction:${currentLang === 'en' ? 'ltr' : 'rtl'};font-family:${getSelectedExamFontStack()};font-size:${examFontSize}pt;color:${examFontColor}}.paper-page,.paper-page *{font-family:${getSelectedExamFontStack()}!important;color:${examFontColor}!important}.paper-page .question-title,.paper-page .question-body,.paper-page .answer-body,.paper-page .student-table td,.paper-page .grade-table th,.paper-page .grade-table td,.paper-page .student-fold-flap,.paper-page .student-only-header,.paper-page .footer-text,.paper-page .teacher-signature-row,.paper-page .model-badge{font-size:${examFontSize}pt!important}.paper-page .header-table td{font-size:9pt!important}.paper-page .header-table td:nth-child(2){font-size:10pt!important}.paper-page #dispSchool{font-size:12pt!important}.paper-page #examTitleType{font-size:9.5pt!important}.paper-page .question-title{font-size:${Math.round(examFontSize * 1.08)}pt!important}
+            @page{size:A4;margin:10mm}body{direction:${currentLang === 'en' ? 'ltr' : 'rtl'};font-family:${getSelectedExamFontStack()};font-size:${examFontSize}pt;color:${examFontColor}}.paper-page,.paper-page *{font-family:${getSelectedExamFontStack()}!important;color:${examFontColor}!important}.paper-page .question-title,.paper-page .question-body,.paper-page .answer-body,.paper-page .student-table td,.paper-page .grade-table th,.paper-page .grade-table td,.paper-page .student-fold-flap,.paper-page .student-only-header,.paper-page .footer-text,.paper-page .teacher-signature-row,.paper-page .model-badge{font-size:${examFontSize}pt!important}.paper-page .header-table td{font-size:9pt!important}.paper-page .header-table td:nth-child(2){font-size:10pt!important}.paper-page #dispSchool{font-size:12pt!important}.paper-page #examTitleType{font-size:9.5pt!important}.paper-page .question-title{font-size:${Math.round(examFontSize * 1.08)}pt!important}
             .paper-page{width:auto;min-height:0;margin:0;padding:0;border:0;box-shadow:none}.header-table{width:100%;border-collapse:collapse;border-bottom:2px solid #333;margin-bottom:3px;padding-bottom:1px}
             .header-table td{padding:2px;text-align:center;vertical-align:middle}.meta-section{width:100%;margin:5px 0}.student-table,.grade-table{border-collapse:collapse}
             ${currentLang === 'en' ? '.header-table{border-collapse:separate;border-spacing:0;border-bottom:2px solid #294f6b}.header-table td{padding:5px 7px;color:#243b53!important;font-family:Arial,sans-serif;line-height:1.4;font-size:9pt!important}.header-table td:first-child{text-align:left}.header-table td:last-child{text-align:right}.header-table td:nth-child(2){background:#f1f6f9;border-left:1px solid #d9e5ec;border-right:1px solid #d9e5ec;font-size:10pt!important}#dispSchool{display:inline-block;margin-bottom:2px;color:#173e59!important;font-size:12pt!important;line-height:1.2}#examTitleType{display:inline-block;margin:3px 0;padding:2px 8px;border-radius:12px;background:#e0edf4;color:#174c69!important;font-size:9.5pt!important;font-weight:700;letter-spacing:.2px}#dispGeneralEduDir,#dispEduDir{font-size:8pt!important}' : ''}
@@ -9966,7 +10512,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         const gradingRows = simpleStudentHeader ? '' : `<tr class="grading-header-row"><th>${escapeHtml(currentLangIsKurdish ? 'ژمارا پرسیارێ' : 'رقم السؤال')}</th><th>${escapeHtml(currentLangIsKurdish ? 'نمرە ب ژمارە' : 'الدرجة')}</th><th colspan="2">${escapeHtml(currentLangIsKurdish ? 'نڤیسین' : 'كتابة')}</th><th>${escapeHtml(currentLangIsKurdish ? 'ئیمزا چاڤدێری' : 'توقيع المصحح')}</th><th>${escapeHtml(currentLangIsKurdish ? 'ئیمزا پشکنەر' : 'توقيع المدقق')}</th></tr>${questions.map((_, index) => `<tr class="grading-score-row"><td>${cellText(`${currentLangIsKurdish ? 'پرسیار' : 'السؤال'} ${formatDigits(index + 1)}`)}</td><td></td><td colspan="2"></td><td></td><td></td></tr>`).join('')}<tr class="grading-total-row"><th>${escapeHtml(currentLangIsKurdish ? 'کۆ' : 'المجموع')}</th><td></td><td colspan="2"></td><td></td><td></td></tr>`;
         const examTitleRow = simpleStudentHeader ? '' : `<tr><th class="exam-title" colspan="6">${cellText(title)}</th></tr>`;
         const excelHtml = `<!doctype html><html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel"><head><meta charset="utf-8"><style>
-            @page{size:A4 portrait;margin:5mm}body{direction:rtl;font-family:${getSelectedExamFontStack()};font-size:${examFontSize}pt;color:${examFontColor}}table{width:100%;border-collapse:collapse;table-layout:fixed}
+            @page{size:A4 portrait;margin:10mm}body{direction:rtl;font-family:${getSelectedExamFontStack()};font-size:${examFontSize}pt;color:${examFontColor}}table{width:100%;border-collapse:collapse;table-layout:fixed}
             td,th{border:1px solid #555;padding:7px;vertical-align:top;white-space:normal}.exam-title{font-size:18pt;font-weight:bold;text-align:center;background:#e8eff4}.grading-header-row th:nth-child(1){width:12%}.grading-header-row th:nth-child(2){width:12%}.grading-header-row th:nth-child(3){width:32%}.grading-header-row th:nth-child(4){width:22%}.grading-header-row th:nth-child(5){width:22%}.grading-header-row th,.grading-score-row td,.grading-total-row td,.grading-total-row th{white-space:nowrap}.grading-score-row td,.grading-total-row td,.grading-total-row th{height:22px;padding:3px}
             .meta-label{font-weight:bold;background:#edf2f4;width:13%}.meta-value{width:20%}.student-row td{height:30px}.student-fold-row td{height:25px;border-bottom:2px dashed #555}.student-fold-row small{font-weight:normal;font-size:7pt;margin-right:8px}
             .question-title-row th{background:#e9f0f0;text-align:right;font-weight:bold}.question-title-row th:last-child{text-align:center;width:12%}
