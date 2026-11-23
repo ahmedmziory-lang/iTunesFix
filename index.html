@@ -6247,6 +6247,9 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
     background: #fff;
     box-shadow: 0 0 0 2px var(--m-pen), 0 5px 16px rgba(20,33,61,.10);
   }
+  .paper-page [contenteditable="true"][aria-invalid="true"] {
+    box-shadow: 0 0 0 2px #dc2626;
+  }
   .paper-page .mcq-direct-label {
     user-select: none;
     cursor: default;
@@ -6798,7 +6801,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
                 <h3>4️⃣ ئامرازێن دەستکاریێ</h3>
                 <p><strong>هێما و فورمول:</strong> دوگمەیێن بیرکاریێ بکاربینە، وەک x²، ℝ، نیشانێن مەزنتر/بچووکتر یان یەکسان، و تەکامل؛ هەروەسا ئامرازێن کەسر و ڕەگێ کارلێکدار هەنە. بۆ فورمولەکا بیرکاریێ، پێکهاتەیەک هەلبژێرە، شوێنێن وێ تژی بکە و <strong>«زێدەکرن بۆ پرسیارێ»</strong> بکە. دەتوانی <code>^</code> بۆ هێز، <code>_</code> بۆ ژێرنووس، <code>\sqrt</code> بۆ ڕەگ و <code>\frac</code> بۆ کەسر بکاربینی. ئامرازێن فیزیا، کیمیا و زیندەزانی ژی هەنە.</p>
                 <p><strong>وێنە و شێوە:</strong> وێنەیەک ژ ئامێرێ بار بکە، نیشان ل سەر بکێشە، یان ب دەستی شێوەیەکێ بکێشە. شێوەیێن ئامادە وەک سێگۆشە، بازنە و ئاستێ کۆئۆردیناتان هەنە. ئاڕاستا (ڕاست، ناڤەڕاست، چەپ) و قەبارە (بچووک، ناڤنجی، مەزن) یا وێنەیێ بگوهۆڕە.</p>
-                <p><strong>دەستکارییا خێرا:</strong> د پێشبینییا پەڕەیێ دا ل سەر پرسیارێ بکە دا ڕاستەوخۆ دەستکاری بکەی.</p>
+                <p><strong>دەستکارییا خێرا:</strong> ل سەر خانەیەکا ترویسەیێ یان پرسیارێ د پێشبینییا پەڕەیێ بکە دا ڕاستەوخۆ دەستکاری بکەی.</p>
 
                 <h3>5️⃣ چاپکرن</h3>
                 <p>ژ بەشێ <strong>چاپکرنێ</strong> چاپا پرسیاران بۆ قوتابی، چاپا بەرسڤا منموونەیی بۆ مامۆستا، یان پەڕا بەرسڤان A4 هەلبژێرە. بەرێ پێش چاپکرنێ پێشبینیێ بپشکنە و د ڕێکخستنێن چاپکەرێ دا قەبارەیا پەڕەیێ A4 و پێوانە 100٪ هەلبژێرە.</p>
@@ -6882,7 +6885,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
                 <h3>4️⃣ أدوات التحرير</h3>
                 <p><strong>الرموز والصيغ:</strong> استخدم أزرار الرياضيات مثل x² وℝ وعلامات أكبر/أصغر يساوي والتكامل، أو أداة الكسر والجذر التفاعلية. لكتابة صيغة رياضية، اختر قالبًا واكتب في مواضعه ثم اضغط <strong>إدراج في السؤال</strong>. تدعم الكتابة المختصرة <code>^</code> للأس و<code>_</code> للرمز السفلي و<code>\sqrt</code> للجذر و<code>\frac</code> للكسر. تتوفر أيضًا أدوات الفيزياء والكيمياء والأحياء.</p>
                 <p><strong>الصور والأشكال:</strong> ارفع صورة من الجهاز، أو أشّر عليها، أو ارسم شكلًا بيدك. تتوفر أشكال جاهزة مثل المثلث والدائرة ومستوى الإحداثيات، ويمكن تغيير محاذاة الصورة وحجمها (صغير أو متوسط أو كبير).</p>
-                <p><strong>التعديل السريع:</strong> انقر على السؤال في معاينة الورقة لتعديله مباشرة.</p>
+                <p><strong>التعديل السريع:</strong> انقر على أحد حقول الترويسة أو على السؤال في معاينة الورقة لتعديله مباشرة.</p>
 
                 <h3>5️⃣ الطباعة</h3>
                 <p>من قسم <strong>الطباعة</strong> اختر نسخة الأسئلة للطالب، أو الإجابة النموذجية للمعلم، أو ورقة الإجابة A4. راجع المعاينة قبل الطباعة واضبط حجم الورق على A4 والمقياس على 100٪ في إعدادات الطابعة.</p>
@@ -6966,7 +6969,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
                 <h3>4️⃣ Editing tools</h3>
                 <p><strong>Symbols and formulas:</strong> Use the math buttons for items such as x², ℝ, comparison symbols, and integrals, plus the interactive fraction and square-root tools. To enter a formula, choose a template, fill in its placeholders, and select <strong>Insert into question</strong>. Shortcuts include <code>^</code> for superscripts, <code>_</code> for subscripts, <code>\sqrt</code> for square roots, and <code>\frac</code> for fractions. Physics, chemistry, and biology tools are also available.</p>
                 <p><strong>Images and shapes:</strong> Upload an image, annotate it, or draw a simple shape by hand. Ready-made shapes include a triangle, circle, and coordinate plane. Change image alignment (right, center, or left) and size (small, medium, or large).</p>
-                <p><strong>Quick editing:</strong> Click a question in the paper preview to edit it directly.</p>
+                <p><strong>Quick editing:</strong> Click a header field or a question in the paper preview to edit it directly.</p>
 
                 <h3>5️⃣ Printing</h3>
                 <p>In <strong>Print</strong>, choose the student question paper, the teacher model-answer copy, or the A4 answer sheet. Review the preview first, then set the printer paper size to A4 and scale to 100%.</p>
@@ -7011,6 +7014,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
 
         <h2 class="header-section-heading"><span id="lblHeaderSection">بيانات الترويسة</span><button type="button" id="btnToggleHeaderFields" class="section-toggle" aria-expanded="true" aria-controls="headerFields" onclick="toggleHeaderFields()">إخفاء</button></h2>
         <div id="headerFields">
+        <input type="hidden" id="examTitleCustomInput">
         <div class="form-group">
             <label id="lblSchool">اسم المدرسة:</label>
             <input type="text" id="schoolInput" value="ئامادەییا 9ێ نیسانێ يا كوڕان" oninput="updateHeader(); saveData();">
@@ -7352,20 +7356,20 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
                             <span id="dispCountry">حكومة إقليم كردستان</span><br>
                             <span id="dispRegion">وزارة التربية</span><br>
                             <span id="dispGeneralEduDir">المديرية العامة للتربية في دهوك</span><br>
-                            <span id="dispEduDir">مديرية تربية سميل</span>
+                            <span id="dispEduDir" data-direct-header-field="directorate">مديرية تربية سميل</span>
                         </td>
                         <td style="width: 36%; text-align: center; font-size: 15px;">
-                            <b id="dispSchool">ئامادەییا 9ێ نیسانێ يا كوڕان</b><br>
-                            <span id="academicYearRow"><span id="lblAcademicYearDisp">السنة الدراسية:</span> <span id="dispAcademicYear">2026-2027</span></span><br>
-                            <span id="examTitleType">امتحانات الدور الأول</span><br>
-                            <span id="modelBadgeRow"><span class="model-badge" id="dispModel">النموذج ( A )</span></span>
+                            <b id="dispSchool" data-direct-header-field="school">ئامادەییا 9ێ نیسانێ يا كوڕان</b><br>
+                            <span id="academicYearRow"><span id="lblAcademicYearDisp">السنة الدراسية:</span> <span id="dispAcademicYear" data-direct-header-field="academicYear">2026-2027</span></span><br>
+                            <span id="examTitleType" data-direct-header-field="examTitle">امتحانات الدور الأول</span><br>
+                            <span id="modelBadgeRow"><span class="model-badge" id="dispModel" data-direct-header-field="model">النموذج ( A )</span></span>
                         </td>
                         <td style="width: 32%; text-align: left;">
-                            <span id="lblDispSubj">المادة:</span> <span id="dispSubject">بیرکاری</span><br>
-                            <span id="lblDispGrade">الصف:</span> <span id="dispGrade">پۆلا دەهێ زانستی</span><br>
-                            <span id="lblDispTime">الزمن:</span> <span id="dispTime">دوو دەمژمێر</span><br>
+                            <span id="lblDispSubj">المادة:</span> <span id="dispSubject" data-direct-header-field="subject">بیرکاری</span><br>
+                            <span id="lblDispGrade">الصف:</span> <span id="dispGrade" data-direct-header-field="grade">پۆلا دەهێ زانستی</span><br>
+                            <span id="lblDispTime">الزمن:</span> <span id="dispTime" data-direct-header-field="time">دوو دەمژمێر</span><br>
                             <span id="lblStudentClass">الشعبة:</span> ..........<br>
-                            <span id="lblExamDate">التاريخ:</span> <span id="dispExamDate">____ / ____ / ______</span>
+                            <span id="lblExamDate">التاريخ:</span> <span id="dispExamDate" data-direct-header-field="examDate">____ / ____ / ______</span>
                         </td>
                     </tr>
                 </table>
@@ -7392,7 +7396,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
                 </table>
             </div>
 
-            <div class="teacher-signature-row"><span id="teacherSignatureEntry"><strong id="teacherNameLabel">مدرس المادة:</strong> <span id="dispTeacherName">________________</span> &nbsp; <strong id="teacherSignLabel">التوقيع:</strong> __________________</span><div id="committeeSignatureBlock" class="committee-signature-block" style="display:none"></div></div>
+            <div class="teacher-signature-row"><span id="teacherSignatureEntry"><strong id="teacherNameLabel">مدرس المادة:</strong> <span id="dispTeacherName" data-direct-header-field="teacher">________________</span> &nbsp; <strong id="teacherSignLabel">التوقيع:</strong> __________________</span><div id="committeeSignatureBlock" class="committee-signature-block" style="display:none"></div></div>
 
             <div class="footer-text" id="dispFooter">
                 مع تمنياتنا لكم بالنجاح والتوفيق
@@ -7778,6 +7782,8 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
     }
 
     function getExamTitleText() {
+        const customTitle = document.getElementById('examTitleCustomInput')?.value.trim();
+        if (customTitle) return customTitle;
         const secondCourse = document.getElementById('courseInput')?.value === 'second';
         const secondRound = document.getElementById('examRoundInput')?.value === 'second';
         const kind = document.getElementById('examKindInput')?.value;
@@ -8327,6 +8333,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         setValue('examKindInput', ['daily', 'semester', 'final'].includes(data.examKind) ? data.examKind : 'semester');
         setValue('timeInput', data.time || '');
         setValue('modelInput', data.model || 'A');
+        if (!partial || data.examTitleCustom !== undefined) setValue('examTitleCustomInput', data.examTitleCustom || '');
         document.getElementById('showModelInput').checked = data.showModel !== false;
         setValue('digitStyleInput', data.digitStyle || 'western');
         if (data.fontSize || data.fontColor) updateExamAppearance(data.fontSize || getExamFontSize(), data.fontColor || getExamFontColor(), false);
@@ -8358,6 +8365,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             course: value('courseInput'),
             examRound: value('examRoundInput'),
             examKind: value('examKindInput'),
+            examTitleCustom: value('examTitleCustomInput'),
             fontSize: getExamFontSize(),
             fontColor: getExamFontColor(),
             questionSpacing: Number(document.getElementById('examQuestionSpacing')?.value) || 6,
@@ -10714,10 +10722,166 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         });
     }
 
+    function directHeaderFieldLabel(field) {
+        const labelIds = {
+            school: 'lblSchool',
+            academicYear: 'lblAcademicYear',
+            directorate: 'lblEduDirectorate',
+            model: 'lblModel',
+            subject: 'lblSubject',
+            grade: 'lblGrade',
+            time: 'lblTime',
+            examDate: 'lblExamDateInput',
+            teacher: 'lblTeacherName'
+        };
+        if (field === 'examTitle') {
+            return currentLang === 'ku' ? 'سەرناما ئەزموونێ' : currentLang === 'en' ? 'Exam title' : 'عنوان الامتحان';
+        }
+        return document.getElementById(labelIds[field])?.innerText || field;
+    }
+
+    function parseDirectHeaderDate(value) {
+        const normalized = normalizeDigitsToLatin(value).trim();
+        if (!normalized) return '';
+        let year;
+        let month;
+        let day;
+        let match = normalized.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+        if (match) {
+            [, year, month, day] = match;
+        } else {
+            match = normalized.match(/^(\d{1,2})[./-](\d{1,2})[./-](\d{4})$/);
+            if (!match) return null;
+            [, day, month, year] = match;
+        }
+        const numericYear = Number(year);
+        const numericMonth = Number(month);
+        const numericDay = Number(day);
+        const date = new Date(Date.UTC(numericYear, numericMonth - 1, numericDay));
+        if (numericYear < 1000
+            || date.getUTCFullYear() !== numericYear
+            || date.getUTCMonth() !== numericMonth - 1
+            || date.getUTCDate() !== numericDay) return null;
+        return `${String(numericYear).padStart(4, '0')}-${String(numericMonth).padStart(2, '0')}-${String(numericDay).padStart(2, '0')}`;
+    }
+
+    function bindDirectPaperHeaderFields() {
+        const inputIds = {
+            school: 'schoolInput',
+            academicYear: 'academicYearInput',
+            subject: 'subjectInput',
+            grade: 'gradeInput',
+            time: 'timeInput',
+            teacher: 'teacherInput'
+        };
+        document.querySelectorAll('.paper-page [data-direct-header-field]').forEach(preview => {
+            const field = preview.dataset.directHeaderField;
+            const label = directHeaderFieldLabel(field);
+            const editPrefix = currentLang === 'ku' ? 'دەستکاری' : currentLang === 'en' ? 'Edit' : 'تعديل';
+            preview.contentEditable = 'true';
+            preview.spellcheck = false;
+            preview.tabIndex = 0;
+            preview.setAttribute('role', 'textbox');
+            preview.setAttribute('aria-label', `${editPrefix} ${label}`);
+            preview.title = field === 'examDate'
+                ? (currentLang === 'ku' ? 'ڕێکەفتێ وەک ڕۆژ/مانگ/ساڵ بنڤیسە' : currentLang === 'en' ? 'Enter date as DD/MM/YYYY' : 'أدخل التاريخ بصيغة يوم/شهر/سنة')
+                : field === 'examTitle'
+                    ? (currentLang === 'ku' ? 'بۆ ڤەگەڕاندنا سەرناما خۆکار، دەقێ پاک بکە' : currentLang === 'en' ? 'Clear the text to restore the automatic title' : 'امسح النص للعودة إلى العنوان التلقائي')
+                    : (currentLang === 'ku' ? 'لێبکە و ڕاستەوخۆ دەستکاری بکە' : currentLang === 'en' ? 'Click to edit directly' : 'انقر للتعديل مباشرة');
+
+            if (preview.dataset.directHeaderBound === 'true') return;
+            preview.dataset.directHeaderBound = 'true';
+            preview.addEventListener('keydown', event => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    preview.blur();
+                }
+            });
+            preview.addEventListener('paste', event => {
+                const text = event.clipboardData?.getData('text/plain');
+                const selection = window.getSelection();
+                if (text === undefined || !selection?.rangeCount) return;
+                event.preventDefault();
+                const range = selection.getRangeAt(0);
+                range.deleteContents();
+                const textNode = document.createTextNode(text.replace(/[\r\n]+/g, ' '));
+                range.insertNode(textNode);
+                range.setStartAfter(textNode);
+                range.collapse(true);
+                selection.removeAllRanges();
+                selection.addRange(range);
+                preview.dispatchEvent(new Event('input', { bubbles: true }));
+            });
+            preview.addEventListener('input', () => {
+                const value = preview.innerText.replace(/[\r\n]+/g, ' ').trim();
+                preview.removeAttribute('aria-invalid');
+                if (inputIds[field]) {
+                    document.getElementById(inputIds[field]).value = value;
+                } else if (field === 'directorate') {
+                    document.getElementById('eduDirectorateInput').value = 'other';
+                    const custom = document.getElementById('eduDirectorateCustomInput');
+                    custom.value = value;
+                    custom.hidden = false;
+                } else if (field === 'examTitle') {
+                    document.getElementById('examTitleCustomInput').value = value;
+                } else if (field === 'model') {
+                    const match = normalizeDigitsToLatin(value).toUpperCase().match(/(?:^|[^A-Z])([ABC])(?:$|[^A-Z])/);
+                    if (!match) {
+                        preview.setAttribute('aria-invalid', 'true');
+                        return;
+                    }
+                    document.getElementById('modelInput').value = match[1];
+                    return;
+                } else if (field === 'examDate') {
+                    const date = parseDirectHeaderDate(value);
+                    if (date === null) {
+                        preview.setAttribute('aria-invalid', 'true');
+                        return;
+                    }
+                    document.getElementById('examDateInput').value = date;
+                    return;
+                }
+                saveData();
+            });
+            preview.addEventListener('blur', () => {
+                if (preview.getAttribute('aria-invalid') === 'true') {
+                    if (field === 'model') {
+                        document.getElementById('modelInput').value = lastSelectedExamModel;
+                        preview.removeAttribute('aria-invalid');
+                        updateHeader();
+                    }
+                    return;
+                }
+                if (field === 'directorate') {
+                    const value = preview.innerText.replace(/[\r\n]+/g, ' ').trim();
+                    const select = document.getElementById('eduDirectorateInput');
+                    const custom = document.getElementById('eduDirectorateCustomInput');
+                    const matchingOption = Array.from(select.options).find(option => option.value !== 'other' && option.textContent.trim() === value);
+                    if (matchingOption) {
+                        select.value = matchingOption.value;
+                        custom.value = '';
+                    } else {
+                        select.value = 'other';
+                        custom.value = value;
+                    }
+                    updateEduDirectorateChoice();
+                    saveData();
+                } else if (field === 'model') {
+                    changeExamModel();
+                } else {
+                    if (field === 'examDate' && preview.getAttribute('aria-invalid') === 'true') return;
+                    updateHeader();
+                    saveData();
+                }
+            });
+        });
+    }
+
     function setupDirectPaperEditing() {
         const container = document.getElementById('questionsContainer');
         if (!container) return;
 
+        bindDirectPaperHeaderFields();
         let addButton = document.getElementById('directAddQuestionButton');
         if (!addButton) {
             addButton = document.createElement('button');
@@ -10743,6 +10907,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
     }
 
     function updateDirectPaperEditingLanguage() {
+        bindDirectPaperHeaderFields();
         const addButton = document.getElementById('directAddQuestionButton');
         if (addButton) addButton.textContent = getDirectAddQuestionLabel();
         document.querySelectorAll('.question-item').forEach(bindDirectPaperQuestion);
