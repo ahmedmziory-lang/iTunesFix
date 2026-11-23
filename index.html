@@ -5646,6 +5646,142 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
     padding-inline: 16px;
     box-shadow: 0 4px 12px rgba(37, 71, 208, .16);
   }
+  .user-guide-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    flex: 0 0 auto;
+    min-height: 40px;
+    padding: 0 12px;
+    border: 1px solid var(--m-line);
+    border-radius: 11px;
+    background: linear-gradient(135deg, var(--m-panel), var(--m-wash));
+    color: var(--m-ink);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: border-color .16s ease, background-color .16s ease, transform .16s ease;
+  }
+  .user-guide-trigger:hover {
+    border-color: var(--m-pen);
+    background: var(--m-pen-t);
+    transform: translateY(-1px);
+  }
+  .user-guide-dialog {
+    width: min(680px, calc(100vw - 32px));
+    max-width: calc(100vw - 32px);
+    max-height: min(78vh, 720px);
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--m-line);
+    border-radius: 17px;
+    background: var(--m-panel);
+    color: var(--m-ink);
+    box-shadow: 0 24px 70px rgba(15, 23, 42, .24);
+  }
+  .user-guide-dialog[open] {
+    display: flex;
+    flex-direction: column;
+  }
+  .user-guide-dialog::backdrop {
+    background: rgba(15, 23, 42, .5);
+    backdrop-filter: blur(4px);
+  }
+  .user-guide-dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--m-line);
+    background: linear-gradient(135deg, var(--m-panel), var(--m-wash));
+  }
+  .user-guide-dialog .user-guide-dialog-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--m-ink);
+    font-size: 15px;
+    font-weight: 800;
+  }
+  .user-guide-dialog-body {
+    overflow: auto;
+    padding: 10px 20px 20px;
+  }
+  .user-guide-close {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid var(--m-line);
+    border-radius: 10px;
+    background: var(--m-panel);
+    color: var(--m-ink2);
+    font-size: 23px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .user-guide-close:hover {
+    border-color: var(--m-pen);
+    color: var(--m-pen);
+  }
+  .header-language-control {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex: 0 0 auto;
+    padding: 5px 8px;
+    border: 1px solid var(--m-line);
+    border-radius: 13px;
+    background: linear-gradient(135deg, var(--m-panel), var(--m-wash));
+  }
+  .system-preview-toolbar>.header-language-control {
+    flex: 0 0 auto;
+    min-width: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px !important;
+  }
+  .header-language-control>label {
+    margin: 0;
+    color: var(--m-ink2);
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .header-language-control .lang-toggle-button {
+    width: auto;
+    min-height: 34px;
+    margin: 0;
+    padding: 6px 9px;
+    border-color: transparent !important;
+    border-radius: 9px;
+    background: var(--m-panel) !important;
+    color: var(--m-ink) !important;
+    box-shadow: 0 1px 3px rgba(20, 33, 61, .07);
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .header-language-control .lang-toggle-button:hover {
+    border-color: var(--m-line) !important;
+    background: var(--m-wash) !important;
+    transform: translateY(-1px);
+  }
+  .header-language-control .lang-toggle-globe {
+    font-size: 14px;
+  }
+  .header-language-control .lang-toggle-arrows {
+    color: var(--m-pen);
+    font-size: 15px;
+  }
   .system-preview-toolbar :is(.theme-toggle-button, #installAppButton):hover {
     transform: translateY(-1px);
   }
@@ -5685,6 +5821,47 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
   }
   .system-creator-credit strong {
     color: var(--m-ink) !important;
+  }
+  .user-guide-content {
+    color: var(--m-ink2);
+    font-size: 12px;
+    line-height: 1.75;
+  }
+  .user-guide-content h3 {
+    margin: 11px 0 4px;
+    color: var(--m-ink);
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .user-guide-content :is(ol, ul) {
+    margin: 4px 0 8px;
+    padding-inline-start: 20px;
+  }
+  .user-guide-content li+li {
+    margin-top: 4px;
+  }
+  .user-guide-content p {
+    margin: 5px 0 0;
+  }
+  .user-guide-content table {
+    width: 100%;
+    margin: 8px 0;
+    border-collapse: collapse;
+    font-size: inherit;
+  }
+  .user-guide-content :is(th, td) {
+    padding: 5px 7px;
+    border: 1px solid var(--m-line);
+    text-align: start;
+    vertical-align: top;
+  }
+  .user-guide-content th {
+    background: var(--m-wash);
+    color: var(--m-ink);
+  }
+  .user-guide-content code {
+    direction: ltr;
+    unicode-bidi: isolate;
   }
   .lang-switch-container,
   .editor-sidebar>.form-group[style*="background"] {
@@ -5833,6 +6010,25 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
     min-height: 30px;
     padding: 5px 8px;
   }
+  .user-guide-trigger {
+    min-height: 38px;
+    padding-inline: 10px;
+  }
+  .header-language-control {
+    gap: 5px;
+    padding: 4px 6px;
+  }
+  .system-preview-toolbar>.header-language-control {
+    flex: 0 1 auto;
+    gap: 5px !important;
+  }
+  .header-language-control>label {
+    font-size: 9px;
+  }
+  .header-language-control .lang-toggle-button {
+    min-height: 32px;
+    padding: 5px 7px;
+  }
   .editor-sidebar {
     padding: 16px 14px 28px !important;
     box-shadow: 0 -6px 24px rgba(20, 33, 61, .045) !important;
@@ -5842,6 +6038,20 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
   }
   .preview-area {
     padding: 12px !important;
+  }
+}
+@media screen and (max-width: 440px) {
+  .header-language-control>label {
+    display: none;
+  }
+}
+@media screen and (min-width: 761px) and (max-width: 880px) {
+  .user-guide-trigger {
+    width: 40px;
+    padding: 0;
+  }
+  .user-guide-trigger #lblUserGuide {
+    display: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -6520,19 +6730,273 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
     </form>
 </div>
 
-<div class="preview-toolbar system-preview-toolbar"><div><strong id="previewToolbarTitle">معاينة مباشرة</strong><small id="previewToolbarSubtitle">تتحدث الورقة تلقائياً مع كل تعديل</small></div><button type="button" id="themeToggleButton" class="theme-toggle-button" onclick="toggleTheme()" aria-pressed="false" aria-label="الوضع الداكن" title="الوضع الداكن / تاریک">🌙</button><button type="button" id="installAppButton" class="install-app-button">تثبيت التطبيق</button><span class="preview-format-badge"><span class="preview-live-dot"></span><span id="previewFormatText">ورقة امتحان A4</span></span></div>
+<div class="preview-toolbar system-preview-toolbar"><div><strong id="previewToolbarTitle">معاينة مباشرة</strong><small id="previewToolbarSubtitle">أنشئ امتحانك، نسّقه، واطبعه في دقائق</small></div><button type="button" class="user-guide-trigger" id="btnOpenUserGuide" onclick="openUserGuide()" aria-label="دليل استخدام النظام" title="دليل استخدام النظام"><span aria-hidden="true">📘</span><span id="lblUserGuide">دليل استخدام النظام</span></button><div class="header-language-control"><label id="lblLangSelect">🌐 لغة النظام:</label><button type="button" id="langToggleButton" class="lang-toggle-button" onclick="toggleLanguage()" aria-label="تبديل لغة الواجهة"><span class="lang-toggle-globe">🌐</span><span id="langToggleLabel">کوردی (بادینی)</span><span class="lang-toggle-arrows">⇄</span></button><select id="langSelect" aria-hidden="true" tabindex="-1" hidden><option value="ku">کوردی (بادینی)</option><option value="ar">العربية</option><option value="en">English</option></select></div><button type="button" id="themeToggleButton" class="theme-toggle-button" onclick="toggleTheme()" aria-pressed="false" aria-label="الوضع الداكن" title="الوضع الداكن / تاریک">🌙</button><button type="button" id="installAppButton" class="install-app-button">تثبيت التطبيق</button><span class="preview-format-badge"><span class="preview-live-dot"></span><span id="previewFormatText">ورقة امتحان A4</span></span></div>
 
 <div class="app-container">
 
     <div class="editor-sidebar">
         <div class="app-brand"><div class="app-brand-mark">✦</div><div class="app-brand-copy"><strong id="appBrandTitle">منشئ الامتحانات</strong><small id="appBrandSubtitle">إنشاء · تنسيق · طباعة</small></div><span class="app-brand-badge">A4</span></div>
         <div class="system-creator-credit" dir="rtl" style="margin:-7px 0 14px;padding:0 4px;color:#78849a;font-size:10px;line-height:1.5;text-align:right"><span id="creatorCreditLabel">تصميم النظام:</span> <strong style="color:#42516b;font-weight:700">أحمد عيسى محمد</strong></div>
-        <div class="lang-switch-container language-toggle-wrap">
-            <label id="lblLangSelect" style="color: var(--accent); font-size: 13px;">🌐 لغة النظام / زمانێ سیستەمی:</label>
-            <button type="button" id="langToggleButton" class="lang-toggle-button" onclick="toggleLanguage()" aria-label="تبديل لغة الواجهة"><span class="lang-toggle-globe">🌐</span><span id="langToggleLabel">کوردی (بادینی)</span><span class="lang-toggle-arrows">⇄</span></button>
-            <select id="langSelect" aria-hidden="true" tabindex="-1" hidden><option value="ku">کوردی (بادینی)</option><option value="ar">العربية</option><option value="en">English</option></select>
-        </div>
+        <dialog class="user-guide-dialog" id="userGuideDialog" aria-labelledby="lblUserGuideDialog">
+            <div class="user-guide-dialog-header">
+                <h2><span aria-hidden="true">📘</span> <span id="lblUserGuideDialog">دليل استخدام النظام</span></h2>
+                <button type="button" class="user-guide-close" id="btnCloseUserGuide" onclick="document.getElementById('userGuideDialog').close()" aria-label="إغلاق دليل الاستخدام">×</button>
+            </div>
+            <div class="user-guide-dialog-body">
+            <div class="user-guide-content" data-user-guide-lang="ku" hidden>
+                <h3>🧭 پوختەیا گشتی</h3>
+                <p>سیستەمێ پەڕەیا ئەزموونەکا A4 ئامادەی چاپکرنێ دروست دکەت. <strong>پێشبینییا ڕاستەوخۆ</strong> دگەل هەر گوهۆڕینەکێ نوودەبیت، دا پەڕەیێ وەک دێ چاپ بیت ببینی.</p>
+                <p><strong>ڕێزا پێشنیارکری:</strong> زانیاریێن سه‌رپه‌ڕی ← ڕێکخستن ← پرسیار ← پشکنین ← چاپکرن یان هەناردەکرن ← پاشەکەفتن.</p>
 
+                <h3>1️⃣ زانیاریێن سه‌رپه‌ڕی</h3>
+                <p>بەشێ <strong>زانیاریێن سه‌رپه‌ڕی</strong> ڤەکە و ئەڤ خانەیان تژی بکە:</p>
+                <ul>
+                    <li>ناڤێ قوتابخانێ.</li>
+                    <li>ڕێڤەبەرییا پەروەردا قەزایێ: ژ لیستێ هەلبژێرە، یان <strong>«ڕێڤەبەرییەکا دی (بنڤیسە)»</strong> هەلبژێرە.</li>
+                    <li>بابەت و مامۆستایێ بابەتی؛ ئەندامێ لیژنەیا بابەتی (ئارەزوومەندانە).</li>
+                    <li>پۆل و هۆبە، ساڵا خواندنێ، و کورس.</li>
+                    <li>جۆرێ ئەزموونێ، دەما دیارکری، ڕێکەفت، و مۆدێلا ئەزموونێ (A، B یان C).</li>
+                </ul>
+                <p>نیشاندان یان ڤەشارتنا مۆدێلا ئەزموونێ، ژمارا ئەزموونێ و خشتەیا نمرەیان ل خوارا پەڕەیێ هەلبژێرە. دەتوانی بەشێ ب دوگمەیا <strong>ڤەشارتن</strong> بگری.</p>
+
+                <h3>2️⃣ ڕێکخستنا پەڕا ئەزموونێ</h3>
+                <p>ژ بەشێ <strong>ڕێکخستنێ</strong> شێوازێ گشتی یێ پەڕەیێ بگوهۆڕە:</p>
+                <ul>
+                    <li><strong>جۆرێ خەتێ:</strong> Tahoma، Arial، Traditional Arabic، Simplified Arabic یان Noto Naskh Arabic.</li>
+                    <li><strong>قەبارەیا خەتێ:</strong> ژ 10 تا 24 هەلبژێرە، و ڕەنگێ خەتێ دیاری بکە.</li>
+                    <li>دوورییا هێڵان و پرسیاران، و حەشوەیا ناڤنیشانا پرسیارێ ڕێک بخە.</li>
+                    <li>ئەستووریا سنوورێن پەڕەیێ و هێلێن بەرسڤێ ڕێک بخە.</li>
+                    <li>حەشوەیا ناڤخۆیی یا پەڕەیێ هەلبژێرە: 6، 8، 10 یان 12 مم.</li>
+                    <li>شێوازێ ژماران هەلبژێرە: ئینگلیزی (123) یان عەرەبی / هیندی (١٢٣).</li>
+                </ul>
+                <p>ئەگەر پەڕە پڕ بوو، قەبارەیا خەتێ کێم بکە یان دوورییان کێم بکە دا پرسیار تێدا بن.</p>
+
+                <h3>3️⃣ زێدەکرنا پرسیارا نوی</h3>
+                <ol>
+                    <li>ل سەر <strong>«＋ زێدەکرنا پرسیارا نوی»</strong> بکە و جۆرێ پرسیارێ هەلبژێرە؛ ناڤونیشانەکێ ئامادە دهێتە دانان و دەتوانی دەستکاری بکەی.</li>
+                    <li>ناڤونیشان، نمرە و دەقێ پرسیارێ بنڤیسە. بۆ دەستپێکرنا پاراگرافەکا نوی Enter بکە.</li>
+                    <li>ئاستێ دژواریێ دیاری بکە و یەکە یان وانە (ئارەزوومەندانە) بنڤیسە.</li>
+                    <li>بۆ بەشێن ژێرەکی، دوگمەیا <strong>«زێدەکرنا پرسیارا لقی»</strong> بکاربینە.</li>
+                    <li>بۆ هەڵبژارتنا فرە، هەڵبژاردنان زێدە بکە و بەرسڤا ڕاست دیاری بکە.</li>
+                    <li>بەرسڤا منموونەیی بنڤیسە دا ل چاپا مامۆستایی دیار بیت.</li>
+                    <li>ل سەر <strong>«زێدەکرنا پرسیارێ بۆ پەڕەی»</strong> بکە و پاشی د پێشبینیێ دا پرسیارێ بپشکنە.</li>
+                </ol>
+                <p>کۆمێ نمرەیێن پرسیاران ل سەر لیستێ دیار دبیت؛ دڵنیابە کو دگەل نمرەیا گشتی یا ئەزموونێ یەکسانە.</p>
+                <table>
+                    <thead><tr><th>جۆرێ پرسیارێ</th><th>شێوازێ بکارئینانێ</th></tr></thead>
+                    <tbody>
+                        <tr><td>هەڵبژارتنا فرە</td><td>هەڵبژاردنان زێدە بکە و یێ ڕاست دیاری بکە.</td></tr>
+                        <tr><td>ڕاست یان خەلەت</td><td>ڕستەیان بنڤیسە و وەک ڕاست یان خەلەت بەرسڤ بدە.</td></tr>
+                        <tr><td>بۆشاییان پڕبکە</td><td>ڕستەیێ بنڤیسە و جهێ بۆشاییان دیار بکە.</td></tr>
+                        <tr><td>دوو لیستان گرێ بدە</td><td>جۆتێن پەیوەندیدار زێدە بکە؛ دوو لیست د پەڕەیێ دا جودا دەرکەڤن.</td></tr>
+                        <tr><td>پرسیارا درێژ</td><td>ژمارا هێلێن بەرسڤێ دیاری بکە.</td></tr>
+                        <tr><td>پێناسە / هۆکار</td><td>ئەو تشتێ دێ پێناسە بکەی یان هۆکارێ وێ ڕوون بکەی.</td></tr>
+                        <tr><td>پرسیارا وێنەیی</td><td>وێنەیەکا پرسیارێ بار بکە و ئەگەر پێدڤی بوو نیشانان ل سەر بکێشە.</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>4️⃣ ئامرازێن دەستکاریێ</h3>
+                <p><strong>هێما و فورمول:</strong> دوگمەیێن بیرکاریێ بکاربینە، وەک x²، ℝ، نیشانێن مەزنتر/بچووکتر یان یەکسان، و تەکامل؛ هەروەسا ئامرازێن کەسر و ڕەگێ کارلێکدار هەنە. بۆ فورمولەکا بیرکاریێ، پێکهاتەیەک هەلبژێرە، شوێنێن وێ تژی بکە و <strong>«زێدەکرن بۆ پرسیارێ»</strong> بکە. دەتوانی <code>^</code> بۆ هێز، <code>_</code> بۆ ژێرنووس، <code>\sqrt</code> بۆ ڕەگ و <code>\frac</code> بۆ کەسر بکاربینی. ئامرازێن فیزیا، کیمیا و زیندەزانی ژی هەنە.</p>
+                <p><strong>وێنە و شێوە:</strong> وێنەیەک ژ ئامێرێ بار بکە، نیشان ل سەر بکێشە، یان ب دەستی شێوەیەکێ بکێشە. شێوەیێن ئامادە وەک سێگۆشە، بازنە و ئاستێ کۆئۆردیناتان هەنە. ئاڕاستا (ڕاست، ناڤەڕاست، چەپ) و قەبارە (بچووک، ناڤنجی، مەزن) یا وێنەیێ بگوهۆڕە.</p>
+                <p><strong>دەستکارییا خێرا:</strong> د پێشبینییا پەڕەیێ دا ل سەر پرسیارێ بکە دا ڕاستەوخۆ دەستکاری بکەی.</p>
+
+                <h3>5️⃣ چاپکرن</h3>
+                <p>ژ بەشێ <strong>چاپکرنێ</strong> چاپا پرسیاران بۆ قوتابی، چاپا بەرسڤا منموونەیی بۆ مامۆستا، یان پەڕا بەرسڤان A4 هەلبژێرە. بەرێ پێش چاپکرنێ پێشبینیێ بپشکنە و د ڕێکخستنێن چاپکەرێ دا قەبارەیا پەڕەیێ A4 و پێوانە 100٪ هەلبژێرە.</p>
+
+                <h3>6️⃣ هەناردە و ئینانا فایلان</h3>
+                <p>پەڕا ئەزموونێ بۆ Word یان Excel هەناردە بکە، پرسیاران بۆ فلاش ميمۆری هەناردە بکە، یان پرسیاران ژ Word یان پەڕگەیا JSON ئینە.</p>
+
+                <h3>7️⃣ پاشەکەفتنا ئەزموونان</h3>
+                <p>ل سەر <strong>«💾 پاشەکەفتکرنا ئەزموونێ د بنکەیێ داتايان دا»</strong> بکە دا کارێ خۆ بپارێزی. ژ لیستێ ئەزموونەکێ هەلبژێرە و <strong>ئینان</strong> بکە بۆ ڤەکرنا وێ، یان <strong>ژێبرن</strong> بکە بۆ لابردنا وێ. ئەڤ کارە ب گرێدانا بنکەیا داتایان پێدڤی یە.</p>
+
+                <h3>8️⃣ ئامرازێن زێدە</h3>
+                <ul>
+                    <li>زمانێ ڕووکاریێ دناڤبەرا کوردی (بادینی)، عەرەبی و ئینگلیزی دا بگوهۆڕە.</li>
+                    <li>شەڤەنگ بکاربینە بۆ ئارامییا چاڤان.</li>
+                    <li>ئەپێ ل سەر ئامێرێ خۆ دامەزرینە دا وەک بەرنامەیەکا سەربەخۆ بکاربهێنی.</li>
+                    <li>دوگمەیا <strong>«پاککرن و دەستپێکرنا ئەزموونەکا نوی»</strong> پرسیارێن نوکە ژ پەڕەیێ ژێ دکەت؛ بەرێ بکارئینانا وێ کوپیەکێ بپارێزە.</li>
+                </ul>
+
+                <h3>✅ ئامۆژگاری بۆ ئەنجامەکا باشتر</h3>
+                <ol>
+                    <li>ب زانیاریێن سه‌رپه‌ڕی دەستپێ بکە، پاشی ڕێکخستن و پرسیاران.</li>
+                    <li>نمرەیا هەر پرسیارەکێ دیاری بکە و کۆمێ گشتی بپشکنە.</li>
+                    <li>بەرسڤا منموونەیی زێدە بکە دا سەرڕاستکرن ئاسانتر بیت.</li>
+                    <li>پرسیارێن ئاسان، ناڤنجی و دژوار تێکەڵ بکە.</li>
+                    <li>پشتی هەر بەشەکا گرنگ ئەزموونێ بپارێزە.</li>
+                    <li>بەرێ چاپا دوماهیێ چاپەکا تاقیکرنێ بکە.</li>
+                </ol>
+            </div>
+            <div class="user-guide-content" data-user-guide-lang="ar">
+                <h3>🧭 نظرة عامة</h3>
+                <p>ينشئ النظام ورقة امتحان A4 جاهزة للطباعة. تتحدّث <strong>المعاينة المباشرة</strong> مع كل تعديل، فترى الورقة كما ستُطبع.</p>
+                <p><strong>ترتيب العمل المقترح:</strong> الترويسة ← التنسيق ← الأسئلة ← المراجعة ← الطباعة أو التصدير ← الحفظ.</p>
+
+                <h3>1️⃣ بيانات الترويسة</h3>
+                <p>افتح قسم <strong>بيانات الترويسة</strong> واملأ الحقول التالية:</p>
+                <ul>
+                    <li>اسم المدرسة.</li>
+                    <li>مديرية تربية القضاء: اخترها من القائمة، أو اختر <strong>«مديرية أخرى (اكتبها)»</strong>.</li>
+                    <li>المادة ومدرس المادة، وعضو لجنة المادة (اختياري).</li>
+                    <li>الصف والفرع، والسنة الدراسية، والكورس.</li>
+                    <li>نوع الامتحان، والزمن المحدد، وتاريخ الامتحان، ونموذج الامتحان (A أو B أو C).</li>
+                </ul>
+                <p>فعّل أو ألغِ خيارات إظهار نموذج الامتحان والرقم الامتحاني وجدول الدرجات أسفل الورقة. ويمكنك طيّ القسم بزر <strong>إخفاء</strong>.</p>
+
+                <h3>2️⃣ تنسيق ورقة الامتحان</h3>
+                <p>من قسم <strong>تنسيق ورقة الامتحان</strong> تحكّم بالشكل العام:</p>
+                <ul>
+                    <li><strong>نوع الخط:</strong> Tahoma، Arial، Traditional Arabic، Simplified Arabic، أو Noto Naskh Arabic.</li>
+                    <li><strong>حجم الخط:</strong> اختر حجمًا من 10 إلى 24، ثم اختر لون الخط.</li>
+                    <li>اضبط تباعد الأسطر والأسئلة، وحشوة عنوان السؤال.</li>
+                    <li>اضبط سمك حدود الورقة وأسطر الإجابة.</li>
+                    <li>اختر الحشوة الداخلية للورقة: 6 أو 8 أو 10 أو 12 مم.</li>
+                    <li>اختر نمط الأرقام: إنجليزية (123) أو هندية/عربية (١٢٣).</li>
+                </ul>
+                <p>إذا ازدحمت الورقة، صغّر الخط أو قلّل التباعد حتى تتسع الأسئلة.</p>
+
+                <h3>3️⃣ إضافة سؤال جديد</h3>
+                <ol>
+                    <li>اضغط <strong>«＋ إضافة سؤال جديد»</strong> ثم اختر نوع السؤال؛ يظهر عنوان جاهز يمكنك تعديله.</li>
+                    <li>اكتب عنوان السؤال ودرجته ونصه. اضغط Enter لبدء فقرة جديدة.</li>
+                    <li>حدّد مستوى الصعوبة، واكتب الوحدة أو الدرس اختياريًا.</li>
+                    <li>للفقرات الفرعية استخدم <strong>«إضافة فقرة فرعية»</strong>.</li>
+                    <li>في الاختيار المتعدد أضف الخيارات وحدّد الإجابة الصحيحة.</li>
+                    <li>اكتب الإجابة النموذجية لتظهر في نسخة المعلم.</li>
+                    <li>اضغط <strong>«✓ حفظ السؤال»</strong> ثم راجعه في المعاينة.</li>
+                </ol>
+                <p>يظهر مجموع درجات الأسئلة أعلى القائمة؛ تأكد من مطابقته للدرجة الكلية.</p>
+                <table>
+                    <thead><tr><th>نوع السؤال</th><th>طريقة الاستخدام</th></tr></thead>
+                    <tbody>
+                        <tr><td>اختيار متعدد</td><td>أضف الخيارات وحدّد الصحيح منها.</td></tr>
+                        <tr><td>صح أو خطأ</td><td>اكتب العبارات وأجب عنها بصح أو خطأ.</td></tr>
+                        <tr><td>أكمل الفراغ</td><td>اكتب الجملة واترك مواضع الفراغ واضحة.</td></tr>
+                        <tr><td>صل القائمتين</td><td>أضف أزواج العناصر؛ تظهر القائمتان منفصلتين.</td></tr>
+                        <tr><td>سؤال مقالي</td><td>حدّد عدد أسطر الإجابة.</td></tr>
+                        <tr><td>تعاريف / تعاليل</td><td>اكتب المطلوب تعريفه أو تعليله.</td></tr>
+                        <tr><td>سؤال بصورة</td><td>ارفع صورة السؤال وأشّر عليها عند الحاجة.</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>4️⃣ أدوات التحرير</h3>
+                <p><strong>الرموز والصيغ:</strong> استخدم أزرار الرياضيات مثل x² وℝ وعلامات أكبر/أصغر يساوي والتكامل، أو أداة الكسر والجذر التفاعلية. لكتابة صيغة رياضية، اختر قالبًا واكتب في مواضعه ثم اضغط <strong>إدراج في السؤال</strong>. تدعم الكتابة المختصرة <code>^</code> للأس و<code>_</code> للرمز السفلي و<code>\sqrt</code> للجذر و<code>\frac</code> للكسر. تتوفر أيضًا أدوات الفيزياء والكيمياء والأحياء.</p>
+                <p><strong>الصور والأشكال:</strong> ارفع صورة من الجهاز، أو أشّر عليها، أو ارسم شكلًا بيدك. تتوفر أشكال جاهزة مثل المثلث والدائرة ومستوى الإحداثيات، ويمكن تغيير محاذاة الصورة وحجمها (صغير أو متوسط أو كبير).</p>
+                <p><strong>التعديل السريع:</strong> انقر على السؤال في معاينة الورقة لتعديله مباشرة.</p>
+
+                <h3>5️⃣ الطباعة</h3>
+                <p>من قسم <strong>الطباعة</strong> اختر نسخة الأسئلة للطالب، أو الإجابة النموذجية للمعلم، أو ورقة الإجابة A4. راجع المعاينة قبل الطباعة واضبط حجم الورق على A4 والمقياس على 100٪ في إعدادات الطابعة.</p>
+
+                <h3>6️⃣ التصدير والاستيراد</h3>
+                <p>يمكنك تصدير ورقة الامتحان إلى Word أو Excel، وتصدير الأسئلة إلى الفلاش ميموري، أو استيرادها من Word أو ملف JSON.</p>
+
+                <h3>7️⃣ حفظ الامتحانات</h3>
+                <p>اضغط <strong>«💾 حفظ الامتحان في قاعدة البيانات»</strong> لحفظ عملك، ثم اختر امتحانًا من القائمة واضغط <strong>تحميل</strong> لفتحه أو <strong>حذف</strong> لإزالته. يتطلب ذلك اتصال قاعدة البيانات.</p>
+
+                <h3>8️⃣ أدوات إضافية</h3>
+                <ul>
+                    <li>بدّل لغة الواجهة بين العربية والكردية (البادينية) والإنجليزية.</li>
+                    <li>فعّل الوضع الليلي لراحة العين.</li>
+                    <li>ثبّت التطبيق على جهازك لاستخدامه كتطبيق مستقل.</li>
+                    <li>يمسح خيار <strong>«مسح وبدء امتحان جديد»</strong> الأسئلة الحالية؛ احفظ نسخة قبل استخدامه.</li>
+                </ul>
+
+                <h3>✅ نصائح لنتيجة أفضل</h3>
+                <ol>
+                    <li>ابدأ بالترويسة ثم التنسيق ثم الأسئلة.</li>
+                    <li>حدّد درجة كل سؤال وراجع المجموع النهائي.</li>
+                    <li>أضف الإجابة النموذجية لتسهيل التصحيح.</li>
+                    <li>نوّع الأسئلة بين مستويات الصعوبة.</li>
+                    <li>احفظ الامتحان بعد كل جزء مهم.</li>
+                    <li>اطبع نسخة تجريبية قبل الطباعة النهائية.</li>
+                </ol>
+            </div>
+            <div class="user-guide-content" data-user-guide-lang="en" hidden>
+                <h3>🧭 Overview</h3>
+                <p>The system creates an A4 exam sheet ready to print. The <strong>live preview</strong> updates with every change, so you can see how the paper will look when printed.</p>
+                <p><strong>Suggested workflow:</strong> Header information → formatting → questions → review → print or export → save.</p>
+
+                <h3>1️⃣ Header information</h3>
+                <p>Open <strong>Header information</strong> and fill in these fields:</p>
+                <ul>
+                    <li>School name.</li>
+                    <li>District education directorate: choose one from the list, or select <strong>“Other Directorate (enter name)”</strong>.</li>
+                    <li>Subject and subject teacher; subject committee member (optional).</li>
+                    <li>Grade and section, academic year, and course.</li>
+                    <li>Exam type, time allowed, exam date, and exam model (A, B, or C).</li>
+                </ul>
+                <p>Choose whether to show the exam model, exam number, and grading table at the bottom of the paper. Collapse the section with <strong>Hide</strong>.</p>
+
+                <h3>2️⃣ Exam paper formatting</h3>
+                <p>Use <strong>Exam paper formatting</strong> to control the overall appearance:</p>
+                <ul>
+                    <li><strong>Font:</strong> Tahoma, Arial, Traditional Arabic, Simplified Arabic, or Noto Naskh Arabic.</li>
+                    <li><strong>Font size:</strong> choose a size from 10 to 24, then choose the font color.</li>
+                    <li>Adjust line spacing, question spacing, and question-title padding.</li>
+                    <li>Adjust the paper border and answer-line thickness.</li>
+                    <li>Choose the inner paper padding: 6, 8, 10, or 12 mm.</li>
+                    <li>Choose Western (123) or Arabic-Indic (١٢٣) digits.</li>
+                </ul>
+                <p>If the paper feels crowded, reduce the font size or spacing so the questions fit.</p>
+
+                <h3>3️⃣ Adding a question</h3>
+                <ol>
+                    <li>Select <strong>“＋ Add new question”</strong> and choose a type. A suggested title appears and can be edited.</li>
+                    <li>Enter the question title, points, and text. Press Enter to start a new paragraph.</li>
+                    <li>Set the difficulty and optionally enter a unit or lesson.</li>
+                    <li>Use <strong>“Add subquestion”</strong> to add question parts.</li>
+                    <li>For multiple choice, add the options and mark the correct answer.</li>
+                    <li>Enter a model answer to include it in the teacher copy.</li>
+                    <li>Select <strong>“Add question to paper”</strong>, then review it in the preview.</li>
+                </ol>
+                <p>The total question score appears above the list; make sure it matches the exam’s total score.</p>
+                <table>
+                    <thead><tr><th>Question type</th><th>How to use it</th></tr></thead>
+                    <tbody>
+                        <tr><td>Multiple choice</td><td>Add the options and mark the correct one.</td></tr>
+                        <tr><td>True or false</td><td>Enter statements and answer true or false.</td></tr>
+                        <tr><td>Fill in the blank</td><td>Write the sentence and leave the blank spaces clear.</td></tr>
+                        <tr><td>Match the lists</td><td>Add pairs; the two lists appear separately on the paper.</td></tr>
+                        <tr><td>Essay question</td><td>Choose the number of answer lines.</td></tr>
+                        <tr><td>Definitions / explanations</td><td>Enter what students should define or explain.</td></tr>
+                        <tr><td>Image question</td><td>Upload an image for the question and annotate it if needed.</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>4️⃣ Editing tools</h3>
+                <p><strong>Symbols and formulas:</strong> Use the math buttons for items such as x², ℝ, comparison symbols, and integrals, plus the interactive fraction and square-root tools. To enter a formula, choose a template, fill in its placeholders, and select <strong>Insert into question</strong>. Shortcuts include <code>^</code> for superscripts, <code>_</code> for subscripts, <code>\sqrt</code> for square roots, and <code>\frac</code> for fractions. Physics, chemistry, and biology tools are also available.</p>
+                <p><strong>Images and shapes:</strong> Upload an image, annotate it, or draw a simple shape by hand. Ready-made shapes include a triangle, circle, and coordinate plane. Change image alignment (right, center, or left) and size (small, medium, or large).</p>
+                <p><strong>Quick editing:</strong> Click a question in the paper preview to edit it directly.</p>
+
+                <h3>5️⃣ Printing</h3>
+                <p>In <strong>Print</strong>, choose the student question paper, the teacher model-answer copy, or the A4 answer sheet. Review the preview first, then set the printer paper size to A4 and scale to 100%.</p>
+
+                <h3>6️⃣ Exporting and importing</h3>
+                <p>Export the exam sheet to Word or Excel, export questions to a USB drive, or import questions from Word or a JSON file.</p>
+
+                <h3>7️⃣ Saving exams</h3>
+                <p>Select <strong>“💾 Save exam to database”</strong> to save your work. Choose an exam from the list and select <strong>Load</strong> to open it or <strong>Delete</strong> to remove it. A database connection is required.</p>
+
+                <h3>8️⃣ Additional tools</h3>
+                <ul>
+                    <li>Switch the interface between Badini Kurdish, Arabic, and English.</li>
+                    <li>Turn on dark mode for a more comfortable view.</li>
+                    <li>Install the app on your device to use it as a standalone app.</li>
+                    <li><strong>“Clear and start a new exam”</strong> removes the current questions; save a copy before using it.</li>
+                </ul>
+
+                <h3>✅ Tips for better results</h3>
+                <ol>
+                    <li>Start with the header, then formatting, then questions.</li>
+                    <li>Set each question’s score and check the total.</li>
+                    <li>Add model answers to make grading easier.</li>
+                    <li>Mix easy, medium, and difficult questions.</li>
+                    <li>Save the exam after each important section.</li>
+                    <li>Print a test copy before the final print run.</li>
+                </ol>
+            </div>
+            </div>
+        </dialog>
         <div class="form-group" style="background: #f1f5f9; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
             <label id="lblDbHeader" style="color: var(--primary);">☁️ الاتصال بقاعدة البيانات (FastAPI):</label>
             <button type="button" class="btn" id="btnSaveDb" style="background: #16a34a; margin-top: 6px;" onclick="saveExamToBackend()">💾 حفظ الامتحان في قاعدة البيانات</button>
@@ -7035,9 +7499,11 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
 
     const i18n = {
         ku: {
-            langSelect: "🌐 زمانێ سیستەمی:",
+            langSelect: "زمانێ سیستەمی:",
             documentTitle: "ستودیو ئەزموونان - A4",
             creatorLabel: "دیزاینا سیستەمێ:",
+            userGuideTitle: "ڕێنماییا بکارئینانا سیستەمێ",
+            userGuideClose: "گرتنا ڕێنماییێ",
             installApp: "دامەزراندنا ئەپێ",
             teacherPlaceholder: "ناڤێ مامۆستایی بنڤیسە",
             questionUnitPlaceholder: "نموونە: خانەیا روەکی",
@@ -7157,9 +7623,11 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             ansBoxAttr: "جهێ بەرسڤێ:"
         },
         ar: {
-            langSelect: "🌐 لغة النظام:",
+            langSelect: "لغة النظام:",
             documentTitle: "استوديو الامتحانات - A4",
             creatorLabel: "تصميم النظام:",
+            userGuideTitle: "دليل استخدام النظام",
+            userGuideClose: "إغلاق الدليل",
             installApp: "تثبيت التطبيق",
             teacherPlaceholder: "اكتب اسم المدرس",
             questionUnitPlaceholder: "مثال: الخلية النباتية",
@@ -7279,7 +7747,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
             ansBoxAttr: "مكان الإجابة:"
         },
         en: {
-            langSelect:"🌐 System language:", documentTitle:"Exam Studio - A4", creatorLabel:"System design:", installApp:"Install app", teacherPlaceholder:"Enter teacher name", questionUnitPlaceholder:"Example: Plant cell", closeQuestion:"Close add question window", questionTypeAria:"Question type",
+            langSelect:"System language:", documentTitle:"Exam Studio - A4", creatorLabel:"System design:", userGuideTitle:"How to use the system", userGuideClose:"Close guide", installApp:"Install app", teacherPlaceholder:"Enter teacher name", questionUnitPlaceholder:"Example: Plant cell", closeQuestion:"Close add question window", questionTypeAria:"Question type",
             dbHeader:"☁️ Database connection (FastAPI):", btnSaveDb:"💾 Save exam to database", selectDefault:"-- Select a saved exam --", btnLoadDb:"Load", btnDeleteDb:"Delete",
             headerSection:"Header information", paperFormatSection:"Paper formatting", headerHide:"Hide", headerShow:"Show", school:"School name:", subject:"Subject:", teacherName:"Subject teacher:", teacherSignature:"Signature:", committeeName:"Subject committee member (optional):", committeeSignature:"Signature:", committeePlaceholder:"Enter each member on a new line", grade:"Grade and section:", academicYear:"Academic year:", time:"Time allowed:", model:"Exam model:", showModel:"Show exam model on paper", examFont:"Exam paper font:", examFontSize:"Font size:", examFontColor:"Font color:", fontTahoma:"Tahoma", fontArial:"Arial", fontTraditional:"Traditional Arabic", fontSimplified:"Simplified Arabic", fontNoto:"Noto Naskh Arabic", digitStyle:"Number style:", digitsWestern:"Western (123)", digitsArabicIndic:"Arabic-Indic (١٢٣)", modelA:"Model (A)", modelB:"Model (B)", modelC:"Model (C)",
             displayHeading:"Display", totalScoreText:"Total question score:", scoreUnit:"points", addQuestionSection:"Add a new question", questionModalSubtitle:"Choose a question type, then enter the question and correct answer.", questionCancel:"Cancel", openQuestion:"＋ Add new question", difficulty:"Difficulty", unit:"Unit or lesson (optional)", easyLevel:"Easy", mediumLevel:"Medium (application and understanding)", hardLevel:"Hard", presetMatching:"Match the two lists", presetType:"Choose question type (title template):", presetDefault:"-- Choose a type to insert a title --", presetMcq:"Multiple choice (choose the correct answer)", presetTf:"True or false", presetFill:"Fill in the blanks", presetEssay:"Answer the following questions", presetDefine:"Definitions / explanations", presetImage:"Image question", imageQuestionTitle:"Question image", imageQuestionHelp:"Upload an image for this question. You can annotate it and set its position and size.", imageQuestionUpload:"📷 Choose an image for the question", imageQuestionFormat:"✏️ Annotate or format image",
@@ -7345,6 +7813,9 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
     function toggleLanguage() {
         switchLanguage(currentLang === 'ku' ? 'ar' : currentLang === 'ar' ? 'en' : 'ku');
     }
+    function openUserGuide() {
+        document.getElementById('userGuideDialog').showModal();
+    }
     function switchLanguage(lang) {
         // Keep the document language in sync while allowing file:// pages without storage.
         lang = Object.prototype.hasOwnProperty.call(i18n, lang) ? lang : 'ar';
@@ -7360,6 +7831,14 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         document.getElementById('lblLangSelect').innerText = t.langSelect;
         document.title = t.documentTitle;
         document.getElementById('creatorCreditLabel').innerText = t.creatorLabel;
+        document.getElementById('lblUserGuide').innerText = t.userGuideTitle;
+        document.getElementById('btnOpenUserGuide').title = t.userGuideTitle;
+        document.getElementById('btnOpenUserGuide').setAttribute('aria-label', t.userGuideTitle);
+        document.getElementById('lblUserGuideDialog').innerText = t.userGuideTitle;
+        document.getElementById('btnCloseUserGuide').setAttribute('aria-label', t.userGuideClose);
+        document.querySelectorAll('[data-user-guide-lang]').forEach(section => {
+            section.hidden = section.dataset.userGuideLang !== lang;
+        });
         document.getElementById('installAppButton').innerText = t.installApp;
         document.getElementById('teacherInput').placeholder = t.teacherPlaceholder;
         document.getElementById('questionUnit').placeholder = t.questionUnitPlaceholder;
@@ -7371,7 +7850,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         document.getElementById('appBrandTitle').innerText = lang === 'ku' ? 'ستودیو ئەزموونان' : lang === 'en' ? 'Exam Studio' : 'استوديو الامتحانات';
         document.getElementById('appBrandSubtitle').innerText = lang === 'ku' ? 'ئامادەکرن · ڕێکخستن · چاپکرن' : lang === 'en' ? 'Create · Format · Print' : 'إنشاء · تنسيق · طباعة';
         document.getElementById('previewToolbarTitle').innerText = lang === 'ku' ? 'پێشبینییا ڕاستەوخۆ' : lang === 'en' ? 'Live preview' : 'معاينة مباشرة';
-        document.getElementById('previewToolbarSubtitle').innerText = lang === 'ku' ? 'پەڕە هەر دەم دگەل دەستکارییان نوو دبیتەوە' : lang === 'en' ? 'The paper updates as you edit' : 'تتحدث الورقة تلقائياً مع كل تعديل';
+        document.getElementById('previewToolbarSubtitle').innerText = lang === 'ku' ? 'ئەزموونا خۆ دروست بکە، ڕێک بخە و د چەند خولەکێدا چاپ بکە' : lang === 'en' ? 'Create your exam, format it, and print it in minutes' : 'أنشئ امتحانك، نسّقه، واطبعه في دقائق';
         document.getElementById('previewFormatText').innerText = lang === 'ku' ? 'پەڕا ئەزموونێ A4' : lang === 'en' ? 'A4 exam paper' : 'ورقة امتحان A4';
         document.getElementById('lblDbHeader').innerText = t.dbHeader;
         document.getElementById('btnSaveDb').innerText = t.btnSaveDb;
