@@ -1014,7 +1014,7 @@
             }
             @page {
                 size: A4 portrait;
-                margin: 10mm;
+                margin: 5mm;
             }
         }
         /* واجهة حديثة مع الإبقاء على صفحة الامتحان بحجم A4 */
@@ -3367,7 +3367,7 @@
         }
         @page {
             size: A4 portrait;
-            margin: 10mm;
+            margin: 5mm;
         }
         @media print {
             html,
@@ -3411,10 +3411,10 @@
             }
         }
         @media print {
-            @page { size: A4 portrait; margin: 10mm; }
+            @page { size: A4 portrait; margin: 5mm; }
             .preview-area { padding: 0 !important; }
-            .paper-page { width: 190mm !important; max-width: 190mm !important; margin: 0 auto !important; padding: 8mm !important; box-sizing: border-box !important; }
-            .daily-exam-print-copy .paper-page { width: 190mm !important; max-width: 190mm !important; margin: 0 auto !important; padding: 6mm 8mm !important; }
+            .paper-page { width: 200mm !important; max-width: 200mm !important; margin: 0 auto !important; padding: 8mm !important; box-sizing: border-box !important; }
+            .daily-exam-print-copy .paper-page { width: 200mm !important; max-width: 200mm !important; margin: 0 auto !important; padding: 6mm 8mm !important; }
         }
         /* التصميم الموحد النهائي لواجهة النظام */
         :root {
@@ -4663,7 +4663,7 @@
             }
         }
         @media print {
-            @page { size: A4 portrait; margin: 10mm; }
+            @page { size: A4 portrait; margin: 5mm; }
             .preview-area { padding: 0 !important; }
             .paper-page { margin: 0 !important; padding: 2mm !important; }
             .daily-exam-print-copy .paper-page { margin: 0 !important; padding: 1mm 2mm !important; }
@@ -6373,11 +6373,11 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
   #questionImageResizeOverlay { display: none !important; }
 }
 @media print {
-  @page { size: A4 portrait; margin: 10mm; }
+  @page { size: A4 portrait; margin: 5mm; }
   html, body {
-    width: 190mm !important;
-    min-width: 190mm !important;
-    max-width: 190mm !important;
+    width: 200mm !important;
+    min-width: 200mm !important;
+    max-width: 200mm !important;
     height: auto !important;
     min-height: 0 !important;
     margin: 0 !important;
@@ -6395,9 +6395,9 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
     left: auto !important;
     right: auto !important;
     top: auto !important;
-    width: 190mm !important;
-    min-width: 190mm !important;
-    max-width: 190mm !important;
+    width: 200mm !important;
+    min-width: 200mm !important;
+    max-width: 200mm !important;
     height: auto !important;
     min-height: 287mm !important;
     margin: 0 auto !important;
@@ -10148,7 +10148,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         paper.querySelectorAll('.answer-body').forEach(element => element.style.setProperty('display', answerMode ? 'block' : 'none', 'important'));
         const printLayout = document.createElement('style');
         printLayout.textContent = `
-            #pdf-export-paper{box-sizing:border-box!important;display:block!important;position:relative!important;width:210mm!important;min-width:210mm!important;max-width:210mm!important;min-height:0!important;height:auto!important;margin:0!important;padding:2mm!important;overflow:visible!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;zoom:1!important;background:#fff!important}
+            #pdf-export-paper{box-sizing:border-box!important;display:block!important;position:relative!important;width:200mm!important;min-width:200mm!important;max-width:200mm!important;min-height:0!important;height:auto!important;margin:0!important;padding:2mm!important;overflow:visible!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;zoom:1!important;background:#fff!important}
             #pdf-export-paper>.student-fold-flap,#pdf-export-paper>div:not(.student-fold-flap){display:block!important;width:100%!important;max-width:none!important;box-sizing:border-box!important}
             #pdf-export-paper>.student-fold-flap{display:flex!important}
             #pdf-export-paper .header-table,#pdf-export-paper .meta-section,#pdf-export-paper .student-table,#pdf-export-paper .questions-container,#pdf-export-paper .question-item,#pdf-export-paper .end-grade-table{width:100%!important;max-width:100%!important;box-sizing:border-box!important}
@@ -10176,9 +10176,9 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         `;
         paper.prepend(printLayout);
         paper.style.setProperty('display', 'block', 'important');
-        paper.style.setProperty('width', '210mm', 'important');
-        paper.style.setProperty('min-width', '210mm', 'important');
-        paper.style.setProperty('max-width', '210mm', 'important');
+        paper.style.setProperty('width', '200mm', 'important');
+        paper.style.setProperty('min-width', '200mm', 'important');
+        paper.style.setProperty('max-width', '200mm', 'important');
         paper.style.setProperty('height', 'auto', 'important');
         paper.style.setProperty('min-height', '0', 'important');
         paper.style.setProperty('margin', '0', 'important');
@@ -10190,7 +10190,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         paper.style.setProperty('zoom', '1', 'important');
 
         const renderHost = document.createElement('div');
-        renderHost.style.cssText = 'position:absolute;left:0;top:0;z-index:-1;width:210mm;min-width:210mm;max-width:210mm;box-sizing:border-box;background:#fff;pointer-events:none';
+        renderHost.style.cssText = 'position:absolute;left:0;top:0;z-index:-1;width:200mm;min-width:200mm;max-width:200mm;box-sizing:border-box;background:#fff;pointer-events:none';
         renderHost.appendChild(paper);
         document.body.appendChild(renderHost);
         await window.__prepareFormulasForCapture?.(paper);
@@ -10200,7 +10200,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         try {
             await document.fonts?.ready;
             await html2pdf().set({
-                margin: 0,
+                margin: 5,
                 filename: exportFileName('pdf'),
                 image: { type: 'png' },
                 html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff', scrollX: 0, scrollY: 0, windowWidth: 1200 },
@@ -10269,10 +10269,10 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         }
         printWindow.document.open();
         printWindow.document.write(`<!doctype html><html lang="${currentLang}" dir="${currentLang === 'en' ? 'ltr' : 'rtl'}"><head><meta charset="utf-8"><title>${esc(t.title)}</title><style>
-            @page{size:A4 portrait;margin:10mm}*{box-sizing:border-box}body{margin:0;direction:${currentLang === 'en' ? 'ltr' : 'rtl'};font-family:${fontStack};color:#152532;background:#fff}.answer-sheet-page{position:relative;width:190mm;min-height:277mm;margin:0 auto 5mm;padding:8mm;border:1.5px solid #334b5a;page-break-after:always;break-after:page}.answer-sheet-page:last-child{page-break-after:auto;break-after:auto}.student-fold-flap{display:flex;justify-content:space-between;align-items:center;gap:3mm;min-height:10mm;margin:0 0 2mm;padding:1.5mm 3mm;border:1px solid #738994;border-bottom:2px dashed #334b5a;background:#fbfcfd;font-size:9pt}.student-fold-hint{font-size:7pt;color:#596d77;font-weight:normal;text-align:left}.sheet-header{text-align:center;border-bottom:1px solid #9aabb5;padding-bottom:5mm;margin-bottom:4mm}.sheet-header h1{font-size:18pt;margin:0 0 2mm;color:#153b55}.school-name{font-weight:bold;font-size:13pt;margin-bottom:3mm}.exam-meta{display:flex;justify-content:space-between;gap:3mm;font-size:10pt;flex-wrap:wrap}.student-meta{display:flex;justify-content:space-between;gap:5mm;text-align:${currentLang === 'en' ? 'left' : 'right'};margin-top:4mm;font-size:11pt}.answer-item{padding:2.2mm 1mm;border-bottom:1px dotted #b4c0c7;break-inside:avoid;min-height:20mm}.item-prompt{font-size:11.5pt;line-height:1.6}.item-prompt b{color:#176b78}.answer-choices{display:flex;gap:8mm;flex-wrap:wrap;margin:2mm 0 0 5mm}.choice-bubble{display:inline-flex;align-items:center;gap:2mm;font-size:11pt;min-width:14mm}.choice-bubble i{width:5mm;height:5mm;border:1px solid #304c5b;border-radius:50%;display:inline-block}.writing-lines{margin-top:2mm}.writing-lines i{display:block;height:8mm;border-bottom:1px solid #c5cdd2}.answer-item.written{min-height:33mm}.empty-note{text-align:center;padding:25mm}.answer-sheet-page footer{position:absolute;bottom:5mm;left:8mm;right:8mm;text-align:center;border-top:1px solid #c6d0d6;padding-top:2mm;color:#61727c;font-size:9pt}@media print{.answer-sheet-page{margin:0 auto}.answer-sheet-page:last-child{page-break-after:auto}}
+            @page{size:A4 portrait;margin:5mm}*{box-sizing:border-box}body{margin:0;direction:${currentLang === 'en' ? 'ltr' : 'rtl'};font-family:${fontStack};color:#152532;background:#fff}.answer-sheet-page{position:relative;width:200mm;min-height:287mm;margin:0 auto 5mm;padding:5mm;border:1.5px solid #334b5a;page-break-after:always;break-after:page}.answer-sheet-page:last-child{page-break-after:auto;break-after:auto}.student-fold-flap{display:flex;justify-content:space-between;align-items:center;gap:3mm;min-height:10mm;margin:0 0 2mm;padding:1.5mm 3mm;border:1px solid #738994;border-bottom:2px dashed #334b5a;background:#fbfcfd;font-size:9pt}.student-fold-hint{font-size:7pt;color:#596d77;font-weight:normal;text-align:left}.sheet-header{text-align:center;border-bottom:1px solid #9aabb5;padding-bottom:5mm;margin-bottom:4mm}.sheet-header h1{font-size:18pt;margin:0 0 2mm;color:#153b55}.school-name{font-weight:bold;font-size:13pt;margin-bottom:3mm}.exam-meta{display:flex;justify-content:space-between;gap:3mm;font-size:10pt;flex-wrap:wrap}.student-meta{display:flex;justify-content:space-between;gap:5mm;text-align:${currentLang === 'en' ? 'left' : 'right'};margin-top:4mm;font-size:11pt}.answer-item{padding:2.2mm 1mm;border-bottom:1px dotted #b4c0c7;break-inside:avoid;min-height:20mm}.item-prompt{font-size:11.5pt;line-height:1.6}.item-prompt b{color:#176b78}.answer-choices{display:flex;gap:8mm;flex-wrap:wrap;margin:2mm 0 0 5mm}.choice-bubble{display:inline-flex;align-items:center;gap:2mm;font-size:11pt;min-width:14mm}.choice-bubble i{width:5mm;height:5mm;border:1px solid #304c5b;border-radius:50%;display:inline-block}.writing-lines{margin-top:2mm}.writing-lines i{display:block;height:8mm;border-bottom:1px solid #c5cdd2}.answer-item.written{min-height:33mm}.empty-note{text-align:center;padding:25mm}.answer-sheet-page footer{position:absolute;bottom:5mm;left:5mm;right:5mm;text-align:center;border-top:1px solid #c6d0d6;padding-top:2mm;color:#61727c;font-size:9pt}@media print{.answer-sheet-page{margin:0 auto}.answer-sheet-page:last-child{page-break-after:auto}}
             </style></head><body>${pageHtml}
 </body></html>`);
-        printWindow.document.write('<style>@page{size:A4 portrait;margin:10mm}html,body{margin:0!important;padding:0!important;min-height:0!important}.answer-sheet-page:first-child{break-before:auto!important;page-break-before:auto!important}</style>');
+        printWindow.document.write('<style>@page{size:A4 portrait;margin:5mm}html,body{margin:0!important;padding:0!important;min-height:0!important}.answer-sheet-page:first-child{break-before:auto!important;page-break-before:auto!important}</style>');
         printWindow.document.close();
         printWindow.focus();
         setTimeout(() => printWindow.print(), 400);
@@ -11095,7 +11095,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         const examFontSize = getExamFontSize();
         const examFontColor = getExamFontColor();
         const wordHtml = `<!doctype html><html><head><meta charset="utf-8"><style>
-            @page{size:A4;margin:10mm}body{direction:${currentLang === 'en' ? 'ltr' : 'rtl'};font-family:${getSelectedExamFontStack()};font-size:${examFontSize}pt;color:${examFontColor}}.paper-page,.paper-page *{font-family:${getSelectedExamFontStack()}!important;color:${examFontColor}!important}.paper-page .question-title,.paper-page .question-body,.paper-page .answer-body,.paper-page .student-table td,.paper-page .grade-table th,.paper-page .grade-table td,.paper-page .student-fold-flap,.paper-page .student-only-header,.paper-page .footer-text,.paper-page .teacher-signature-row,.paper-page .model-badge{font-size:${examFontSize}pt!important}.paper-page .header-table td{font-size:9pt!important}.paper-page .header-table td:nth-child(2){font-size:10pt!important}.paper-page #dispSchool{font-size:12pt!important}.paper-page #examTitleType{font-size:9.5pt!important}.paper-page .question-title{font-size:${Math.round(examFontSize * 1.08)}pt!important}
+            @page{size:A4;margin:5mm}body{direction:${currentLang === 'en' ? 'ltr' : 'rtl'};font-family:${getSelectedExamFontStack()};font-size:${examFontSize}pt;color:${examFontColor}}.paper-page,.paper-page *{font-family:${getSelectedExamFontStack()}!important;color:${examFontColor}!important}.paper-page .question-title,.paper-page .question-body,.paper-page .answer-body,.paper-page .student-table td,.paper-page .grade-table th,.paper-page .grade-table td,.paper-page .student-fold-flap,.paper-page .student-only-header,.paper-page .footer-text,.paper-page .teacher-signature-row,.paper-page .model-badge{font-size:${examFontSize}pt!important}.paper-page .header-table td{font-size:9pt!important}.paper-page .header-table td:nth-child(2){font-size:10pt!important}.paper-page #dispSchool{font-size:12pt!important}.paper-page #examTitleType{font-size:9.5pt!important}.paper-page .question-title{font-size:${Math.round(examFontSize * 1.08)}pt!important}
             .paper-page{width:auto;min-height:0;margin:0;padding:0;border:0;box-shadow:none}.header-table{width:100%;border-collapse:collapse;border-bottom:2px solid #333;margin-bottom:3px;padding-bottom:1px}
             .header-table td{padding:2px;text-align:center;vertical-align:middle}.meta-section{width:100%;margin:5px 0}.student-table,.grade-table{border-collapse:collapse}
             ${currentLang === 'en' ? '.header-table{border-collapse:separate;border-spacing:0;border-bottom:2px solid #294f6b}.header-table td{padding:5px 7px;color:#243b53!important;font-family:Arial,sans-serif;line-height:1.4;font-size:9pt!important}.header-table td:first-child{text-align:left}.header-table td:last-child{text-align:right}.header-table td:nth-child(2){background:#f1f6f9;border-left:1px solid #d9e5ec;border-right:1px solid #d9e5ec;font-size:10pt!important}#dispSchool{display:inline-block;margin-bottom:2px;color:#173e59!important;font-size:12pt!important;line-height:1.2}#examTitleType{display:inline-block;margin:3px 0;padding:2px 8px;border-radius:12px;background:#e0edf4;color:#174c69!important;font-size:9.5pt!important;font-weight:700;letter-spacing:.2px}#dispGeneralEduDir,#dispEduDir{font-size:8pt!important}' : ''}
@@ -11156,7 +11156,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
         const gradingRows = simpleStudentHeader ? '' : `<tr class="grading-header-row"><th>${escapeHtml(currentLangIsKurdish ? 'ژمارا پرسیارێ' : 'رقم السؤال')}</th><th>${escapeHtml(currentLangIsKurdish ? 'نمرە ب ژمارە' : 'الدرجة')}</th><th colspan="2">${escapeHtml(currentLangIsKurdish ? 'نڤیسین' : 'كتابة')}</th><th>${escapeHtml(currentLangIsKurdish ? 'ئیمزا چاڤدێری' : 'توقيع المصحح')}</th><th>${escapeHtml(currentLangIsKurdish ? 'ئیمزا پشکنەر' : 'توقيع المدقق')}</th></tr>${questions.map((_, index) => `<tr class="grading-score-row"><td>${cellText(`${currentLangIsKurdish ? 'پرسیار' : 'السؤال'} ${formatDigits(index + 1)}`)}</td><td></td><td colspan="2"></td><td></td><td></td></tr>`).join('')}<tr class="grading-total-row"><th>${escapeHtml(currentLangIsKurdish ? 'کۆ' : 'المجموع')}</th><td></td><td colspan="2"></td><td></td><td></td></tr>`;
         const examTitleRow = simpleStudentHeader ? '' : `<tr><th class="exam-title" colspan="6">${cellText(title)}</th></tr>`;
         const excelHtml = `<!doctype html><html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel"><head><meta charset="utf-8"><style>
-            @page{size:A4 portrait;margin:10mm}body{direction:rtl;font-family:${getSelectedExamFontStack()};font-size:${examFontSize}pt;color:${examFontColor}}table{width:100%;border-collapse:collapse;table-layout:fixed}
+            @page{size:A4 portrait;margin:5mm}body{direction:rtl;font-family:${getSelectedExamFontStack()};font-size:${examFontSize}pt;color:${examFontColor}}table{width:100%;border-collapse:collapse;table-layout:fixed}
             td,th{border:1px solid #555;padding:7px;vertical-align:top;white-space:normal}.exam-title{font-size:18pt;font-weight:bold;text-align:center;background:#e8eff4}.grading-header-row th:nth-child(1){width:12%}.grading-header-row th:nth-child(2){width:12%}.grading-header-row th:nth-child(3){width:32%}.grading-header-row th:nth-child(4){width:22%}.grading-header-row th:nth-child(5){width:22%}.grading-header-row th,.grading-score-row td,.grading-total-row td,.grading-total-row th{white-space:nowrap}.grading-score-row td,.grading-total-row td,.grading-total-row th{height:22px;padding:3px}
             .meta-label{font-weight:bold;background:#edf2f4;width:13%}.meta-value{width:20%}.student-row td{height:30px}.student-fold-row td{height:25px;border-bottom:2px dashed #555}.student-fold-row small{font-weight:normal;font-size:7pt;margin-right:8px}
             .question-title-row th{background:#e9f0f0;text-align:right;font-weight:bold}.question-title-row th:last-child{text-align:center;width:12%}
@@ -12974,7 +12974,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
     });
     const hasDrawing = anchors.length > 0;
 
-    const marginIn = ((isDaily ? 4 : 5 + data.paddingMm) / 25.4).toFixed(4);
+    const marginIn = (5 / 25.4).toFixed(4);
     const sheet = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheetPr><pageSetUpPr fitToPage="1"/></sheetPr><dimension ref="A1:${colName(nCols - 1)}${nRows}"/><sheetViews><sheetView showGridLines="0" workbookViewId="0"/></sheetViews><sheetFormatPr defaultRowHeight="15"/><cols>${colsXml}</cols><sheetData>${rowsXml.join('')}</sheetData>${merges.length ? `<mergeCells count="${merges.length}">${merges.map(m => `<mergeCell ref="${m}"/>`).join('')}</mergeCells>` : ''}<printOptions horizontalCentered="1"/><pageMargins left="${marginIn}" right="${marginIn}" top="${marginIn}" bottom="${marginIn}" header="0" footer="0"/><pageSetup paperSize="9" orientation="portrait" fitToWidth="1" fitToHeight="${isDaily ? 1 : 0}"/>${hasDrawing ? '<drawing r:id="rId1"/>' : ''}</worksheet>`;
 
@@ -13633,7 +13633,7 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
     return {
       html: bodyHtml,
       images,
-      marginMm: isDailyHost ? 4 : 5 + (rbi.p[3] / 3.7795),
+      marginMm: 5,
       dir: rootCS.direction
     };
   }
