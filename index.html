@@ -7175,6 +7175,17 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
 <style id="geohist-builder-css">
 /* geohist-builder — واجهة منشئ الجغرافيا والتاريخ (تعيد استخدام تنسيق .gr-*) */
 @media screen {
+  .gh-preset-tools { display: grid; gap: 8px; }
+  .gh-preset-search { width: 100%; min-height: 38px; box-sizing: border-box; border: 1px solid var(--m-line, #dbe1ed); border-radius: 9px; background: var(--m-panel, #fff); color: var(--m-ink, #14213d); font: inherit; font-size: 12.5px; padding: 7px 10px; }
+  .gh-preset-search:focus { outline: none; border-color: var(--m-pen, #2547d0); box-shadow: 0 0 0 3px var(--m-pen-t, rgba(37,71,208,.14)); }
+  .gh-preset-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+  .gh-preset-tab { min-height: 34px; border: 1px solid var(--m-line, #dbe1ed); border-radius: 999px; background: var(--m-panel, #fff); color: var(--m-ink2, #55627f); font: inherit; font-size: 12px; font-weight: 800; padding: 5px 10px; cursor: pointer; }
+  .gh-preset-tab.on { border-color: var(--m-ink, #14213d); background: var(--m-ink, #14213d); color: var(--m-panel, #fff); }
+  .gh-preset-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; max-height: 210px; overflow-y: auto; }
+  .gh-preset-grid button { min-height: 52px; border: 1px solid var(--m-line, #dbe1ed); border-radius: 9px; background: var(--m-panel, #fff); color: var(--m-ink, #14213d); font: inherit; font-size: 11.5px; font-weight: 800; line-height: 1.35; padding: 6px; cursor: pointer; }
+  .gh-preset-grid button:hover { border-color: var(--m-pen, #2547d0); box-shadow: 0 4px 12px rgba(20,33,61,.08); transform: translateY(-1px); }
+  .gh-preset-grid button.on { border-color: var(--m-pen, #2547d0); background: var(--m-pen-t, rgba(37,71,208,.10)); color: var(--m-pen, #2547d0); }
+  .gh-preset-empty { grid-column: 1/-1; margin: 10px 4px; color: var(--m-ink2, #55627f); font-size: 12px; text-align: center; }
   .gh-event-row { display: grid; grid-template-columns: 96px minmax(0, 1fr) 34px; gap: 8px; align-items: center; }
   .gh-event-row input { min-height: 38px; }
   .gh-del { width: 34px; height: 38px; border: 1px solid var(--m-line, #dbe1ed); border-radius: 9px; background: var(--m-panel, #fff); color: var(--m-ink2, #55627f); cursor: pointer; font-size: 15px; }
@@ -7188,6 +7199,10 @@ html:root:root body .question-modal label.image-question-upload:active { transfo
   .gh-mark-dot[data-kind="label"] { color: #111827; font-weight: 700; }
   .gh-mark-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
   .gh-need-name { border-color: #dc2626 !important; outline: 2px solid rgba(220, 38, 38, .25); }
+}
+@media screen and (max-width: 880px) {
+  .gh-preset-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: 180px; }
+  .gh-event-row { grid-template-columns: 82px minmax(0, 1fr) 34px; }
 }
 </style>
 
@@ -17423,9 +17438,9 @@ td { mso-padding-alt: 0 0 0 0; }
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
   const lang = () => (typeof currentLang !== 'undefined' ? currentLang : 'ar');
   const T = {
-    ar: { title: 'منشئ الجغرافيا والتاريخ', btn: '🌍 جغرافيا وتاريخ', iqBtn: '🌍 جغرافيا', preview: 'المعاينة المباشرة', size: 'عرض الصورة في الورقة', insert: '＋ إدراج في السؤال', update: '✓ تحديث', presets: 'قوالب جاهزة', mode: 'نوع الرسم', timeline: 'خط زمني (تاريخ)', geography: 'رسم جغرافي', diagram: 'الرسم الجغرافي', diagramTitle: 'عنوان الرسم', events: 'الأحداث', addEvent: '＋ إضافة حدث', year: 'السنة', eventLabel: 'الحدث', timelineHint: 'للسنوات قبل الميلاد أدخل رقماً سالباً، مثل -3500. تُرتَّب الأحداث تلقائياً حسب السنة.', options: 'خيارات العرض', color: 'لون الرسم', lineWidth: 'سماكة الخط', showLabels: 'كتابة التسميات', fill: 'تلوين المناطق', failed: 'تعذّر الإدراج، تحقق من الأحداث ثم حاول مجدداً.', close: 'إغلاق', edit: 'تعديل رسم موجود', needEvents: 'أضف حدثين على الأقل ليرسم الخط الزمني.', needYears: 'أدخل سنة رقمية صحيحة لكل حدث.', marks: 'تسميات ومدن مخصصة', marksHint: 'اكتب الاسم، ثم انقر على الخريطة في المعاينة لإضافته في ذلك المكان.', markName: 'اسم المدينة أو التسمية', markCity: 'مدينة (نقطة + اسم)', markLabel: 'تسمية (نص فقط)', markNeedName: 'اكتب الاسم أولاً ثم انقر على الخريطة', markEmpty: 'لا توجد تسميات مضافة بعد لهذه الخريطة', markClear: 'مسح الكل', markRemove: 'حذف' },
-    en: { title: 'Geography & History Builder', btn: '🌍 Geography & History', iqBtn: '🌍 Geography', preview: 'Live preview', size: 'Image width on the paper', insert: '＋ Insert into the question', update: '✓ Update', presets: 'Ready-made templates', mode: 'Drawing type', timeline: 'Timeline (history)', geography: 'Geography diagram', diagram: 'Geography diagram', diagramTitle: 'Diagram title', events: 'Events', addEvent: '＋ Add event', year: 'Year', eventLabel: 'Event', timelineHint: 'For years BC enter a negative number, e.g. -3500. Events are sorted automatically by year.', options: 'Display options', color: 'Drawing color', lineWidth: 'Line width', showLabels: 'Write the labels', fill: 'Color the regions', failed: 'Could not insert. Check the events and try again.', close: 'Close', edit: 'Edit an existing drawing', needEvents: 'Add at least two events to draw the timeline.', needYears: 'Enter a valid numeric year for every event.', marks: 'Custom labels & cities', marksHint: 'Type a name, then click on the map in the preview to add it at that spot.', markName: 'City or label name', markCity: 'City (dot + name)', markLabel: 'Label (text only)', markNeedName: 'Type the name first, then click on the map', markEmpty: 'No labels added yet for this map', markClear: 'Clear all', markRemove: 'Remove' },
-    ku: { title: 'دروستکەری جوگرافیا و مێژوویێ', btn: '🌍 جوگرافیا و مێژوو', iqBtn: '🌍 جوگرافیا', preview: 'پێشبینینی زیندوو', size: 'پانی وێنە لەسەر پەڕە', insert: '＋ بخە ناو پرسیارێ', update: '✓ نوێ بکە', presets: 'قالبێن ئامادە', mode: 'جۆرێ وێنەکێشانێ', timeline: 'هێلا دەمێ (مێژوو)', geography: 'وێنێ جوگرافی', diagram: 'وێنێ جوگرافی', diagramTitle: 'ناڤێ وێنەی', events: 'رویدان', addEvent: '＋ رویدانەکێ زێدە بکە', year: 'سال', eventLabel: 'رویدان', timelineHint: 'بۆ سالێن بەری زایینێ ژمارەیا نەرێنی بنڤێسە، وەک -3500.', options: 'هەلبژارتنێن نیشاندانێ', color: 'ڕەنگێ وێنەکێشانێ', lineWidth: 'ئەستووری هێلێ', showLabels: 'ناڤان بنڤێسە', fill: 'هەرێمان ڕەنگ بکە', failed: 'نەهاتە زێدەکرن. رویدانان بپشکنە و دووبارە هەول بدە.', close: 'بگرە', edit: 'وێنەیەکێ هەی دەستکاری بکە', needEvents: 'هەردوو رویدانان زێدە بکە دا هێلا دەمێ بهێتە کێشان.', needYears: 'سالەکا ژمارەیی یا دروست بۆ هەر رویدانەکێ بنڤێسە.', marks: 'ناڤ و باژێرێن تایبەت', marksHint: 'ناڤەکێ بنڤێسە، پاشی ل سەر نەخشێ د پێشبینینێ دا بکلیکە دا ل وێ جهێ زێدە ببیت.', markName: 'ناڤێ باژێر یان ناڤ', markCity: 'باژێر (خال + ناڤ)', markLabel: 'ناڤ (دەق بتنێ)', markNeedName: 'سەرەتا ناڤ بنڤێسە پاشی ل سەر نەخشێ بکلیکە', markEmpty: 'هێشتا چ ناڤ بۆ ڤێ نەخشێ نەهاتینە زێدەکرن', markClear: 'هەمیان بسڕە', markRemove: 'ژێ ببە' }
+    ar: { title: 'منشئ الجغرافيا والتاريخ', btn: '🌍 جغرافيا وتاريخ', iqBtn: '🌍 جغرافيا', preview: 'المعاينة المباشرة', size: 'عرض الصورة في الورقة', insert: '＋ إدراج في السؤال', update: '✓ تحديث', presets: 'قوالب جاهزة', presetSearch: 'ابحث عن قالب...', presetAll: 'الكل', presetHistory: 'التاريخ', presetWorld: 'العالم', presetIraq: 'العراق', presetKurdistan: 'كردستان', presetEmpty: 'لا توجد قوالب مطابقة للبحث', mode: 'نوع الرسم', timeline: 'خط زمني (تاريخ)', geography: 'رسم جغرافي', diagram: 'الرسم الجغرافي', diagramTitle: 'عنوان الرسم', events: 'الأحداث', addEvent: '＋ إضافة حدث', year: 'السنة', eventLabel: 'الحدث', timelineHint: 'للسنوات قبل الميلاد أدخل رقماً سالباً، مثل -3500. تُرتَّب الأحداث تلقائياً حسب السنة.', options: 'خيارات العرض', color: 'لون الرسم', lineWidth: 'سماكة الخط', showLabels: 'كتابة التسميات', fill: 'تلوين المناطق', failed: 'تعذّر الإدراج، تحقق من الأحداث ثم حاول مجدداً.', close: 'إغلاق', edit: 'تعديل رسم موجود', needEvents: 'أضف حدثين على الأقل ليرسم الخط الزمني.', needYears: 'أدخل سنة رقمية صحيحة لكل حدث.', marks: 'تسميات ومدن مخصصة', marksHint: 'اكتب الاسم، ثم انقر على الخريطة في المعاينة لإضافته في ذلك المكان.', markName: 'اسم المدينة أو التسمية', markCity: 'مدينة (نقطة + اسم)', markLabel: 'تسمية (نص فقط)', markNeedName: 'اكتب الاسم أولاً ثم انقر على الخريطة', markEmpty: 'لا توجد تسميات مضافة بعد لهذه الخريطة', markClear: 'مسح الكل', markRemove: 'حذف' },
+    en: { title: 'Geography & History Builder', btn: '🌍 Geography & History', iqBtn: '🌍 Geography', preview: 'Live preview', size: 'Image width on the paper', insert: '＋ Insert into the question', update: '✓ Update', presets: 'Ready-made templates', presetSearch: 'Search templates...', presetAll: 'All', presetHistory: 'History', presetWorld: 'World', presetIraq: 'Iraq', presetKurdistan: 'Kurdistan', presetEmpty: 'No templates match your search', mode: 'Drawing type', timeline: 'Timeline (history)', geography: 'Geography diagram', diagram: 'Geography diagram', diagramTitle: 'Diagram title', events: 'Events', addEvent: '＋ Add event', year: 'Year', eventLabel: 'Event', timelineHint: 'For years BC enter a negative number, e.g. -3500. Events are sorted automatically by year.', options: 'Display options', color: 'Drawing color', lineWidth: 'Line width', showLabels: 'Write the labels', fill: 'Color the regions', failed: 'Could not insert. Check the events and try again.', close: 'Close', edit: 'Edit an existing drawing', needEvents: 'Add at least two events to draw the timeline.', needYears: 'Enter a valid numeric year for every event.', marks: 'Custom labels & cities', marksHint: 'Type a name, then click on the map in the preview to add it at that spot.', markName: 'City or label name', markCity: 'City (dot + name)', markLabel: 'Label (text only)', markNeedName: 'Type the name first, then click on the map', markEmpty: 'No labels added yet for this map', markClear: 'Clear all', markRemove: 'Remove' },
+    ku: { title: 'دروستکەری جوگرافیا و مێژوویێ', btn: '🌍 جوگرافیا و مێژوو', iqBtn: '🌍 جوگرافیا', preview: 'پێشبینینی زیندوو', size: 'پانی وێنە لەسەر پەڕە', insert: '＋ بخە ناو پرسیارێ', update: '✓ نوێ بکە', presets: 'قالبێن ئامادە', presetSearch: 'قالبەکێ بگەڕێ...', presetAll: 'هەمی', presetHistory: 'مێژوو', presetWorld: 'جیهان', presetIraq: 'عێراق', presetKurdistan: 'کوردستان', presetEmpty: 'چ قالب دگەل گەڕینێ ناگونجێت', mode: 'جۆرێ وێنەکێشانێ', timeline: 'هێلا دەمێ (مێژوو)', geography: 'وێنێ جوگرافی', diagram: 'وێنێ جوگرافی', diagramTitle: 'ناڤێ وێنەی', events: 'رویدان', addEvent: '＋ رویدانەکێ زێدە بکە', year: 'سال', eventLabel: 'رویدان', timelineHint: 'بۆ سالێن بەری زایینێ ژمارەیا نەرێنی بنڤێسە، وەک -3500.', options: 'هەلبژارتنێن نیشاندانێ', color: 'ڕەنگێ وێنەکێشانێ', lineWidth: 'ئەستووری هێلێ', showLabels: 'ناڤان بنڤێسە', fill: 'هەرێمان ڕەنگ بکە', failed: 'نەهاتە زێدەکرن. رویدانان بپشکنە و دووبارە هەول بدە.', close: 'بگرە', edit: 'وێنەیەکێ هەی دەستکاری بکە', needEvents: 'هەردوو رویدانان زێدە بکە دا هێلا دەمێ بهێتە کێشان.', needYears: 'سالەکا ژمارەیی یا دروست بۆ هەر رویدانەکێ بنڤێسە.', marks: 'ناڤ و باژێرێن تایبەت', marksHint: 'ناڤەکێ بنڤێسە، پاشی ل سەر نەخشێ د پێشبینینێ دا بکلیکە دا ل وێ جهێ زێدە ببیت.', markName: 'ناڤێ باژێر یان ناڤ', markCity: 'باژێر (خال + ناڤ)', markLabel: 'ناڤ (دەق بتنێ)', markNeedName: 'سەرەتا ناڤ بنڤێسە پاشی ل سەر نەخشێ بکلیکە', markEmpty: 'هێشتا چ ناڤ بۆ ڤێ نەخشێ نەهاتینە زێدەکرن', markClear: 'هەمیان بسڕە', markRemove: 'ژێ ببە' }
   };
   const tr = k => (T[lang()] || T.ar)[k] || T.ar[k] || k;
   const D = {
@@ -17512,6 +17527,7 @@ td { mso-padding-alt: 0 0 0 0; }
   let st = PRESETS.hist_baghdad();
   let editing = null;
   let markName = '', markKind = 'city', markMsg = '';
+  let presetCategory = 'all', presetSearch = '';
   function marksFor(geo) { if (!st.marks) st.marks = {}; if (!st.marks[geo]) st.marks[geo] = []; return st.marks[geo]; }
   let built = false, timer = 0, inserting = false;
 
@@ -17528,6 +17544,12 @@ td { mso-padding-alt: 0 0 0 0; }
     const X = y => f1(50 + (y - minY) / (maxY - minY) * (W - 100));
     const yearTxt = y => fmtYear(y);
     let g = '';
+    g += `<rect x="38" y="48" width="${W - 76}" height="218" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>`;
+    for (let i = 0; i <= 6; i++) {
+      const y = minY + (maxY - minY) * i / 6;
+      const x = X(y);
+      g += `<line x1="${x}" y1="${axisY}" x2="${x}" y2="${axisY + 10}" stroke="#94a3b8" stroke-width="1"/><text x="${x}" y="${axisY + 30}" font-size="11" fill="#64748b" font-family="Times New Roman,serif" text-anchor="middle">${esc(yearTxt(y))}</text>`;
+    }
     if (s.title) g += `<text x="${W / 2}" y="30" font-size="19" fill="#111827" font-family="Times New Roman,serif" font-weight="700" text-anchor="middle">${esc(s.title)}</text>`;
     g += `<line x1="40" y1="${axisY}" x2="${W - 40}" y2="${axisY}" stroke="${s.color || '#14213d'}" stroke-width="3"/><polygon points="${W - 40},${axisY - 7} ${W - 28},${axisY} ${W - 40},${axisY + 7}" fill="${s.color || '#14213d'}"/>`;
     evs.forEach((e, i) => {
@@ -17972,7 +17994,16 @@ td { mso-padding-alt: 0 0 0 0; }
   }
   function renderForm() {
     const f = $('ghForm');
-    const preset = `<div class="gr-sec"><label class="gr-f"><span>${tr('presets')}</span></label><div class="sh-preset-grid">${Object.keys(PRESETS).map(k => `<button type="button" data-preset="${k}" class="${st.preset === k ? 'on' : ''}">${esc(presetName(k))}</button>`).join('')}</div>${existingSelect()}</div>`;
+    const matchesCategory = k => presetCategory === 'all'
+      || (presetCategory === 'history' && k.startsWith('hist_'))
+      || (presetCategory === 'world' && ['geo_world', 'geo_arab', 'geo_asia', 'geo_africa', 'geo_europe', 'geo_globe', 'geo_zones', 'geo_latlong', 'geo_layers', 'geo_compass'].includes(k))
+      || (presetCategory === 'iraq' && ['geo_iraq', 'geo_iraq_water', 'geo_iraq_terrain', 'geo_govs', 'geo_art140'].includes(k))
+      || (presetCategory === 'kurdistan' && ['geo_kurdistan', 'geo_kri', 'geo_kri_mountains'].includes(k));
+    const query = presetSearch.trim().toLocaleLowerCase();
+    const presetIds = Object.keys(PRESETS).filter(k => matchesCategory(k) && (!query || presetName(k).toLocaleLowerCase().includes(query)));
+    const tabs = [['all', 'presetAll'], ['history', 'presetHistory'], ['world', 'presetWorld'], ['iraq', 'presetIraq'], ['kurdistan', 'presetKurdistan']]
+      .map(([value, key]) => `<button type="button" class="gh-preset-tab ${presetCategory === value ? 'on' : ''}" data-preset-category="${value}">${tr(key)}</button>`).join('');
+    const preset = `<div class="gr-sec"><h4>${tr('presets')}</h4><div class="gh-preset-tools"><input type="search" class="gh-preset-search" data-preset-search value="${esc(presetSearch)}" placeholder="${tr('presetSearch')}"><div class="gh-preset-tabs">${tabs}</div></div><div class="gh-preset-grid">${presetIds.length ? presetIds.map(k => `<button type="button" data-preset="${k}" class="${st.preset === k ? 'on' : ''}">${esc(presetName(k))}</button>`).join('') : `<p class="gh-preset-empty">${tr('presetEmpty')}</p>`}</div>${existingSelect()}</div>`;
     const mode = `<div class="gr-sec"><h4>${tr('mode')}</h4><div class="gr-seg" role="group">${['timeline', 'geography'].map(m => `<button type="button" data-mode="${m}" class="${st.mode === m ? 'on' : ''}">${tr(m)}</button>`).join('')}</div></div>`;
     let body = '';
     if (st.mode === 'timeline') {
@@ -18034,6 +18065,7 @@ td { mso-padding-alt: 0 0 0 0; }
   }
   function onInput(e) {
     const t = e.target;
+    if (t.dataset.presetSearch !== undefined) { presetSearch = t.value; renderForm(); const search = document.querySelector('[data-preset-search]'); if (search) { search.focus(); search.setSelectionRange(search.value.length, search.value.length); } return; }
     if (t.dataset.mark === 'name') { markName = t.value; if (markMsg) { markMsg = ''; t.classList.remove('gh-need-name'); const er = t.closest('.gr-sec') && t.closest('.gr-sec').querySelector('.sh-error'); if (er) er.remove(); } return; }
     if (t.dataset.mark === 'kind') { markKind = t.value; return; }
     if (t.dataset.k === 'existing') { loadExisting(t.value); return; }
@@ -18049,6 +18081,8 @@ td { mso-padding-alt: 0 0 0 0; }
     }
   }
   function onClick(e) {
+    const category = e.target.closest('[data-preset-category]');
+    if (category) { presetCategory = category.dataset.presetCategory; renderForm(); return; }
     const b = e.target.closest('[data-preset]');
     if (b) { const keep = { ...st }; st = PRESETS[b.dataset.preset](); st.insertWidth = keep.insertWidth || st.insertWidth; editing = null; renderAll(); return; }
     const m = e.target.closest('[data-mode]');
@@ -18142,6 +18176,8 @@ td { mso-padding-alt: 0 0 0 0; }
   function open() {
     build();
     editing = null;
+    presetCategory = 'all';
+    presetSearch = '';
     st = PRESETS.hist_baghdad();
     $('ghOverlay').hidden = false;
     document.documentElement.classList.add('ie-lock');
